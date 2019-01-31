@@ -5,17 +5,27 @@
  */
 package scrumprojekt;
 
+import javax.swing.JOptionPane;
+import oru.inf.InfDB;
+
 /**
  *
  * @author Joakim
  */
 public class CreateNewPost extends javax.swing.JFrame {
 
+    private InfDB db;
+    private int user_id;
+    private char category;
+    
     /**
      * Creates new form CreateNewPost
      */
-    public CreateNewPost() {
+    public CreateNewPost(InfDB db, int user_id, char category) {
         initComponents();
+        this.db = db;
+        this.user_id = user_id;
+        this.category = category;
     }
 
     /**
@@ -44,6 +54,11 @@ public class CreateNewPost extends javax.swing.JFrame {
         labelGoBack.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         labelGoBack.setForeground(new java.awt.Color(250, 249, 246));
         labelGoBack.setText("<");
+        labelGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelGoBackMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(250, 249, 246));
@@ -82,6 +97,11 @@ public class CreateNewPost extends javax.swing.JFrame {
 
         buttonSubmit.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         buttonSubmit.setText("Submit");
+        buttonSubmit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                buttonSubmitMouseClicked(evt);
+            }
+        });
 
         labelAttatchFile.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         labelAttatchFile.setText("+ Attatch file");
@@ -120,6 +140,29 @@ public class CreateNewPost extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void labelGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelGoBackMouseClicked
+        // TODO add your handling code here:
+        new EducationFrame(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelGoBackMouseClicked
+
+    private void buttonSubmitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonSubmitMouseClicked
+        // TODO add your handling code here:
+        //Lägg till post
+        
+        if(!Validate.textWindowIsEmpty(textfieldHeadline) && !Validate.areaWindowIsEmpty(textareaPost)){
+        
+            int post_id = DBInsert.insertPost(db, user_id, category, textfieldHeadline.getText(), textareaPost.getText());
+
+            JOptionPane.showMessageDialog(rootPane, "Succed!");
+            
+            new BlogPostFrame(db, user_id, post_id).setVisible(true);
+            dispose();
+        }
+        
+        
+    }//GEN-LAST:event_buttonSubmitMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -148,11 +191,11 @@ public class CreateNewPost extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CreateNewPost().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

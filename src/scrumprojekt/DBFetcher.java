@@ -5,6 +5,7 @@
  */
 package scrumprojekt;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -25,6 +26,39 @@ public class DBFetcher {
             
         }
         return user;
+    }
+    
+    public static HashMap<String,String> fetchUser(InfDB db, int user_id) {
+        HashMap<String,String> user = null;
+        try {
+            user = db.fetchRow("SELECT * FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id);
+        } 
+        catch(InfException e) {
+            
+        }
+        return user;
+    }
+    
+    public static HashMap<String,String> fetchPost(InfDB db, int post_id) {
+        HashMap<String,String> post = null;
+        try {
+            post = db.fetchRow("SELECT * FROM POST WHERE IDPOST = " + post_id);
+        }
+        catch(InfException e) {
+            
+        }
+        return post;
+    }
+    
+    public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db) {
+        ArrayList<HashMap<String,String>> posts = null;
+        try {
+            posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 ORDER BY IDPOST DESC");
+        }
+        catch(InfException e) {
+            
+        }
+        return posts;
     }
     
 }

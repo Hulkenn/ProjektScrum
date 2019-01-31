@@ -20,6 +20,7 @@ import oru.inf.InfException;
 public class LoginFrame extends javax.swing.JFrame {
 
     public static InfDB db;
+    public static int user_id;
     /**
      * Creates new form LoginFrame
      */
@@ -40,8 +41,9 @@ public class LoginFrame extends javax.swing.JFrame {
                 System.out.println(correct_password + " " + input_password);
                 //If the password is correct
                 if(Arrays.equals(input_password, correct_password)) {
-                    //
-                    new MainWindow(db).setVisible(true);
+                    //Logging in
+                    user_id = Integer.parseInt(user.get("IDEMPLOYEE"));
+                    new MainWindow(db, user_id).setVisible(true);
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Wrong username or password");

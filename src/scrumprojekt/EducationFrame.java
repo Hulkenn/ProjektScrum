@@ -5,17 +5,33 @@
  */
 package scrumprojekt;
 
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Component;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import oru.inf.InfDB;
+
+
+
 /**
  *ygh
  * @author Joakim
  */
 public class EducationFrame extends javax.swing.JFrame {
-
+    
+    private InfDB db;
+    private int user_id;
     /**
      * Creates new form EducationFrame
      */
-    public EducationFrame() {
+    public EducationFrame(InfDB db, int user_id) {
         initComponents();
+        this.db = db;
+        this.user_id = user_id;
+        
+        BoxLayoutDemo.addComponentsToPane(educationforumPosts);
+        
     }
 //asd
     /**
@@ -107,6 +123,12 @@ public class EducationFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblCreateNewPostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateNewPostMouseClicked
+        // TODO add your handling code here:
+        new CreateNewPost(db, user_id, 'E').setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblCreateNewPostMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -135,11 +157,11 @@ public class EducationFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EducationFrame().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

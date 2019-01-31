@@ -5,17 +5,54 @@
  */
 package scrumprojekt;
 
+import java.util.HashMap;
+import oru.inf.InfDB;
+
 /**
  *
  * @author Joakim
  */
 public class postPanel extends javax.swing.JPanel {
 
+    private InfDB db;
+    private int post_id;
+    private HashMap<String,String> post;
+    private HashMap<String,String> user;
     /**
      * Creates new form postPanel
      */
-    public postPanel() {
+    public postPanel(InfDB db, int post_id) {
         initComponents();
+        this.db = db;
+        this.post_id = post_id;
+        updatePanel();
+        
+    }
+    
+    public void updatePanel() {
+        post = DBFetcher.fetchPost(db, this.post_id);
+        user = DBFetcher.fetchUser(db, Integer.parseInt(post.get("EMPLOYEE_IDEMPLOYEE")));
+        
+        headlinePostOne.setText(post.get("HEADLINE"));
+        datePostOne.setText(post.get("POSTDATE"));
+        authorPostOne.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
+        
+        String postText = post.get("TEXT");
+        int postTextLength = postText.length();
+        if(postTextLength > 70) {
+            lblText.setText(String.copyValueOf(post.get("TEXT").toCharArray(), 0, 70) + "...");
+        } else {
+            lblText.setText(String.copyValueOf(post.get("TEXT").toCharArray(), 0, postTextLength));
+        }
+        
+        
+        
+        this.setVisible(true);
+        System.out.println("Xd");
+    }
+    
+    public int getPostId() {
+        return post_id;
     }
 
     /**
@@ -34,6 +71,7 @@ public class postPanel extends javax.swing.JPanel {
         datePostOne = new javax.swing.JLabel();
         lastReplyPostOne = new javax.swing.JLabel();
         dateLastReplyPostOne = new javax.swing.JLabel();
+        lblText = new javax.swing.JLabel();
 
         postOne.setBackground(new java.awt.Color(250, 249, 246));
         postOne.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -52,6 +90,8 @@ public class postPanel extends javax.swing.JPanel {
 
         dateLastReplyPostOne.setText("Date and time ");
 
+        lblText.setText("jLabel1");
+
         javax.swing.GroupLayout postOneLayout = new javax.swing.GroupLayout(postOne);
         postOne.setLayout(postOneLayout);
         postOneLayout.setHorizontalGroup(
@@ -66,7 +106,9 @@ public class postPanel extends javax.swing.JPanel {
                         .addComponent(authorPostOne)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(datePostOne)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 745, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
+                .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lastReplyPostOne)
                     .addComponent(dateLastReplyPostOne))
@@ -76,20 +118,25 @@ public class postPanel extends javax.swing.JPanel {
             postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(postOneLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(headlinePostOne)
-                    .addComponent(imagePostOne)
-                    .addComponent(lastReplyPostOne))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(postOneLayout.createSequentialGroup()
-                        .addGap(0, 7, Short.MAX_VALUE)
                         .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datePostOne)
-                            .addComponent(authorPostOne)))
+                            .addComponent(headlinePostOne)
+                            .addComponent(imagePostOne)
+                            .addComponent(lastReplyPostOne))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(postOneLayout.createSequentialGroup()
+                                .addGap(0, 7, Short.MAX_VALUE)
+                                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(datePostOne)
+                                    .addComponent(authorPostOne)))
+                            .addGroup(postOneLayout.createSequentialGroup()
+                                .addComponent(dateLastReplyPostOne)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(postOneLayout.createSequentialGroup()
-                        .addComponent(dateLastReplyPostOne)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -112,6 +159,7 @@ public class postPanel extends javax.swing.JPanel {
     private javax.swing.JLabel headlinePostOne;
     private javax.swing.JLabel imagePostOne;
     private javax.swing.JLabel lastReplyPostOne;
+    private javax.swing.JLabel lblText;
     private javax.swing.JPanel postOne;
     // End of variables declaration//GEN-END:variables
 }

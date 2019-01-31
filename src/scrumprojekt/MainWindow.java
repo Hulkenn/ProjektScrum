@@ -15,12 +15,14 @@ import oru.inf.InfDB;
 public class MainWindow extends javax.swing.JFrame {
 
     private InfDB db;
+    private int user_id;
     /**
      * Creates new form MainWindow
      */
-    public MainWindow(InfDB db) {
+    public MainWindow(InfDB db, int user_id) {
         initComponents();
         this.db = db;
+        this.user_id = user_id;
         this.setLocationRelativeTo(null);
     }
 
@@ -56,6 +58,9 @@ public class MainWindow extends javax.swing.JFrame {
 
         panelOpenEducation.setBackground(new java.awt.Color(50, 121, 184));
         panelOpenEducation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelOpenEducationMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelOpenEducationMouseEntered(evt);
             }
@@ -296,7 +301,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_panelOpenEducationMouseEntered
 
     private void labelOpenEducationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenEducationMouseClicked
-        //panelEducationBlog.show();
+     //panelEducationBlog.show();
     }//GEN-LAST:event_labelOpenEducationMouseClicked
 
     private void pnlOpenAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenAdminMouseEntered
@@ -312,6 +317,10 @@ public class MainWindow extends javax.swing.JFrame {
 //        dispose();
      
     }//GEN-LAST:event_pnlOpenAdminMouseClicked
+
+    private void panelOpenEducationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenEducationMouseClicked
+        // FIXA DENNNA KOPPLING
+    }//GEN-LAST:event_panelOpenEducationMouseClicked
 
     /**
      * @param args the command line arguments
