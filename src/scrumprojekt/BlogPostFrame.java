@@ -27,12 +27,21 @@ public class BlogPostFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        diaAddComment = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        btnAdd = new javax.swing.JButton();
         blogPostBanner = new javax.swing.JPanel();
+        goBackButton = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         author = new javax.swing.JLabel();
         date = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
-        goBackButton = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        btnDeletePost = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -40,28 +49,88 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         image = new java.awt.Label();
         jTextField1 = new javax.swing.JTextField();
+        btnAddComment = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
         jTextArea5 = new javax.swing.JTextArea();
 
+        diaAddComment.setBackground(new java.awt.Color(250, 249, 246));
+        diaAddComment.setResizable(false);
+        diaAddComment.setSize(new java.awt.Dimension(720, 470));
+
+        jPanel5.setBackground(new java.awt.Color(50, 121, 184));
+        jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel1.setText("Add comment");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
+        jPanel6.setBackground(new java.awt.Color(250, 249, 246));
+
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        btnAdd.setText("Add comment");
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAdd)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(btnAdd)
+                .addContainerGap(28, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout diaAddCommentLayout = new javax.swing.GroupLayout(diaAddComment.getContentPane());
+        diaAddComment.getContentPane().setLayout(diaAddCommentLayout);
+        diaAddCommentLayout.setHorizontalGroup(
+            diaAddCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        diaAddCommentLayout.setVerticalGroup(
+            diaAddCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(diaAddCommentLayout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1185, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1185, 700));
 
         blogPostBanner.setBackground(new java.awt.Color(50, 121, 184));
         blogPostBanner.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        author.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        author.setForeground(new java.awt.Color(250, 249, 246));
-        author.setText("Author");
-
-        date.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        date.setForeground(new java.awt.Color(250, 249, 246));
-        date.setText("Date");
-
-        time.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        time.setForeground(new java.awt.Color(250, 249, 246));
-        time.setText("Time");
 
         goBackButton.setFont(new java.awt.Font("Juice ITC", 0, 48)); // NOI18N
         goBackButton.setForeground(new java.awt.Color(250, 249, 246));
@@ -78,41 +147,83 @@ public class BlogPostFrame extends javax.swing.JFrame {
             .addGap(0, 25, Short.MAX_VALUE)
         );
 
+        jPanel1.setBackground(new java.awt.Color(50, 121, 184));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        author.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        author.setForeground(new java.awt.Color(250, 249, 246));
+        author.setText("Author");
+
+        date.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        date.setForeground(new java.awt.Color(250, 249, 246));
+        date.setText("Date");
+
+        time.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        time.setForeground(new java.awt.Color(250, 249, 246));
+        time.setText("Time");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(author))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(date)
+                        .addGap(39, 39, 39)
+                        .addComponent(time)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(author)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(date)
+                    .addComponent(time))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        btnDeletePost.setText("Delete post");
+
         javax.swing.GroupLayout blogPostBannerLayout = new javax.swing.GroupLayout(blogPostBanner);
         blogPostBanner.setLayout(blogPostBannerLayout);
         blogPostBannerLayout.setHorizontalGroup(
             blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, blogPostBannerLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(date)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(time)
-                .addGap(64, 64, 64))
             .addGroup(blogPostBannerLayout.createSequentialGroup()
                 .addGroup(blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(blogPostBannerLayout.createSequentialGroup()
+                        .addGroup(blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(blogPostBannerLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(goBackButton))
+                            .addGroup(blogPostBannerLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnDeletePost)
+                                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 30, Short.MAX_VALUE))
+                    .addGroup(blogPostBannerLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(goBackButton))
-                    .addGroup(blogPostBannerLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(author))
-                    .addGroup(blogPostBannerLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         blogPostBannerLayout.setVerticalGroup(
             blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(blogPostBannerLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(goBackButton)
-                .addGap(56, 56, 56)
-                .addComponent(author)
-                .addGap(18, 18, 18)
-                .addGroup(blogPostBannerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(time)
-                    .addComponent(date))
+                .addGap(45, 45, 45)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDeletePost)
+                .addGap(28, 28, 28)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -122,7 +233,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jTextArea1.setRows(5);
-        jTextArea1.setText("asdasdasdasdasdasdasd\n\nasdasdasdasd\n\n\n\n\nasdadasd\nas\nda\nsd\nasd\nasd\nas\nda\nsd\n");
         jTextArea1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jScrollPane1.setViewportView(jTextArea1);
 
@@ -138,7 +248,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(305, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,14 +267,17 @@ public class BlogPostFrame extends javax.swing.JFrame {
             }
         });
 
+        btnAddComment.setText("Add comment");
+        btnAddComment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAddCommentMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,8 +287,13 @@ public class BlogPostFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelAttachedDownload)
-                        .addGap(75, 75, 75))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelAttachedDownload)
+                            .addComponent(btnAddComment))
+                        .addGap(75, 75, 75))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,8 +308,10 @@ public class BlogPostFrame extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(labelAttachedDownload)))
-                .addGap(46, 46, 46))
+                        .addComponent(labelAttachedDownload)
+                        .addGap(42, 42, 42)
+                        .addComponent(btnAddComment)))
+                .addGap(113, 113, 113))
         );
 
         jTextArea5.setColumns(20);
@@ -209,18 +329,19 @@ public class BlogPostFrame extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(blogPostBanner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(blogPostBanner, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         pack();
@@ -229,6 +350,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void btnAddCommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddCommentMouseClicked
+     diaAddComment.setVisible(true);
+     diaAddComment.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnAddCommentMouseClicked
 
     /**
      * @param args the command line arguments
@@ -268,15 +394,25 @@ public class BlogPostFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel author;
     private javax.swing.JPanel blogPostBanner;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnAddComment;
+    private javax.swing.JButton btnDeletePost;
     private javax.swing.JLabel date;
+    private javax.swing.JDialog diaAddComment;
     private javax.swing.JLabel goBackButton;
     private java.awt.Label image;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel labelAttachedDownload;

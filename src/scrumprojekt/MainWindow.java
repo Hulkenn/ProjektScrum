@@ -41,12 +41,13 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenResearch = new javax.swing.JPanel();
         labelOpenResearch = new javax.swing.JLabel();
         labelHome = new javax.swing.JLabel();
+        pnlOpenAdmin = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
         labelWelcome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(250, 249, 246));
-        setPreferredSize(new java.awt.Dimension(1170, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1170, 700));
 
@@ -160,32 +161,70 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        pnlOpenAdmin.setBackground(new java.awt.Color(50, 121, 184));
+        pnlOpenAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnlOpenAdminMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlOpenAdminMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pnlOpenAdminMouseExited(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel1.setText("Admin");
+
+        javax.swing.GroupLayout pnlOpenAdminLayout = new javax.swing.GroupLayout(pnlOpenAdmin);
+        pnlOpenAdmin.setLayout(pnlOpenAdminLayout);
+        pnlOpenAdminLayout.setHorizontalGroup(
+            pnlOpenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOpenAdminLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(54, 54, 54))
+        );
+        pnlOpenAdminLayout.setVerticalGroup(
+            pnlOpenAdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlOpenAdminLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(144, Short.MAX_VALUE)
                 .addComponent(panelOpenEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
                 .addComponent(panelOpenResearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
                 .addComponent(panelOpenSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
-                .addComponent(labelHome)
+                .addGap(30, 30, 30)
+                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelHome)
+                    .addComponent(pnlOpenAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(labelHome)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
+                .addComponent(labelHome)
+                .addGap(18, 18, 18)
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelOpenEducation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelOpenResearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelOpenSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelHeaderLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelOpenEducation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelOpenResearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelOpenSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pnlOpenAdmin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         panelHome.setBackground(new java.awt.Color(250, 249, 246));
@@ -214,14 +253,15 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 1194, Short.MAX_VALUE)
+            .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 1207, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -259,6 +299,20 @@ public class MainWindow extends javax.swing.JFrame {
         //panelEducationBlog.show();
     }//GEN-LAST:event_labelOpenEducationMouseClicked
 
+    private void pnlOpenAdminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenAdminMouseEntered
+     pnlOpenAdmin.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_pnlOpenAdminMouseEntered
+
+    private void pnlOpenAdminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenAdminMouseExited
+    pnlOpenAdmin.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_pnlOpenAdminMouseExited
+
+    private void pnlOpenAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlOpenAdminMouseClicked
+//        new AdminFrame();
+//        dispose();
+     
+    }//GEN-LAST:event_pnlOpenAdminMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -295,6 +349,7 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel labelHome;
     private javax.swing.JLabel labelOpenEducation;
     private javax.swing.JLabel labelOpenResearch;
@@ -305,5 +360,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel panelOpenEducation;
     private javax.swing.JPanel panelOpenResearch;
     private javax.swing.JPanel panelOpenSocial;
+    private javax.swing.JPanel pnlOpenAdmin;
     // End of variables declaration//GEN-END:variables
 }
