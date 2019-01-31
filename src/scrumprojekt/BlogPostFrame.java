@@ -5,17 +5,41 @@
  */
 package scrumprojekt;
 
+import java.util.HashMap;
+import javax.swing.JFrame;
+import oru.inf.InfDB;
+
 /**
  *
  * @author Joakim
  */
 public class BlogPostFrame extends javax.swing.JFrame {
-
+    
+    private InfDB db;
+    private int user_id;
+    private int post_id;
+    private HashMap<String,String> post;
+    private HashMap<String,String> user;
     /**
      * Creates new form BlogPostFrame
      */
-    public BlogPostFrame() {
+    public BlogPostFrame(InfDB db, int user_id, int post_id) {
         initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        this.db = db;
+        this.user_id = user_id;
+        this.post_id = post_id;
+        
+        post = DBFetcher.fetchPost(db, post_id);
+        user = DBFetcher.fetchUser(db, user_id);
+        
+        //Update the post with info
+        jTextField1.setText(post.get("HEADLINE"));
+        jTextArea1.setText(post.get("TEXT"));
+        
+        
+        author.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
+        date.setText(post.get("POSTDATE"));
     }
 
     /**
@@ -66,6 +90,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         goBackButton.setFont(new java.awt.Font("Juice ITC", 0, 48)); // NOI18N
         goBackButton.setForeground(new java.awt.Color(250, 249, 246));
         goBackButton.setText("<");
+        goBackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackButtonMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -230,6 +259,10 @@ public class BlogPostFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void goBackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goBackButtonMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -258,11 +291,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+        /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new BlogPostFrame().setVisible(true);
             }
-        });
+        });*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

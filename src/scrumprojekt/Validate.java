@@ -7,6 +7,7 @@ package scrumprojekt;
 
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -28,6 +29,20 @@ public class Validate {
             result = true;
             JOptionPane.showMessageDialog(windowToCheck, "It is empty.");
             windowToCheck.requestFocus();
+        }
+
+        //Return a boolean
+        return result;
+    }
+    
+    public static boolean areaWindowIsEmpty(JTextArea areaToCheck) {
+        boolean result = false;
+        //If the JTextField checked is empty - do the following
+        if (areaToCheck.getText().isEmpty()) {
+            //Change the boolean to false
+            result = true;
+            JOptionPane.showMessageDialog(areaToCheck, "Post is empty.");
+            areaToCheck.requestFocus();
         }
 
         //Return a boolean
