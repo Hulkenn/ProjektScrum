@@ -72,11 +72,13 @@ public class BoxLayoutDemo {
         ArrayList<HashMap<String, String>> posts;
         
         posts = DBFetcher.fetchAllPosts(db);
-        for (HashMap<String, String> post : posts) 
-        {
-            int post_id = Integer.parseInt(post.get("IDPOST"));
-            addPost(post_id, pane);
-        } 
+        if(posts != null) {
+            for (HashMap<String, String> post : posts) 
+            {
+                int post_id = Integer.parseInt(post.get("IDPOST"));
+                addPost(post_id, pane);
+            } 
+        }
     }
     
     public static void addCommentsToPane(Container pane, int post_id) {
@@ -91,11 +93,14 @@ public class BoxLayoutDemo {
         
         ArrayList<HashMap<String,String>> comments;
         
+        
         comments = DBFetcher.fetchAllCommentsPost(db, post_id);
-        for (HashMap<String,String> comment : comments) 
-        {
-            addComment(comment, pane);
-        } 
+        if(comments != null) {
+            for (HashMap<String,String> comment : comments) 
+            {
+                addComment(comment, pane);
+            } 
+        }
     }
  
     private static void addPost(int post_id, Container container) {
