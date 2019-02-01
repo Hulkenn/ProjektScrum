@@ -36,7 +36,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         user = DBFetcher.fetchUser(db, user_id);
         
         //Update the post with info
-        lblHeadline.setText(post.get("HEADLINE"));
+        btnAdd.setText(post.get("HEADLINE"));
         taText.setText(post.get("TEXT"));
         
         
@@ -85,7 +85,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        lblHeadline = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JLabel();
         jpContainer2 = new javax.swing.JScrollPane();
         jpContainer = new javax.swing.JPanel();
 
@@ -112,7 +112,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1185, 900));
         setResizable(false);
         setSize(new java.awt.Dimension(1185, 900));
 
@@ -394,10 +393,10 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, -1));
 
-        lblHeadline.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblHeadline.setForeground(new java.awt.Color(0, 0, 0));
-        lblHeadline.setText("Headline:ExempelTExt");
-        bg.add(lblHeadline, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 810, 40));
+        btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
+        btnAdd.setText("Headline:ExempelTExt");
+        bg.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 810, 40));
 
         jpContainer.setBackground(new java.awt.Color(247, 247, 247));
 
@@ -420,7 +419,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 1185, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -480,6 +479,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backpanel;
     private javax.swing.JPanel bg;
+    private javax.swing.JLabel btnAdd;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -507,7 +507,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jpContainer2;
     private javax.swing.JLabel lblAuthor;
     private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblHeadline;
     private javax.swing.JPanel lblPostComment;
     private javax.swing.JTextArea taComment;
     private javax.swing.JTextArea taText;
