@@ -29,6 +29,7 @@ public class EducationFrame extends javax.swing.JFrame {
         initComponents();
         this.db = db;
         this.user_id = user_id;
+        this.setLocationRelativeTo(null);
         
         BoxLayoutDemo.addComponentsToPane(educationforumPosts);
         
@@ -44,9 +45,9 @@ public class EducationFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         educationHeader = new javax.swing.JPanel();
-        jLabel25 = new javax.swing.JLabel();
-        lblCreateNewPost = new javax.swing.JLabel();
         lblGoBack = new javax.swing.JLabel();
+        lblCreateNewPost = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
         educationforumPosts = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,17 +57,22 @@ public class EducationFrame extends javax.swing.JFrame {
         educationHeader.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         educationHeader.setPreferredSize(new java.awt.Dimension(1170, 100));
 
-        jLabel25.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel25.setText("Education forum");
+        lblGoBack.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
+        lblGoBack.setText("<");
+        lblGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCreateNewPostMouseClicked(evt);
+            }
+        });
 
         lblCreateNewPost.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         lblCreateNewPost.setForeground(new java.awt.Color(250, 249, 246));
         lblCreateNewPost.setText("New Post +");
 
-        lblGoBack.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
-        lblGoBack.setText("<");
+        jLabel25.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel25.setText("Education forum");
 
         javax.swing.GroupLayout educationHeaderLayout = new javax.swing.GroupLayout(educationHeader);
         educationHeader.setLayout(educationHeaderLayout);

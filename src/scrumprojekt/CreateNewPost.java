@@ -26,6 +26,7 @@ public class CreateNewPost extends javax.swing.JFrame {
         this.db = db;
         this.user_id = user_id;
         this.category = category;
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -319,7 +319,8 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlOpenAdminMouseClicked
 
     private void panelOpenEducationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenEducationMouseClicked
-        // FIXA DENNNA KOPPLING
+     new EducationFrame(db, user_id).setVisible(true);
+     dispose();
     }//GEN-LAST:event_panelOpenEducationMouseClicked
 
     /**
