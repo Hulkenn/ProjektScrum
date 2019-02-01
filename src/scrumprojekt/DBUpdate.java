@@ -23,18 +23,25 @@ public class DBUpdate {
         }
     }
     
-    //Removes a user from the database
-    public static void removeUser(InfDB db, int id){
+    //Updates a users admin status
+    public static void updateAdminStatus(InfDB db, int status, int id){
         try{
-            db.update("Update comments set isdeleted = 1  where employee_idemployee = " + id);
-            db.update("Update Events set isdeleted = 1 where Employee_idEmployee = " + id);
-            db.delete("Delete from Invited where Employee_idemployee = " + id);
-            db.update("Update post set isdeleted = 1 where employee_idemployee = " + id);
-            db.update("Update employee set isdeleted = 1 where idemployee = " + id);
+            db.update("Update employee set rank = " + status + " where idemployee = " + id);
         }
         catch(InfException ie){
             System.out.println(ie);
         }
     }
+    //Reactivates a deactivated employee
+    public static void reactivateEmployee(InfDB db, int id){
+        try{
+            db.update("Update employee set isdeleted = 0 where idemployee = " + id);
+            System.out.println("Employee has been activated.");
+        }
+        catch(InfException ie){
+            System.out.println(ie);
+        }
+    }
+    
     
 }
