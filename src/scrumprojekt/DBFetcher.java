@@ -16,7 +16,12 @@ import oru.inf.InfException;
  */
 public class DBFetcher {
     
-    //Returns all information about a user with a specified email
+    /**
+     * 
+     * @param db
+     * @param email
+     * @return returns all information about a user with a specified email
+     */
     public static HashMap<String,String> fetchUser(InfDB db, String email) {
         HashMap<String,String> user = null;
         try {
@@ -28,6 +33,12 @@ public class DBFetcher {
         return user;
     }
     
+    /**
+     * 
+     * @param db
+     * @param user_id
+     * @return returns all info about a user
+     */
     public static HashMap<String,String> fetchUser(InfDB db, int user_id) {
         HashMap<String,String> user = null;
         try {
@@ -39,6 +50,12 @@ public class DBFetcher {
         return user;
     }
     
+    /**
+     * 
+     * @param db
+     * @param post_id
+     * @return return all info about a post
+     */
     public static HashMap<String,String> fetchPost(InfDB db, int post_id) {
         HashMap<String,String> post = null;
         try {
@@ -50,6 +67,11 @@ public class DBFetcher {
         return post;
     }
     
+    /**
+     * 
+     * @param db
+     * @return returns all posts
+     */
     public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db) {
         ArrayList<HashMap<String,String>> posts = null;
         try {
@@ -59,6 +81,23 @@ public class DBFetcher {
             
         }
         return posts;
+    }
+    
+    /**
+     * 
+     * @param db
+     * @param post_id
+     * @return returns all comments in a certain post
+     */
+    public static ArrayList<HashMap<String,String>> fetchAllCommentsPost(InfDB db, int post_id) {
+        ArrayList<HashMap<String,String>> comments = null;
+        try {
+            comments = db.fetchRows("SELECT COMMENT, COMMENT_DATE, FIRSTNAME, LASTNAME FROM COMMENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE POST_IDPOST = " + post_id + "ORDER BY COMMENT_ID DESC;");
+        }
+        catch(InfException e) {
+            
+        }
+        return comments;
     }
     
 }

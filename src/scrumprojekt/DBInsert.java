@@ -45,6 +45,20 @@ public class DBInsert {
         }
         return post_id;
     }
+    
+    public static void insertComment(InfDB db, int user_id, int post_id, String text) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.now();
+        String curr_date = dtf.format(localDate);
+        try {
+            int comment_id = Integer.parseInt(db.getAutoIncrement("COMMENTS", "COMMENT_ID"));
+            db.insert("INSERT INTO COMMENTS VALUES(" + comment_id + ", '" + text + "', 0, '" + curr_date + "', " + user_id + ", " + post_id + ");");
+        }
+        catch(InfException e) {
+            System.out.println("GÅR INTE ATT LÄGGA TILL KOMMENTAR XD");
+        }
+    }
+    
     public static void addUser(InfDB db, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1) throws InfException
     {
         

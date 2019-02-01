@@ -30,7 +30,7 @@ public class EducationFrame extends javax.swing.JFrame {
         this.db = db;
         this.user_id = user_id;
         
-        BoxLayoutDemo.addComponentsToPane(jpContainer);
+        BoxLayoutDemo.addPostsToPane(jpContainer);
         
     }
 

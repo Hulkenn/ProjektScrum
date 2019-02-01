@@ -59,7 +59,7 @@ public class BoxLayoutDemo {
     
     
     
-    public static void addComponentsToPane(Container pane) {
+    public static void addPostsToPane(Container pane) {
         try {
             db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
         }
@@ -75,11 +75,30 @@ public class BoxLayoutDemo {
         for (HashMap<String, String> post : posts) 
         {
             int post_id = Integer.parseInt(post.get("IDPOST"));
-            addAButton(post_id, pane);
+            addPost(post_id, pane);
+        } 
+    }
+    
+    public static void addCommentsToPane(Container pane, int post_id) {
+        try {
+            db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
+        }
+        catch(InfException e) {
+            System.out.println("fail to connect db");
+        }
+        
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        
+        ArrayList<HashMap<String,String>> comments;
+        
+        comments = DBFetcher.fetchAllCommentsPost(db, post_id);
+        for (HashMap<String,String> comment : comments) 
+        {
+            addComment(comment, pane);
         } 
     }
  
-    private static void addAButton(int post_id, Container container) {
+    private static void addPost(int post_id, Container container) {
         postPanel post = new postPanel(db, post_id);
         post.setAlignmentX(Component.CENTER_ALIGNMENT);
         post.addMouseListener(new MouseListener() {
@@ -111,6 +130,12 @@ public class BoxLayoutDemo {
         });
         container.add(post);
     }
+    
+    private static void addComment(HashMap<String,String> comment, Container container) {
+        commentPanel commentPanel = new commentPanel(db, comment);
+        commentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        container.add(commentPanel);
+    }
  
     /**
      * Create the GUI and show it.  For thread safety,
@@ -123,7 +148,8 @@ public class BoxLayoutDemo {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Set up the content pane.
-        addComponentsToPane(frame.getContentPane());
+        //addPostsToPane(frame.getContentPane());
+        //addCommentsToPane(frame.getContentPane());
  
         //Display the window.
         frame.pack();
