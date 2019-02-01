@@ -14,17 +14,12 @@ import oru.inf.InfException;
  */
 public class DBUpdate {
     
-    //Updates a users password
-    public static void updatePassword(InfDB db, char[] newPass, int id){
+    public static void updateUser(InfDB db,int user_id,int rank,String firstname,String lastname,String mail,String number,String academicstatus,String password){
         try{
-            String st ="";
-            for(char c : newPass){
-                st +=c;
-            }
-            db.update("Update employee set password = " + st + " where idemployee = " + id);
+        db.update("UPDATE EMPLOYEE SET FIRSTNAME = '" + firstname + "',LASTNAME ='"+lastname+"', EMAIL = '"+mail+"',RANK = "+rank+" ,PHONENUMBER = '"+number+"',ACADEMICSTATUS = '"+academicstatus+"', PASSWORD = '"+password+"' WHERE IDEMPLOYEE = "+user_id);
         }
-        catch(InfException ie){
-            System.out.println(ie);
+        catch(InfException e){
+            
         }
     }
     
@@ -42,6 +37,19 @@ public class DBUpdate {
         try{
             db.update("Update employee set isdeleted = 0 where idemployee = " + id);
             System.out.println("Employee has been activated.");
+        }
+        catch(InfException ie){
+            System.out.println(ie);
+        }
+    }
+    //Removes a user from the database
+    public static void removeUser(InfDB db, int id){
+        try{
+            db.update("Update comments set isdeleted = 1  where employee_idemployee = " + id);
+            db.update("Update Events set isdeleted = 1 where Employee_idEmployee = " + id);
+            db.delete("Delete from Invited where Employee_idemployee = " + id);
+            db.update("Update post set isdeleted = 1 where employee_idemployee = " + id);
+            db.update("Update employee set isdeleted = 1 where idemployee = " + id);
         }
         catch(InfException ie){
             System.out.println(ie);

@@ -59,7 +59,7 @@ public class DBInsert {
         }
     }
     
-    public static void addUser(InfDB db, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1) throws InfException
+    public static void addUser(InfDB db, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1)
     {
         
         String id="";
@@ -104,7 +104,7 @@ public class DBInsert {
         
         String sql = "INSERT INTO EMPLOYEE (IDEMPLOYEE, FIRSTNAME, LASTNAME, EMAIL, RANK, PHONENUMBER, ACADEMICSTATUS, PASSWORD) VALUES ("+id+",'"+first+"','"+last+"','"+email+"',"+rank1+",'"+phone+"','"+status+"','"+RandomPass+"')";
         
-        if((Validate.textWindowIsEmpty(first1))&&(Validate.textWindowIsEmpty(last1))&&(Validate.textWindowIsEmpty(email1))&&(Validate.textWindowIsEmpty(phone1))&&(Validate.textWindowIsEmpty(status1))&&(Validate.StringisString(first1))&&(Validate.StringisString(last1))&&(Validate.isValidEmailAddress(email1))&&(Validate.phoneNumber(phone1)))
+        if((!Validate.textWindowIsEmpty(first1))&&(!Validate.textWindowIsEmpty(last1))&&(!Validate.textWindowIsEmpty(email1))&&(!Validate.textWindowIsEmpty(phone1))&&(!Validate.textWindowIsEmpty(status1))&&(Validate.StringisString(first1))&&(Validate.StringisString(last1))&&(Validate.isValidEmailAddress(email1))&&(Validate.phoneNumber(phone1)))
         {
            
             try

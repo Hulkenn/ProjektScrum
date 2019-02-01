@@ -29,6 +29,8 @@ public class EducationFrame extends javax.swing.JFrame {
         initComponents();
         this.db = db;
         this.user_id = user_id;
+        this.setLocationRelativeTo(null);
+        setResizable(false);
         
         BoxLayoutDemo.addPostsToPane(educationforumPosts);
         
@@ -46,6 +48,9 @@ public class EducationFrame extends javax.swing.JFrame {
         educationHeader = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
         lblCreateNewPost = new javax.swing.JLabel();
+        lblCreateNewPost1 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        lblGoBack = new javax.swing.JLabel();
         educationforumPosts = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,6 +73,23 @@ public class EducationFrame extends javax.swing.JFrame {
             }
         });
 
+        lblCreateNewPost1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblCreateNewPost1.setForeground(new java.awt.Color(250, 249, 246));
+        lblCreateNewPost1.setText("New Post +");
+
+        jLabel26.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel26.setText("Education forum");
+
+        lblGoBack.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
+        lblGoBack.setText("<");
+        lblGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGoBackMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout educationHeaderLayout = new javax.swing.GroupLayout(educationHeader);
         educationHeader.setLayout(educationHeaderLayout);
         educationHeaderLayout.setHorizontalGroup(
@@ -75,7 +97,9 @@ public class EducationFrame extends javax.swing.JFrame {
             .addGroup(educationHeaderLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 662, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 570, Short.MAX_VALUE)
+                .addComponent(lblGoBack)
+                .addGap(78, 78, 78)
                 .addComponent(lblCreateNewPost)
                 .addGap(66, 66, 66))
         );
@@ -85,7 +109,8 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
-                    .addComponent(lblCreateNewPost))
+                    .addComponent(lblCreateNewPost)
+                    .addComponent(lblGoBack))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -126,6 +151,11 @@ public class EducationFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblCreateNewPostMouseClicked
 
+    private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
+    new MainWindow(db, user_id).setVisible(true);
+    this.setVisible(false);
+    }//GEN-LAST:event_lblGoBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -165,6 +195,9 @@ public class EducationFrame extends javax.swing.JFrame {
     private javax.swing.JPanel educationHeader;
     private javax.swing.JPanel educationforumPosts;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel lblCreateNewPost;
+    private javax.swing.JLabel lblCreateNewPost1;
+    private javax.swing.JLabel lblGoBack;
     // End of variables declaration//GEN-END:variables
 }

@@ -24,6 +24,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.db = db;
         this.user_id = user_id;
         this.setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -42,13 +43,12 @@ public class MainWindow extends javax.swing.JFrame {
         labelOpenSocial = new javax.swing.JLabel();
         panelOpenResearch = new javax.swing.JPanel();
         labelOpenResearch = new javax.swing.JLabel();
-        labelHome = new javax.swing.JLabel();
+        lblAdmin = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
         labelWelcome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(250, 249, 246));
-        setPreferredSize(new java.awt.Dimension(1170, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(1170, 700));
 
@@ -156,12 +156,12 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        labelHome.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        labelHome.setForeground(new java.awt.Color(250, 249, 246));
-        labelHome.setText("Home");
-        labelHome.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblAdmin.setForeground(new java.awt.Color(250, 249, 246));
+        lblAdmin.setText("Admin");
+        lblAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                labelHomeMouseClicked(evt);
+                lblAdminMouseClicked(evt);
             }
         });
 
@@ -177,13 +177,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGap(78, 78, 78)
                 .addComponent(panelOpenSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138)
-                .addComponent(labelHome)
+                .addComponent(lblAdmin)
                 .addGap(32, 32, 32))
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(labelHome)
+                .addComponent(lblAdmin)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
                 .addGap(0, 15, Short.MAX_VALUE)
@@ -232,9 +232,10 @@ public class MainWindow extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void labelHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelHomeMouseClicked
-       // panelEducationBlog.hide();
-    }//GEN-LAST:event_labelHomeMouseClicked
+    private void lblAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAdminMouseClicked
+    new AdminFrame(db, user_id).setVisible(true);
+    dispose();
+    }//GEN-LAST:event_lblAdminMouseClicked
 
     private void panelOpenResearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenResearchMouseExited
         panelOpenResearch.setBackground(new Color(50, 121, 184));
@@ -306,11 +307,11 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel labelHome;
     private javax.swing.JLabel labelOpenEducation;
     private javax.swing.JLabel labelOpenResearch;
     private javax.swing.JLabel labelOpenSocial;
     private javax.swing.JLabel labelWelcome;
+    private javax.swing.JLabel lblAdmin;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelOpenEducation;

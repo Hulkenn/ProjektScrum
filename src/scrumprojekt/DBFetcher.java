@@ -100,4 +100,47 @@ public class DBFetcher {
         return comments;
     }
     
+    public static int fetchRankFromUser(InfDB db,int employee_ID){
+        int rank = 0;
+        try{
+            String string = db.fetchSingle("SELECT RANK FROM EMPLOYEE WHERE IDEMPLOYEE = " + employee_ID);
+            rank = Integer.parseInt(string);
+        }
+        catch(InfException e){
+            System.out.println("fail att hämta rank");
+        }
+        return rank;
+    }
+    
+    public static ArrayList<HashMap<String,String>> fetchAllUsers(InfDB db){
+        ArrayList<HashMap<String,String>> users = null;
+        try{
+        users = db.fetchRows("SELECT * FROM EMPLOYEE WHERE ISDELETED = 0");
+        }
+        catch(InfException e){
+            
+        }
+        return users;
+    }
+    public static ArrayList<HashMap<String,String>> fetchAllUsersEducation(InfDB db){
+        ArrayList<HashMap<String,String>> users = null;
+        try{
+        users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 2 AND ISDELETED = 0");
+        }
+        catch(InfException e){
+            
+        }
+        return users;
+    }
+    public static ArrayList<HashMap<String,String>> fetchAllUsersResearch(InfDB db){
+        ArrayList<HashMap<String,String>> users = null;
+        try{
+        users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0");
+        }
+        catch(InfException e){
+            
+        }
+        return users;
+    }
+    
 }

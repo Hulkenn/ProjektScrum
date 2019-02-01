@@ -5,6 +5,7 @@
  */
 package scrumprojekt;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.JFrame;
@@ -31,6 +32,9 @@ public class BlogPostFrame extends javax.swing.JFrame {
         this.db = db;
         this.user_id = user_id;
         this.post_id = post_id;
+        this.setLocationRelativeTo(null);
+        setResizable(false);
+        lblRemove.setVisible(false);
         
         post = DBFetcher.fetchPost(db, post_id);
         user = DBFetcher.fetchUser(db, user_id);
@@ -59,12 +63,13 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         bg = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        backpanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        pnlBack = new javax.swing.JPanel();
+        lblBack = new javax.swing.JLabel();
+        pnlEducation = new javax.swing.JPanel();
+        lblEducation = new javax.swing.JLabel();
+        pnlResearch = new javax.swing.JPanel();
+        lblResearch = new javax.swing.JLabel();
+        lblRemove = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -121,77 +126,108 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(50, 121, 184));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backpanel.setBackground(new java.awt.Color(50, 121, 184));
+        pnlBack.setBackground(new java.awt.Color(50, 121, 184));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Back");
+        lblBack.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblBack.setForeground(new java.awt.Color(255, 255, 255));
+        lblBack.setText("Back");
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblBackMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblBackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblBackMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout backpanelLayout = new javax.swing.GroupLayout(backpanel);
-        backpanel.setLayout(backpanelLayout);
-        backpanelLayout.setHorizontalGroup(
-            backpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backpanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout pnlBackLayout = new javax.swing.GroupLayout(pnlBack);
+        pnlBack.setLayout(pnlBackLayout);
+        pnlBackLayout.setHorizontalGroup(
+            pnlBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlBackLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jLabel2)
+                .addComponent(lblBack)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
-        backpanelLayout.setVerticalGroup(
-            backpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        pnlBackLayout.setVerticalGroup(
+            pnlBackLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBack, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(backpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 0, 110, 60));
+        jPanel2.add(pnlBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 0, 110, 60));
 
-        jPanel4.setBackground(new java.awt.Color(50, 121, 184));
+        pnlEducation.setBackground(new java.awt.Color(50, 121, 184));
 
-        jLabel3.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Education");
+        lblEducation.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblEducation.setForeground(new java.awt.Color(255, 255, 255));
+        lblEducation.setText("Education");
+        lblEducation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblEducationMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblEducationMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout pnlEducationLayout = new javax.swing.GroupLayout(pnlEducation);
+        pnlEducation.setLayout(pnlEducationLayout);
+        pnlEducationLayout.setHorizontalGroup(
+            pnlEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEducationLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel3)
+                .addComponent(lblEducation)
                 .addContainerGap(22, Short.MAX_VALUE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        pnlEducationLayout.setVerticalGroup(
+            pnlEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblEducation, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 130, 60));
+        jPanel2.add(pnlEducation, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, 130, 60));
 
-        jPanel3.setBackground(new java.awt.Color(50, 121, 184));
+        pnlResearch.setBackground(new java.awt.Color(50, 121, 184));
 
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Reaserch");
+        lblResearch.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblResearch.setForeground(new java.awt.Color(255, 255, 255));
+        lblResearch.setText("Reaserch");
+        lblResearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblResearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblResearchMouseExited(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(21, 21, 21))
+        javax.swing.GroupLayout pnlResearchLayout = new javax.swing.GroupLayout(pnlResearch);
+        pnlResearch.setLayout(pnlResearchLayout);
+        pnlResearchLayout.setHorizontalGroup(
+            pnlResearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlResearchLayout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
+                .addComponent(lblResearch, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        pnlResearchLayout.setVerticalGroup(
+            pnlResearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblResearch, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 130, 60));
+        jPanel2.add(pnlResearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 130, 60));
+
+        lblRemove.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblRemove.setForeground(new java.awt.Color(250, 249, 246));
+        lblRemove.setText("Remove");
+        jPanel2.add(lblRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, -1, -1));
 
         bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1130, 60));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("SCRUM SYSTEM");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
@@ -214,7 +250,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -223,7 +259,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(230, 230, 230));
 
         lblAuthor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblAuthor.setForeground(new java.awt.Color(0, 0, 0));
         lblAuthor.setText("Author:ExempelText");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -242,10 +277,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 280, -1));
 
-        jPanel7.setBackground(new java.awt.Color(240, 240, 240));
-
         lblDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(0, 0, 0));
         lblDate.setText("DATE:ExempelTExt");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -264,10 +296,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         bg.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
 
-        jPanel9.setBackground(new java.awt.Color(240, 240, 240));
-
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Image LINK");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -287,10 +316,8 @@ public class BlogPostFrame extends javax.swing.JFrame {
         bg.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 280, -1));
 
         taText.setEditable(false);
-        taText.setBackground(new java.awt.Color(255, 255, 255));
         taText.setColumns(20);
         taText.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        taText.setForeground(new java.awt.Color(0, 0, 0));
         taText.setRows(5);
         taText.setBorder(null);
         jScrollPane1.setViewportView(taText);
@@ -300,10 +327,8 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel10.setBackground(new java.awt.Color(247, 247, 247));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Comment:");
 
-        taComment.setBackground(new java.awt.Color(255, 255, 255));
         taComment.setColumns(20);
         taComment.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         taComment.setRows(5);
@@ -316,7 +341,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("post");
 
         javax.swing.GroupLayout lblPostCommentLayout = new javax.swing.GroupLayout(lblPostComment);
@@ -367,14 +391,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
         bg.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 890, 70));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Latest Comments:");
         bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 610, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(247, 247, 247));
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Files?");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
@@ -394,7 +416,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
         bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, -1));
 
         btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 0, 0));
         btnAdd.setText("Headline:ExempelTExt");
         bg.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 810, 40));
 
@@ -441,6 +462,35 @@ public class BlogPostFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblPostCommentMouseClicked
 
+    private void lblResearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResearchMouseEntered
+     pnlResearch.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_lblResearchMouseEntered
+
+    private void lblResearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResearchMouseExited
+     pnlResearch.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_lblResearchMouseExited
+
+    private void lblEducationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEducationMouseEntered
+     pnlEducation.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_lblEducationMouseEntered
+
+    private void lblEducationMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEducationMouseExited
+    pnlEducation.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_lblEducationMouseExited
+
+    private void lblBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseEntered
+    pnlBack.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_lblBackMouseEntered
+
+    private void lblBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseExited
+    pnlBack.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_lblBackMouseExited
+
+    private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
+    new EducationFrame(db, user_id).setVisible(true);
+    dispose();
+    }//GEN-LAST:event_lblBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -477,7 +527,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel backpanel;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel btnAdd;
     private javax.swing.JLabel jLabel1;
@@ -485,17 +534,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -506,8 +550,15 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jpContainer;
     private javax.swing.JScrollPane jpContainer2;
     private javax.swing.JLabel lblAuthor;
+    private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblEducation;
     private javax.swing.JPanel lblPostComment;
+    private javax.swing.JLabel lblRemove;
+    private javax.swing.JLabel lblResearch;
+    private javax.swing.JPanel pnlBack;
+    private javax.swing.JPanel pnlEducation;
+    private javax.swing.JPanel pnlResearch;
     private javax.swing.JTextArea taComment;
     private javax.swing.JTextArea taText;
     // End of variables declaration//GEN-END:variables
