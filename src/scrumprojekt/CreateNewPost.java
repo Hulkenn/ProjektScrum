@@ -5,6 +5,12 @@
  */
 package scrumprojekt;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 
@@ -105,6 +111,11 @@ public class CreateNewPost extends javax.swing.JFrame {
 
         labelAttatchFile.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         labelAttatchFile.setText("+ Attatch file");
+        labelAttatchFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelAttatchFileMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,6 +173,10 @@ public class CreateNewPost extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_buttonSubmitMouseClicked
+
+    private void labelAttatchFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAttatchFileMouseClicked
+        
+    }//GEN-LAST:event_labelAttatchFileMouseClicked
 
     /**
      * @param args the command line arguments
