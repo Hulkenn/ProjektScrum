@@ -790,7 +790,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void btnRemoveUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveUserMouseClicked
         HashMap<String,String> selected_user = employees.get(cbxRemoveUser.getSelectedIndex());
-        DBUpdate.removeUser(db, Integer.parseInt(selected_user.get("IDEMPLOYEE")));
+        DBDelete.removeUser(db, Integer.parseInt(selected_user.get("IDEMPLOYEE")));
         diaRemoveUser.setVisible(false);
     }//GEN-LAST:event_btnRemoveUserMouseClicked
 
