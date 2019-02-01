@@ -27,6 +27,7 @@ public class LoginFrame extends javax.swing.JFrame {
     public LoginFrame() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setResizable(false);
     }
     
     private void login() {
@@ -253,6 +254,7 @@ public class LoginFrame extends javax.swing.JFrame {
         });
         //Tries to connect to database
         try {
+            System.out.println(System.getProperty("user.dir") + "/scrumdb.fdb");
             db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
         }
         catch(InfException e) {
