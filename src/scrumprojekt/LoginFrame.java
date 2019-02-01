@@ -90,8 +90,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joakim\\Pictures\\krappa.png")); // NOI18N
-
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
         jLabel5.setText("Informatics");
 
@@ -131,6 +129,11 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(250, 249, 246));
         jLabel3.setText("Login");
+        jLabel3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jLabel3KeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpLoginLayout = new javax.swing.GroupLayout(jpLogin);
         jpLogin.setLayout(jpLoginLayout);
@@ -217,6 +220,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jpLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpLoginMouseClicked
         login();
     }//GEN-LAST:event_jpLoginMouseClicked
+
+    private void jLabel3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jLabel3KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel3KeyPressed
 
     /**
      * @param args the command line arguments
