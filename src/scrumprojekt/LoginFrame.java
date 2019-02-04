@@ -90,10 +90,10 @@ public class LoginFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joakim\\Pictures\\krappa.png")); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(250, 249, 246));
         jLabel5.setText("Informatics");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -120,6 +120,7 @@ public class LoginFrame extends javax.swing.JFrame {
         );
 
         jPanel2.setBackground(new java.awt.Color(250, 249, 246));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jpLogin.setBackground(new java.awt.Color(94, 97, 104));
         jpLogin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,7 +155,6 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel2.setText("Password:");
 
-        pfPassword.setText("jPasswordFiel1");
         pfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pfPasswordActionPerformed(evt);
@@ -175,12 +175,12 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(jpLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tfEmail)
                     .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(111, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))

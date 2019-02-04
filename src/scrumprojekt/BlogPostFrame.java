@@ -8,6 +8,7 @@ package scrumprojekt;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -35,6 +36,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setResizable(false);
         lblRemove.setVisible(false);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
+        
+        if (DBFetcher.checkIfCreatorOfPost(db, post_id, Integer.toString(user_id)) || DBFetcher.fetchRankFromUser(db,user_id) == 5 || DBFetcher.fetchRankFromUser(db,user_id) == 3) {
+            lblRemove.setVisible(true);
+        }
         
         post = DBFetcher.fetchPost(db, post_id);
         user = DBFetcher.fetchUser(db, user_id);
@@ -117,10 +123,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1185, 900));
 
-        bg.setBackground(new java.awt.Color(255, 255, 255));
+        bg.setBackground(new java.awt.Color(250, 249, 246));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(50, 121, 184));
@@ -222,13 +229,18 @@ public class BlogPostFrame extends javax.swing.JFrame {
         lblRemove.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblRemove.setForeground(new java.awt.Color(250, 249, 246));
         lblRemove.setText("Remove");
+        lblRemove.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRemoveMouseClicked(evt);
+            }
+        });
         jPanel2.add(lblRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, -1, -1));
 
         bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1130, 60));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
-        jLabel1.setText("SCRUM SYSTEM");
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        jLabel1.setText("Blog Post");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(50, 121, 184));
@@ -287,14 +299,14 @@ public class BlogPostFrame extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, -1, -1));
+        bg.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 280, -1));
 
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Image LINK");
@@ -455,7 +467,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         //Add post
         if(!Validate.areaWindowIsEmpty(taComment)) {
             DBInsert.insertComment(db, user_id, post_id, taComment.getText());
-            JOptionPane.showMessageDialog(null, "Kommentar tillagd!");
+            JOptionPane.showMessageDialog(null, "Comment added");
             taComment.setText("");
             jpContainer.removeAll();
             BoxLayoutDemo.addCommentsToPane(jpContainer, post_id);
@@ -491,40 +503,47 @@ public class BlogPostFrame extends javax.swing.JFrame {
     dispose();
     }//GEN-LAST:event_lblBackMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked
+    DBDelete.removePost(db, this.post_id);
+    DBDelete.setCommentToDeleted(db, post_id);
+    dispose();
+    //new EducationFrame(db, user_id);
+    }//GEN-LAST:event_lblRemoveMouseClicked
 
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BlogPostFrame().setVisible(true);
-            }
-        });*/
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(BlogPostFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        /*java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new BlogPostFrame().setVisible(true);
+//            }
+//        });*/
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;

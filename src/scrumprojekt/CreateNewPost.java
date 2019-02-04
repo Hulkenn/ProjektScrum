@@ -5,6 +5,8 @@
  */
 package scrumprojekt;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
 
@@ -27,6 +29,8 @@ public class CreateNewPost extends javax.swing.JFrame {
         this.user_id = user_id;
         this.category = category;
         this.setLocationRelativeTo(null);
+        setResizable(false);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
     }
 
     /**
@@ -46,8 +50,10 @@ public class CreateNewPost extends javax.swing.JFrame {
         textfieldHeadline = new javax.swing.JTextField();
         buttonSubmit = new javax.swing.JButton();
         labelAttatchFile = new javax.swing.JLabel();
+        lblNewHeadline = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         headerPanel.setBackground(new java.awt.Color(50, 121, 184));
         headerPanel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -61,7 +67,7 @@ public class CreateNewPost extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(250, 249, 246));
         jLabel2.setText("Create a new post");
 
@@ -70,20 +76,20 @@ public class CreateNewPost extends javax.swing.JFrame {
         headerPanelLayout.setHorizontalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 409, Short.MAX_VALUE)
                 .addComponent(labelGoBack)
-                .addGap(40, 40, 40))
+                .addGap(44, 44, 44))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(headerPanelLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(labelGoBack))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         textareaPost.setColumns(20);
@@ -93,7 +99,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         jScrollPane1.setViewportView(textareaPost);
 
         textfieldHeadline.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        textfieldHeadline.setText("Headline");
         textfieldHeadline.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         buttonSubmit.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -107,6 +112,9 @@ public class CreateNewPost extends javax.swing.JFrame {
         labelAttatchFile.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         labelAttatchFile.setText("+ Attatch file");
 
+        lblNewHeadline.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblNewHeadline.setText("Headline:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,20 +122,24 @@ public class CreateNewPost extends javax.swing.JFrame {
             .addComponent(headerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(labelAttatchFile)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(buttonSubmit))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
-                    .addComponent(textfieldHeadline))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNewHeadline)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(labelAttatchFile)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buttonSubmit))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+                        .addComponent(textfieldHeadline)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(23, 23, 23)
+                .addComponent(lblNewHeadline)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textfieldHeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -135,7 +147,7 @@ public class CreateNewPost extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSubmit)
                     .addComponent(labelAttatchFile))
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
 
         pack();
@@ -155,7 +167,7 @@ public class CreateNewPost extends javax.swing.JFrame {
         
             int post_id = DBInsert.insertPost(db, user_id, category, textfieldHeadline.getText(), textareaPost.getText());
 
-            JOptionPane.showMessageDialog(rootPane, "Succed!");
+            JOptionPane.showMessageDialog(rootPane, "Post submitted");
             
             new BlogPostFrame(db, user_id, post_id).setVisible(true);
             dispose();
@@ -206,6 +218,7 @@ public class CreateNewPost extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelAttatchFile;
     private javax.swing.JLabel labelGoBack;
+    private javax.swing.JLabel lblNewHeadline;
     private javax.swing.JTextArea textareaPost;
     private javax.swing.JTextField textfieldHeadline;
     // End of variables declaration//GEN-END:variables

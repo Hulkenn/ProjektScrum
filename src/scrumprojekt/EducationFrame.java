@@ -7,7 +7,9 @@ package scrumprojekt;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.Component;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import oru.inf.InfDB;
@@ -31,6 +33,7 @@ public class EducationFrame extends javax.swing.JFrame {
         this.user_id = user_id;
         this.setLocationRelativeTo(null);
         setResizable(false);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
         
         BoxLayoutDemo.addPostsToPane(educationforumPosts);
         
@@ -54,13 +57,14 @@ public class EducationFrame extends javax.swing.JFrame {
         educationforumPosts = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         setResizable(false);
 
         educationHeader.setBackground(new java.awt.Color(50, 121, 184));
         educationHeader.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         educationHeader.setPreferredSize(new java.awt.Dimension(1170, 100));
 
-        jLabel25.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(250, 249, 246));
         jLabel25.setText("Education forum");
 
@@ -81,7 +85,7 @@ public class EducationFrame extends javax.swing.JFrame {
         jLabel26.setForeground(new java.awt.Color(250, 249, 246));
         jLabel26.setText("Education forum");
 
-        lblGoBack.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        lblGoBack.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
         lblGoBack.setText("<");
         lblGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -95,36 +99,37 @@ public class EducationFrame extends javax.swing.JFrame {
         educationHeaderLayout.setHorizontalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(educationHeaderLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 570, Short.MAX_VALUE)
-                .addComponent(lblGoBack)
-                .addGap(78, 78, 78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
                 .addComponent(lblCreateNewPost)
-                .addGap(66, 66, 66))
+                .addGap(80, 80, 80)
+                .addComponent(lblGoBack)
+                .addGap(49, 49, 49))
         );
         educationHeaderLayout.setVerticalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(educationHeaderLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(lblCreateNewPost)
                     .addComponent(lblGoBack))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
+        educationforumPosts.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         educationforumPosts.setPreferredSize(new java.awt.Dimension(1170, 540));
 
         javax.swing.GroupLayout educationforumPostsLayout = new javax.swing.GroupLayout(educationforumPosts);
         educationforumPosts.setLayout(educationforumPostsLayout);
         educationforumPostsLayout.setHorizontalGroup(
             educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1170, Short.MAX_VALUE)
+            .addGap(0, 1166, Short.MAX_VALUE)
         );
         educationforumPostsLayout.setVerticalGroup(
             educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 553, Short.MAX_VALUE)
+            .addGap(0, 549, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
