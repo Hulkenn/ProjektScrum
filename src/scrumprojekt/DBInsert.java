@@ -38,10 +38,10 @@ public class DBInsert {
         int post_id = 0;
         try {
             post_id = Integer.parseInt(db.getAutoIncrement("POST", "IDPOST"));
-            db.insert("INSERT INTO POST VALUES(" + post_id + ", '" + text + "', '" + curr_date + "', 0, " + user_id + ", '" + headline + "', '" + category + "')");
+            db.insert("INSERT INTO POST VALUES(" + post_id + ", '" + text + "', '" + curr_date + "', 0, " + user_id + ", '" + headline + "', '" + category + "', '" + "News" + "')");
         }
         catch(InfException e) {
-            
+            System.out.println("FAILED TO MAKE POST");
         }
         return post_id;
     }
