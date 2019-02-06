@@ -143,4 +143,17 @@ public class DBFetcher {
         return users;
     }
     
+     public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
+       boolean result = false;
+       try{
+            String id = db.fetchSingle("SELECT employee_idemployee FROM post WHERE idpost = " + post_id);
+            if ( id.equals(user_id)) {
+                result = true;
+            } 
+        }
+        catch(InfException ie){
+            System.out.println(ie);
+        }
+        return result;
+   }
 }

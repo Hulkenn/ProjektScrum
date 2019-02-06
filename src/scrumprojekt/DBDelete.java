@@ -47,6 +47,16 @@ public class DBDelete {
             System.out.println(ie);
         }
     }
+    // Moves comments to is delteted
+    public static void setCommentToDeleted(InfDB db,int post_id) {
+       try{
+            db.update("Update comments set isdeleted = 1 where post_idpost = " + post_id);
+            System.out.println("Comment has been removed");
+        }
+        catch(InfException ie){
+            System.out.println(ie);
+        }
+    }
     //Removes an event from the database
     public static void removeEvent(InfDB db, int eventID){
         try{
@@ -58,5 +68,6 @@ public class DBDelete {
         }
     }
     
+  
     
 }

@@ -6,6 +6,9 @@
 package scrumprojekt;
 
 import java.awt.Color;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.BorderFactory;
 import oru.inf.InfDB;
 
 /**
@@ -16,6 +19,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private InfDB db;
     private int user_id;
+
     /**
      * Creates new form MainWindow
      */
@@ -25,6 +29,13 @@ public class MainWindow extends javax.swing.JFrame {
         this.user_id = user_id;
         this.setLocationRelativeTo(null);
         setResizable(false);
+        lblAdmin.setVisible(false);
+        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
+        clock();
+
+        if (DBFetcher.fetchRankFromUser(db, user_id) == 5 || DBFetcher.fetchRankFromUser(db, user_id) == 4 || DBFetcher.fetchRankFromUser(db, user_id) == 3) {
+            lblAdmin.setVisible(true);
+        }
     }
 
     /**
@@ -44,11 +55,16 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenResearch = new javax.swing.JPanel();
         labelOpenResearch = new javax.swing.JLabel();
         lblAdmin = new javax.swing.JLabel();
+        lblExit = new javax.swing.JLabel();
+        lblLogOut = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
         labelWelcome = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(250, 249, 246));
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1170, 700));
 
@@ -68,12 +84,18 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        labelOpenEducation.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        labelOpenEducation.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelOpenEducation.setForeground(new java.awt.Color(250, 249, 246));
         labelOpenEducation.setText("Education");
         labelOpenEducation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 labelOpenEducationMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                labelOpenEducationMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                labelOpenEducationMouseExited(evt);
             }
         });
 
@@ -104,7 +126,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        labelOpenSocial.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        labelOpenSocial.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelOpenSocial.setForeground(new java.awt.Color(250, 249, 246));
         labelOpenSocial.setText("Social");
 
@@ -135,7 +157,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
-        labelOpenResearch.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        labelOpenResearch.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelOpenResearch.setForeground(new java.awt.Color(250, 249, 246));
         labelOpenResearch.setText("Research");
 
@@ -156,7 +178,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        lblAdmin.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lblAdmin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblAdmin.setForeground(new java.awt.Color(250, 249, 246));
         lblAdmin.setText("Admin");
         lblAdmin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,32 +187,61 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
 
+        lblExit.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblExit.setForeground(new java.awt.Color(250, 249, 246));
+        lblExit.setText("Exit");
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitMouseClicked(evt);
+            }
+        });
+
+        lblLogOut.setBackground(new java.awt.Color(250, 249, 246));
+        lblLogOut.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblLogOut.setForeground(new java.awt.Color(250, 249, 246));
+        lblLogOut.setText("Log out");
+        lblLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogOutMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(lblAdmin)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelOpenEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(79, 79, 79)
                 .addComponent(panelOpenResearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(78, 78, 78)
                 .addComponent(panelOpenSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(138, 138, 138)
-                .addComponent(lblAdmin)
-                .addGap(32, 32, 32))
+                .addGap(149, 149, 149)
+                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblExit)
+                    .addComponent(lblLogOut))
+                .addGap(29, 29, 29))
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addComponent(lblAdmin)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
                 .addGap(0, 15, Short.MAX_VALUE)
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelOpenEducation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelOpenResearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelOpenSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(panelHeaderLayout.createSequentialGroup()
+                        .addComponent(lblExit)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblLogOut))
+                    .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelOpenEducation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelOpenResearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelOpenSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblAdmin)
+                .addContainerGap())
         );
 
         panelHome.setBackground(new java.awt.Color(250, 249, 246));
@@ -199,19 +250,38 @@ public class MainWindow extends javax.swing.JFrame {
         labelWelcome.setFont(new java.awt.Font("Times New Roman", 0, 48)); // NOI18N
         labelWelcome.setText("Welcome to Örebro University Informatics Portal");
 
+        lblTime.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
+        lblTime.setText("Time");
+
+        lblDate.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
+        lblDate.setText("Date");
+
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(labelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(labelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 960, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTime))
+                    .addGroup(panelHomeLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblDate)))
+                .addGap(124, 124, 124))
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHomeLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(labelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblDate)
+                .addGap(80, 80, 80)
+                .addComponent(labelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(484, 484, 484))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -233,8 +303,8 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAdminMouseClicked
-    new AdminFrame(db, user_id).setVisible(true);
-    dispose();
+        new AdminFrame(db, user_id).setVisible(true);
+        dispose();
     }//GEN-LAST:event_lblAdminMouseClicked
 
     private void panelOpenResearchMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenResearchMouseExited
@@ -262,49 +332,102 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_panelOpenEducationMouseEntered
 
     private void labelOpenEducationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenEducationMouseClicked
-        //panelEducationBlog.show();
+        new EducationFrame(db, user_id).setVisible(true);
+        dispose();
     }//GEN-LAST:event_labelOpenEducationMouseClicked
 
     private void panelOpenEducationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenEducationMouseClicked
-        // TODO add your handling code here:
+
         new EducationFrame(db, user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_panelOpenEducationMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
+    private void labelOpenEducationMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenEducationMouseEntered
+        panelOpenEducation.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_labelOpenEducationMouseEntered
+
+    private void labelOpenEducationMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenEducationMouseExited
+        panelOpenEducation.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_labelOpenEducationMouseExited
+
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_lblExitMouseClicked
+
+    private void lblLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogOutMouseClicked
+        new LoginFrame().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblLogOutMouseClicked
+
+    public void clock() {
+        Thread th = new Thread() {
+            public void run() {
+                try {
+                    for (;;) {
+                        Calendar cl = new GregorianCalendar();
+                        int day = cl.get(Calendar.DAY_OF_MONTH);
+                        int month = cl.get(Calendar.MONTH) + 1;
+                        int year = cl.get(Calendar.YEAR);
+
+                        int second = cl.get(Calendar.SECOND);
+                        int min = cl.get(Calendar.MINUTE);
+                        int hour = cl.get(Calendar.HOUR);
+                        int am_pm = cl.get(Calendar.AM_PM);
+
+                        String d_n = "";
+                        if (am_pm == 1) {
+                            d_n = "PM";
+                        } else {
+                        }
+                       if (hour == 0) {
+                           hour = 12;
+                       } else {
+                           hour = cl.get(Calendar.HOUR);
+                       }
+                        lblTime.setText("" + hour + ":" + min + ":" + second + " " + d_n + "");
+                        lblDate.setText("" + day + "/" + month + "/" + year + "");
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainWindow(db).setVisible(true);
-            }
-        });*/
+        };
+        th.start();
     }
+    /**
+     * // * @param args the command line arguments //
+     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+// /*java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainWindow(db).setVisible(true);
+//            }
+//        });*/
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel labelOpenEducation;
@@ -312,6 +435,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel labelOpenSocial;
     private javax.swing.JLabel labelWelcome;
     private javax.swing.JLabel lblAdmin;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblExit;
+    private javax.swing.JLabel lblLogOut;
+    private javax.swing.JLabel lblTime;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelHome;
     private javax.swing.JPanel panelOpenEducation;
