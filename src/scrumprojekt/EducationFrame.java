@@ -35,7 +35,7 @@ public class EducationFrame extends javax.swing.JFrame {
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
 
-        BoxLayoutDemo.addPostsToPane(educationforumPosts);
+        BoxLayoutDemo.addPostsToPane(educationforumPosts, db);
 
     }
 //asd

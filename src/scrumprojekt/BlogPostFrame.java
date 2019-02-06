@@ -54,7 +54,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         lblAuthor.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
         lblDate.setText(post.get("POSTDATE"));
         
-        BoxLayoutDemo.addCommentsToPane(jpContainer, post_id);
+        BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
     }
 
     /**
@@ -471,7 +471,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Comment added");
             taComment.setText("");
             jpContainer.removeAll();
-            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id);
+            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
         }
     }//GEN-LAST:event_lblPostCommentMouseClicked
 
