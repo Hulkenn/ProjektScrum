@@ -155,7 +155,7 @@ public class CreateNewPost extends javax.swing.JFrame {
 
     private void labelGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelGoBackMouseClicked
         // TODO add your handling code here:
-        new EducationFrame(db, user_id).setVisible(true);
+      //  new EducationFrame(db, user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_labelGoBackMouseClicked
 

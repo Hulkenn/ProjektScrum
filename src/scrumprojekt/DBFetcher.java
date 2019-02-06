@@ -70,6 +70,23 @@ public class DBFetcher {
     /**
      * 
      * @param db
+     * @param post_id
+     * @return author of post 
+     */
+    public static int fetchUserIdFromPost(InfDB db, int post_id){
+        int user_id = 0;
+        try{
+             String string = db.fetchSingle("SELECT EMPLOYEE_IDEMPLOYEE FROM POST WHERE IDPOST = "+ post_id); 
+             user_id = Integer.parseInt(string);
+           }
+        catch(InfException e){
+            System.out.println(e);
+        } 
+        return user_id;
+    }
+    /**
+     * 
+     * @param db
      * @return returns all posts
      */
     public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db) {
