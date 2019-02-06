@@ -14,16 +14,16 @@ import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import oru.inf.InfDB;
 
-
-
 /**
- *ygh
+ * ygh
+ *
  * @author Joakim
  */
 public class EducationFrame extends javax.swing.JFrame {
-    
+
     private InfDB db;
     private int user_id;
+
     /**
      * Creates new form EducationFrame
      */
@@ -34,11 +34,12 @@ public class EducationFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
-        
+
         BoxLayoutDemo.addPostsToPane(educationforumPosts);
-        
+
     }
 //asd
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +55,9 @@ public class EducationFrame extends javax.swing.JFrame {
         lblCreateNewPost1 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         lblGoBack = new javax.swing.JLabel();
+        lblUpdate = new javax.swing.JLabel();
         educationforumPosts = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -94,23 +97,40 @@ public class EducationFrame extends javax.swing.JFrame {
             }
         });
 
+        lblUpdate.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lblUpdate.setForeground(new java.awt.Color(250, 249, 246));
+        lblUpdate.setText("Update");
+        lblUpdate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUpdateMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout educationHeaderLayout = new javax.swing.GroupLayout(educationHeader);
         educationHeader.setLayout(educationHeaderLayout);
         educationHeaderLayout.setHorizontalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(educationHeaderLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
                 .addComponent(lblCreateNewPost)
-                .addGap(80, 80, 80)
-                .addComponent(lblGoBack)
-                .addGap(49, 49, 49))
+                .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(educationHeaderLayout.createSequentialGroup()
+                        .addGap(80, 80, 80)
+                        .addComponent(lblUpdate)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblGoBack)
+                        .addGap(68, 68, 68))))
         );
         educationHeaderLayout.setVerticalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
+                .addComponent(lblUpdate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(lblCreateNewPost)
@@ -125,26 +145,48 @@ public class EducationFrame extends javax.swing.JFrame {
         educationforumPosts.setLayout(educationforumPostsLayout);
         educationforumPostsLayout.setHorizontalGroup(
             educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1166, Short.MAX_VALUE)
+            .addGap(0, 820, Short.MAX_VALUE)
         );
         educationforumPostsLayout.setVerticalGroup(
             educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 549, Short.MAX_VALUE)
         );
 
+        jPanel1.setBackground(new java.awt.Color(250, 249, 246));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(educationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(educationforumPosts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(educationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(educationforumPosts, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(educationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(educationforumPosts, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(educationforumPosts, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -153,13 +195,17 @@ public class EducationFrame extends javax.swing.JFrame {
     private void lblCreateNewPostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateNewPostMouseClicked
         // TODO add your handling code here:
         new CreateNewPost(db, user_id, 'E').setVisible(true);
-        dispose();
     }//GEN-LAST:event_lblCreateNewPostMouseClicked
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
-    new MainWindow(db, user_id).setVisible(true);
-    this.setVisible(false);
+        new MainWindow(db, user_id).setVisible(true);
+        dispose();
     }//GEN-LAST:event_lblGoBackMouseClicked
+
+    private void lblUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateMouseClicked
+        new EducationFrame(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblUpdateMouseClicked
 
     /**
      * @param args the command line arguments
@@ -189,7 +235,7 @@ public class EducationFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        /*java.awt.EventQueue.invokeLater(new Runnable() {
+ /*java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EducationFrame().setVisible(true);
             }
@@ -201,8 +247,10 @@ public class EducationFrame extends javax.swing.JFrame {
     private javax.swing.JPanel educationforumPosts;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCreateNewPost;
     private javax.swing.JLabel lblCreateNewPost1;
     private javax.swing.JLabel lblGoBack;
+    private javax.swing.JLabel lblUpdate;
     // End of variables declaration//GEN-END:variables
 }

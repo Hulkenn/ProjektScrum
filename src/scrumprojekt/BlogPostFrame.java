@@ -43,7 +43,8 @@ public class BlogPostFrame extends javax.swing.JFrame {
         }
         
         post = DBFetcher.fetchPost(db, post_id);
-        user = DBFetcher.fetchUser(db, user_id);
+        int userID= DBFetcher.fetchUserIdFromPost(db, post_id);
+        user = DBFetcher.fetchUser(db, userID);
         
         //Update the post with info
         btnAdd.setText(post.get("HEADLINE"));
@@ -446,7 +447,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         jpContainer2.setViewportView(jpContainer);
 
-        bg.add(jpContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 1030, 190));
+        bg.add(jpContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 880, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -499,8 +500,8 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseExited
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
-    new EducationFrame(db, user_id).setVisible(true);
     dispose();
+    //new EducationFrame(db, user_id).setVisible(true);
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked

@@ -48,7 +48,6 @@ public class postPanel extends javax.swing.JPanel {
         
         
         this.setVisible(true);
-        System.out.println("Xd");
     }
     
     public int getPostId() {
@@ -107,12 +106,12 @@ public class postPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(datePostOne)))
                 .addGap(49, 49, 49)
-                .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 656, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lastReplyPostOne)
-                    .addComponent(dateLastReplyPostOne))
-                .addGap(127, 127, 127))
+                    .addComponent(dateLastReplyPostOne)
+                    .addComponent(lastReplyPostOne))
+                .addContainerGap())
         );
         postOneLayout.setVerticalGroup(
             postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,20 +121,19 @@ public class postPanel extends javax.swing.JPanel {
                     .addGroup(postOneLayout.createSequentialGroup()
                         .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(headlinePostOne)
-                            .addComponent(imagePostOne)
-                            .addComponent(lastReplyPostOne))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(imagePostOne))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(datePostOne)
+                            .addComponent(authorPostOne)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, postOneLayout.createSequentialGroup()
+                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(postOneLayout.createSequentialGroup()
-                                .addGap(0, 7, Short.MAX_VALUE)
-                                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(datePostOne)
-                                    .addComponent(authorPostOne)))
-                            .addGroup(postOneLayout.createSequentialGroup()
-                                .addComponent(dateLastReplyPostOne)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(lastReplyPostOne)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dateLastReplyPostOne))
+                            .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
 

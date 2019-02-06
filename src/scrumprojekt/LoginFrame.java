@@ -6,9 +6,12 @@
  */
 package scrumprojekt;
 
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import java.util.HashMap;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import oru.inf.InfDB;
 import oru.inf.InfException;
 
@@ -28,9 +31,11 @@ public class LoginFrame extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setResizable(false);
+        this.getRootPane().setDefaultButton(btnLogin);
+        btnLogin.setVisible(false);
     }
     
-    private void login() {
+    private void login() {        
         if(!Validate.textWindowIsEmpty(tfEmail) && !Validate.passwordFieldIsEmpty(pfPassword)) {
             System.out.println("Ok");
             HashMap<String,String> user = DBFetcher.fetchUser(db, tfEmail.getText());
@@ -73,6 +78,7 @@ public class LoginFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pfPassword = new javax.swing.JPasswordField();
+        btnLogin = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -161,6 +167,13 @@ public class LoginFrame extends javax.swing.JFrame {
             }
         });
 
+        btnLogin.setText("jButton1");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoginActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -176,6 +189,10 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(tfEmail)
                     .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
                 .addContainerGap(143, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogin)
+                .addGap(86, 86, 86))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +207,9 @@ public class LoginFrame extends javax.swing.JFrame {
                     .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(jpLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(122, 122, 122))
+                .addGap(44, 44, 44)
+                .addComponent(btnLogin)
+                .addGap(53, 53, 53))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,6 +237,10 @@ public class LoginFrame extends javax.swing.JFrame {
     private void jpLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpLoginMouseClicked
         login();
     }//GEN-LAST:event_jpLoginMouseClicked
+
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
+        login();
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -263,6 +286,7 @@ public class LoginFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogin;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
