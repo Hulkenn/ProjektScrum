@@ -78,8 +78,7 @@ public class postPanel extends javax.swing.JPanel {
         headlinePostOne.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         headlinePostOne.setText("Headline:");
 
-        imagePostOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/scrumprojekt/wesmart.png"))); // NOI18N
-        imagePostOne.setText("IMAGE");
+        imagePostOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/scrumprojekt/pogu.png"))); // NOI18N
 
         authorPostOne.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         authorPostOne.setText("Author");

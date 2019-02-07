@@ -127,7 +127,6 @@ public class AdminFrame extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
 
         diaAddUser.setUndecorated(true);
-        diaAddUser.setPreferredSize(new java.awt.Dimension(420, 390));
         diaAddUser.setResizable(false);
         diaAddUser.setSize(new java.awt.Dimension(420, 390));
         diaAddUser.setType(java.awt.Window.Type.POPUP);

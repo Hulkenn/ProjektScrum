@@ -107,9 +107,8 @@
         <Component class="javax.swing.JLabel" name="imagePostOne">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/scrumprojekt/wesmart.png"/>
+              <Image iconType="3" name="/scrumprojekt/pogu.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="IMAGE"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="authorPostOne">
