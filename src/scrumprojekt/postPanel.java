@@ -26,6 +26,8 @@ public class postPanel extends javax.swing.JPanel {
         this.db = db;
         this.post_id = post_id;
         updatePanel();
+        //jLabel1.setLocation(27, 20);
+        
         
     }
     
@@ -36,6 +38,7 @@ public class postPanel extends javax.swing.JPanel {
         headlinePostOne.setText(post.get("HEADLINE"));
         datePostOne.setText(post.get("POSTDATE"));
         authorPostOne.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
+        lblCategory.setText(post.get("TAG"));
         
         String postText = post.get("TEXT");
         int postTextLength = postText.length();
@@ -71,70 +74,42 @@ public class postPanel extends javax.swing.JPanel {
         lastReplyPostOne = new javax.swing.JLabel();
         dateLastReplyPostOne = new javax.swing.JLabel();
         lblText = new javax.swing.JLabel();
+        lblCategory = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         postOne.setBackground(new java.awt.Color(250, 249, 246));
         postOne.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        postOne.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         headlinePostOne.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         headlinePostOne.setText("Headline:");
+        postOne.add(headlinePostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 8, -1, -1));
 
         imagePostOne.setIcon(new javax.swing.ImageIcon(getClass().getResource("/scrumprojekt/pogu.png"))); // NOI18N
+        postOne.add(imagePostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 8, 50, 41));
 
         authorPostOne.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         authorPostOne.setText("Author");
+        postOne.add(authorPostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 55, -1, -1));
 
         datePostOne.setText("Date and time");
+        postOne.add(datePostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
 
         lastReplyPostOne.setText("Last reply");
+        postOne.add(lastReplyPostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 27, -1, -1));
 
         dateLastReplyPostOne.setText("Date and time ");
+        postOne.add(dateLastReplyPostOne, new org.netbeans.lib.awtextra.AbsoluteConstraints(666, 55, -1, -1));
 
         lblText.setText("jLabel1");
+        postOne.add(lblText, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 12, 169, -1));
 
-        javax.swing.GroupLayout postOneLayout = new javax.swing.GroupLayout(postOne);
-        postOne.setLayout(postOneLayout);
-        postOneLayout.setHorizontalGroup(
-            postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(postOneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imagePostOne, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addComponent(headlinePostOne)
-                        .addGap(115, 115, 115)
-                        .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addComponent(authorPostOne)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(datePostOne)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
-                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dateLastReplyPostOne)
-                    .addComponent(lastReplyPostOne))
-                .addContainerGap())
-        );
-        postOneLayout.setVerticalGroup(
-            postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(postOneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(headlinePostOne)
-                            .addComponent(imagePostOne, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(datePostOne)
-                            .addComponent(authorPostOne)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, postOneLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lastReplyPostOne)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dateLastReplyPostOne)
-                        .addContainerGap())))
-        );
+        lblCategory.setText("Catogor");
+        postOne.add(lblCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("Category:");
+        postOne.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(467, 57, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -155,7 +130,9 @@ public class postPanel extends javax.swing.JPanel {
     private javax.swing.JLabel datePostOne;
     private javax.swing.JLabel headlinePostOne;
     private javax.swing.JLabel imagePostOne;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lastReplyPostOne;
+    private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblText;
     private javax.swing.JPanel postOne;
     // End of variables declaration//GEN-END:variables

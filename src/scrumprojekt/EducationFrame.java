@@ -9,6 +9,8 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
@@ -34,6 +36,10 @@ public class EducationFrame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
+        ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
+        for(HashMap<String, String> category : list){
+            cbxCategory.addItem(category.get("CATEGORY"));
+        }
 
         BoxLayoutDemo.addPostsToPane(educationforumPosts, db);
 
@@ -139,7 +145,7 @@ public class EducationFrame extends javax.swing.JFrame {
         educationHeaderLayout.setVerticalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(lblUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -196,7 +202,6 @@ public class EducationFrame extends javax.swing.JFrame {
         jLabel1.setText("Category");
 
         cbxCategory.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);

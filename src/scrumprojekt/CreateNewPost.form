@@ -109,7 +109,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -123,9 +123,14 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="btnChoose" max="32767" attributes="0"/>
-                          <Component id="btnAddNew" max="32767" attributes="0"/>
+                          <Component id="btnAddNewCategory" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="49" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                      <Component id="lblExist" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -144,9 +149,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <Component id="txtNewCategory" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnAddNew" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnAddNewCategory" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="88" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="lblExist" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -155,11 +162,12 @@
             <Component class="javax.swing.JComboBox" name="cbxCategory">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="Teaching"/>
+                    <StringItem index="1" value="Important"/>
+                    <StringItem index="2" value="News"/>
+                    <StringItem index="3" value="Math"/>
+                    <StringItem index="4" value="Programming"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -168,11 +176,17 @@
               </AuxValues>
             </Component>
             <Component class="javax.swing.JTextField" name="txtNewCategory">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewCategoryActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="btnAddNew">
+            <Component class="javax.swing.JButton" name="btnAddNewCategory">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Add"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAddNewCategoryMouseReleased"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
@@ -193,6 +207,14 @@
             <Component class="javax.swing.JButton" name="btnChoose">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Choose"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnChooseMouseReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblExist">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="The category already exists"/>
               </Properties>
             </Component>
           </SubComponents>

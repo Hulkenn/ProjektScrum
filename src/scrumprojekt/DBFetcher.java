@@ -160,9 +160,9 @@ public class DBFetcher {
         return users;
     }
     
-     public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
-       boolean result = false;
-       try{
+    public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
+        boolean result = false;
+        try{
             String id = db.fetchSingle("SELECT employee_idemployee FROM post WHERE idpost = " + post_id);
             if ( id.equals(user_id)) {
                 result = true;
@@ -173,4 +173,14 @@ public class DBFetcher {
         }
         return result;
    }
+    public static ArrayList<HashMap<String,String>> fetchAllCategories(InfDB db){
+        ArrayList<HashMap<String,String>> categories = null;
+        try{
+            categories = db.fetchRows("Select * from Category");
+        }
+        catch(InfException e){
+            System.out.println(e);
+        }
+        return categories;
+    }
 }

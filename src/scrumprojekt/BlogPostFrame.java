@@ -53,7 +53,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         
         lblAuthor.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
         lblDate.setText(post.get("POSTDATE"));
-        
+        lblCategory.setText(post.get("TAG"));
         BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
     }
 
