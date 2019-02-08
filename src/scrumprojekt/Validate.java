@@ -5,17 +5,22 @@
  */
 package scrumprojekt;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import oru.inf.InfDB;
 
 /**
  *
  * @author Kasper
  */
 public class Validate {
-  /**
+  
+  
+    /**
      * Method for checking if a JTextField is empty
      *
      * @param windowToCheck
@@ -119,15 +124,26 @@ public class Validate {
            
            return m.matches();
     }
-     public static boolean phoneNumber(JTextField number1)
-     {
-         String number = number1.getText();
-         if(number.length()>0 && number.length()<18 && !number.matches("[a-zA-Z_]+"))
-             return true;
-         else{
-             JOptionPane.showMessageDialog(null, "Please enter a valid phone number");
-             System.out.println("Fungerade inte");
-             return false;
+    public static boolean phoneNumber(JTextField number1)
+    {
+        String number = number1.getText();
+        if(number.length()>0 && number.length()<18 && !number.matches("[a-zA-Z_]+"))
+            return true;
+        else{
+            JOptionPane.showMessageDialog(null, "Please enter a valid phone number");
+            System.out.println("Fungerade inte");
+            return false;
         }
-     }
+    }
+    
+    public static boolean categoryExist(InfDB db, String category){
+        ArrayList<HashMap<String,String>> list = DBFetcher.fetchAllCategories(db);
+        boolean exist = false;
+        for(HashMap<String,String> categories : list){
+            if(category.toLowerCase().equals(categories.get("CATEGORY").toLowerCase())){
+                exist = true;
+            }        
+        }
+        return exist;
+    }
 }

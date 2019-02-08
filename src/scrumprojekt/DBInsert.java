@@ -31,14 +31,14 @@ public class DBInsert {
      * @param text 
      * @return returns 0 if fails, otherwise the id of the new post
      */
-    public static int insertPost(InfDB db, int user_id, char category, String headline, String text) {
+    public static int insertPost(InfDB db, int user_id, char category, String headline, String text, String tag) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.now();
         String curr_date = dtf.format(localDate);
         int post_id = 0;
         try {
             post_id = Integer.parseInt(db.getAutoIncrement("POST", "IDPOST"));
-            db.insert("INSERT INTO POST VALUES(" + post_id + ", '" + text + "', '" + curr_date + "', 0, " + user_id + ", '" + headline + "', '" + category + "', '" + "News" + "')");
+            db.insert("INSERT INTO POST VALUES(" + post_id + ", '" + text + "', '" + curr_date + "', 0, " + user_id + ", '" + headline + "', '" + category + "', '" + tag + "')");
         }
         catch(InfException e) {
             System.out.println("FAILED TO MAKE POST");
@@ -122,6 +122,14 @@ public class DBInsert {
         }
        
           
+    }
+    public static void addCategory (InfDB db, String category){
+        try{
+            db.insert("INSERT INTO CATEGORY VALUES('" + category + "')");
+        }
+        catch (InfException e){
+            System.out.println(e);
+        }
     }
     
 }

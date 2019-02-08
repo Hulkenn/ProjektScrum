@@ -26,6 +26,8 @@ public class postPanel extends javax.swing.JPanel {
         this.db = db;
         this.post_id = post_id;
         updatePanel();
+        //jLabel1.setLocation(27, 20);
+        
         
     }
     
@@ -36,6 +38,7 @@ public class postPanel extends javax.swing.JPanel {
         headlinePostOne.setText(post.get("HEADLINE"));
         datePostOne.setText(post.get("POSTDATE"));
         authorPostOne.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
+        lblCategory.setText(post.get("TAG"));
         
         String postText = post.get("TEXT");
         int postTextLength = postText.length();
@@ -71,6 +74,8 @@ public class postPanel extends javax.swing.JPanel {
         dateLastReplyPostOne = new javax.swing.JLabel();
         lblText = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lblCategory = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         postOne.setBackground(new java.awt.Color(250, 249, 246));
         postOne.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -89,18 +94,22 @@ public class postPanel extends javax.swing.JPanel {
 
         lblText.setText("jLabel1");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/scrumprojekt/iconPostLil.png"))); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel1.setText("Category:");
+
+        lblCategory.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
+        lblCategory.setText("Category");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/scrumprojekt/iconPostLil.png"))); // NOI18N
 
         javax.swing.GroupLayout postOneLayout = new javax.swing.GroupLayout(postOne);
         postOne.setLayout(postOneLayout);
         postOneLayout.setHorizontalGroup(
             postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(postOneLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(postOneLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addGap(100, 100, 100)
                         .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(headlinePostOne)
                             .addGroup(postOneLayout.createSequentialGroup()
@@ -108,9 +117,15 @@ public class postPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(datePostOne))))
                     .addGroup(postOneLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jLabel2)
+                        .addGap(132, 132, 132)
+                        .addComponent(lblText, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCategory)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dateLastReplyPostOne)
                     .addComponent(lastReplyPostOne))
@@ -127,14 +142,13 @@ public class postPanel extends javax.swing.JPanel {
                 .addComponent(dateLastReplyPostOne)
                 .addContainerGap())
             .addGroup(postOneLayout.createSequentialGroup()
-                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addComponent(headlinePostOne)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(postOneLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(headlinePostOne)
+                .addGap(5, 5, 5)
+                .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lblCategory)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(postOneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(datePostOne)
                     .addComponent(authorPostOne)))
@@ -159,7 +173,9 @@ public class postPanel extends javax.swing.JPanel {
     private javax.swing.JLabel datePostOne;
     private javax.swing.JLabel headlinePostOne;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lastReplyPostOne;
+    private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblText;
     private javax.swing.JPanel postOne;
     // End of variables declaration//GEN-END:variables

@@ -9,8 +9,16 @@ import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import oru.inf.InfDB;
 
@@ -19,26 +27,147 @@ import oru.inf.InfDB;
  *
  * @author Joakim
  */
-public class EducationFrame extends javax.swing.JFrame {
 
+/**
+ * 
+ * @author admin
+ * EducationFrame shows all the posts by categories
+ * 
+ */
+public class EducationFrame extends javax.swing.JFrame {
+    
     private InfDB db;
     private int user_id;
-
+    private ArrayList<HashMap<String,String>> categories;
+    private ArrayList<JCheckBox> categoryCheckboxes;
+    private ArrayList<HashMap<String, String>> posts;
+    private ArrayList<postPanel> postPanels;
+    private ArrayList<String> tags;
+    
     /**
-     * Creates new form EducationFrame
+     * 
+     * @param db = currently opened database
+     * @param user_id = currently logged in user_id
+     * Creates a new form of educationframe.
      */
     public EducationFrame(InfDB db, int user_id) {
         initComponents();
         this.db = db;
         this.user_id = user_id;
+        this.categoryCheckboxes = new ArrayList<JCheckBox>();
+        this.postPanels = new ArrayList<postPanel>();
+        this.tags = new ArrayList<String>();
         this.setLocationRelativeTo(null);
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
-
-        BoxLayoutDemo.addPostsToPane(educationforumPosts, db);
-
+        
+        //Makes pnlCategory and educationforumPosts ready to add components with BoxLayout
+        pnlCategory.setLayout(new BoxLayout(pnlCategory, BoxLayout.PAGE_AXIS));
+        educationforumPosts.setLayout(new BoxLayout(educationforumPosts, BoxLayout.Y_AXIS));
+        
+        //Add all posts to the educationforumPosts pane
+        posts = DBFetcher.fetchAllPosts(db);
+        addPostsToPane(educationforumPosts, posts);
+        
+        //Add all the categories
+        categories = DBFetcher.fetchAllCategories(db);
+        if(categories != null) {
+            //For every category we have, we add a new JCheckBox and add it to the screen and arraylists, etc..
+            for(HashMap<String,String> category : categories) {
+                JCheckBox newCategoryBox = new JCheckBox(category.get("CATEGORY"), true);
+                newCategoryBox.addActionListener(new ActionListener(){
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        //add or remove tags in tagslist
+                        if(newCategoryBox.isSelected()) {
+                            tags.add(newCategoryBox.getText());
+                        } else {
+                            tags.remove(newCategoryBox.getText());
+                        }
+                        //Remove and add (update) posts
+                        removePostsFromPane(educationforumPosts);
+                        posts = DBFetcher.fetchAllPostsWithCategories(db, tags);
+                        addPostsToPane(educationforumPosts, posts);
+                    }
+                    
+                });
+                pnlCategory.add(newCategoryBox);
+                tags.add(newCategoryBox.getText());
+                categoryCheckboxes.add(newCategoryBox);
+            }
+        }
     }
-//asd
+
+    /**
+     * 
+     * @param pane
+     * @param posts 
+     * adds all the posts to the pane
+     */
+    public void addPostsToPane(Container pane, ArrayList<HashMap<String,String>> posts) {
+        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+        
+        if(posts != null) {
+            for (HashMap<String, String> post : posts) 
+            {
+                int post_id = Integer.parseInt(post.get("IDPOST"));
+                addPost(post_id, pane, db);
+            } 
+        }
+        pane.revalidate();
+        pane.repaint();
+    }
+    
+    /**
+     * 
+     * @param post_id
+     * @param container
+     * @param db
+     * adds a new post to postPanels arraylist and adds it to the container to show
+     */
+    public void addPost(int post_id, Container container, InfDB db) {
+        postPanel post = new postPanel(db, post_id);
+        postPanels.add(post);
+        post.setAlignmentX(Component.CENTER_ALIGNMENT);
+        post.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new BlogPostFrame(db, LoginFrame.user_id, post.getPostId()).setVisible(true);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                
+            }
+        });
+        container.add(post);
+    }
+    
+    /**
+     * 
+     * @param pane represents the pane to remove components from
+     */
+    public void removePostsFromPane(Container pane) {
+        postPanels.clear();
+        pane.removeAll();
+        pane.revalidate();
+        pane.repaint();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,15 +189,15 @@ public class EducationFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        cbxCategory = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pickerFrom = new org.jdesktop.swingx.JXDatePicker();
         pickerTo = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        pnlCategory = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -139,7 +268,7 @@ public class EducationFrame extends javax.swing.JFrame {
         educationHeaderLayout.setVerticalGroup(
             educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(lblUpdate)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,38 +316,6 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-        );
-
-        jPanel3.setBackground(new java.awt.Color(50, 121, 184));
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel1.setText("Category");
-
-        cbxCategory.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(cbxCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(50, 121, 184));
@@ -275,16 +372,42 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
+        pnlCategory.setBackground(new java.awt.Color(50, 121, 184));
+        pnlCategory.setPreferredSize(new java.awt.Dimension(300, 262));
+
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel1.setText("Category");
+
+        javax.swing.GroupLayout pnlCategoryLayout = new javax.swing.GroupLayout(pnlCategory);
+        pnlCategory.setLayout(pnlCategoryLayout);
+        pnlCategoryLayout.setHorizontalGroup(
+            pnlCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCategoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(217, Short.MAX_VALUE))
+        );
+        pnlCategoryLayout.setVerticalGroup(
+            pnlCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCategoryLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(247, Short.MAX_VALUE))
+        );
+
+        jScrollPane1.setViewportView(pnlCategory);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -293,10 +416,10 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -376,7 +499,6 @@ public class EducationFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbxCategory;
     private javax.swing.JPanel educationHeader;
     private javax.swing.JPanel educationforumPosts;
     private javax.swing.JLabel jLabel1;
@@ -388,13 +510,14 @@ public class EducationFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCreateNewPost;
     private javax.swing.JLabel lblCreateNewPost1;
     private javax.swing.JLabel lblGoBack;
     private javax.swing.JLabel lblUpdate;
     private org.jdesktop.swingx.JXDatePicker pickerFrom;
     private org.jdesktop.swingx.JXDatePicker pickerTo;
+    private javax.swing.JPanel pnlCategory;
     // End of variables declaration//GEN-END:variables
 }
