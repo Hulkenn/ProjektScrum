@@ -8,6 +8,7 @@ package scrumprojekt;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import oru.inf.InfDB;
 
@@ -18,7 +19,8 @@ import oru.inf.InfDB;
 public class MainWindow extends javax.swing.JFrame {
 
     private InfDB db;
-    private int user_id;
+    private int user_id; 
+    private HashMap<String,String> user;
 
     /**
      * Creates new form MainWindow
@@ -33,7 +35,9 @@ public class MainWindow extends javax.swing.JFrame {
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
         clock();
         diaEditUser.setLocationRelativeTo(null);
-        diaEditUser.setResizable(false);
+        diaEditUser.setResizable(false); 
+        user = DBFetcher.fetchUser(db, user_id);
+        jLabelCurrentUser.setText("Logged in as: " + user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
 
         if (DBFetcher.fetchRankFromUser(db, user_id) == 5 || DBFetcher.fetchRankFromUser(db, user_id) == 4 || DBFetcher.fetchRankFromUser(db, user_id) == 3) {
             lblAdmin.setVisible(true);
@@ -81,12 +85,11 @@ public class MainWindow extends javax.swing.JFrame {
         labelWelcome = new javax.swing.JLabel();
         lblTime = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabelCurrentUser = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
         diaEditUser.setUndecorated(true);
-        diaEditUser.setPreferredSize(new java.awt.Dimension(452, 435));
         diaEditUser.setSize(new java.awt.Dimension(452, 435));
 
         jPanel4.setBackground(new java.awt.Color(50, 121, 184));
@@ -420,9 +423,9 @@ public class MainWindow extends javax.swing.JFrame {
         lblDate.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
         lblDate.setText("Date");
 
-        jLabel1.setBackground(new java.awt.Color(250, 249, 246));
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Inloggad som:");
+        jLabelCurrentUser.setBackground(new java.awt.Color(250, 249, 246));
+        jLabelCurrentUser.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabelCurrentUser.setText("Logged in as:");
 
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -466,7 +469,7 @@ public class MainWindow extends javax.swing.JFrame {
                             .addComponent(lblDate))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(panelHomeLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelCurrentUser)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(panelHomeLayout.createSequentialGroup()
                 .addGap(144, 144, 144)
@@ -483,7 +486,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelHomeLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelCurrentUser)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -660,7 +663,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton btnEditUser;
     private javax.swing.JLabel cancelEditUser;
     private javax.swing.JDialog diaEditUser;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -669,6 +671,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabelCurrentUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;

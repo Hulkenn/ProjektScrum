@@ -103,6 +103,33 @@ public class DBFetcher {
     /**
      * 
      * @param db
+     * @param tags
+     * @return returns list of posts where the post has one of the tags from @param tags
+     */
+    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategories(InfDB db, ArrayList<String> tags) {
+        ArrayList<HashMap<String,String>> posts = null;
+        try {
+            if(tags.size() == 1) {
+                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' ORDER BY IDPOST DESC");
+            }
+            else if(tags.size() > 1) {
+                String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
+                for(int i = 1; i < tags.size(); i++) {
+                    query += " OR TAG = '" + tags.get(i) + "'";
+                }
+                query += ") AND ISDELETED = 0 ORDER BY IDPOST DESC";
+                posts = db.fetchRows(query);
+            }
+        }
+        catch(InfException e) {
+            
+        }
+        return posts;
+    }
+    
+    /**
+     * 
+     * @param db
      * @param post_id
      * @return returns all comments in a certain post
      */
@@ -152,12 +179,23 @@ public class DBFetcher {
     public static ArrayList<HashMap<String,String>> fetchAllUsersResearch(InfDB db){
         ArrayList<HashMap<String,String>> users = null;
         try{
-        users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0");
+            users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0");
         }
         catch(InfException e){
             
         }
         return users;
+    }
+    
+    public static ArrayList<HashMap<String,String>> fetchAllCategories(InfDB db) {
+        ArrayList<HashMap<String,String>> categories = null;
+        try {
+            categories = db.fetchRows("SELECT * FROM CATEGORY");
+        }
+        catch(InfException e) {
+            
+        }
+        return categories;
     }
     
     public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
@@ -172,15 +210,5 @@ public class DBFetcher {
             System.out.println(ie);
         }
         return result;
-   }
-    public static ArrayList<HashMap<String,String>> fetchAllCategories(InfDB db){
-        ArrayList<HashMap<String,String>> categories = null;
-        try{
-            categories = db.fetchRows("Select * from Category");
-        }
-        catch(InfException e){
-            System.out.println(e);
-        }
-        return categories;
     }
 }
