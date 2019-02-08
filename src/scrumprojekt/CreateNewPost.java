@@ -350,7 +350,7 @@ public class CreateNewPost extends javax.swing.JFrame {
         labelAttatchFile.setText("+ Attatch file");
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Post Category");
+        jButton1.setText("Chose Category");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

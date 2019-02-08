@@ -5,17 +5,22 @@
  */
 package scrumprojekt;
 
+import oru.inf.InfDB;
+
 /**
  *
  * @author Joakim
  */
 public class EventFrame extends javax.swing.JFrame {
 
+    private InfDB db;
     /**
      * Creates new form EventFrame
      */
-    public EventFrame() {
+    public EventFrame(InfDB db) {
         initComponents();
+        this.db = db;
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -35,6 +40,7 @@ public class EventFrame extends javax.swing.JFrame {
         lblDateForEvents = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -42,6 +48,11 @@ public class EventFrame extends javax.swing.JFrame {
         lblGoBack.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
         lblGoBack.setText("Go Back");
+        lblGoBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGoBackMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(250, 249, 246));
@@ -127,6 +138,10 @@ public class EventFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
+    dispose();
+    }//GEN-LAST:event_lblGoBackMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -157,7 +172,7 @@ public class EventFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EventFrame().setVisible(true);
+//                new EventFrame(db).setVisible(true);
             }
         });
     }

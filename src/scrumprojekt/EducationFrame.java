@@ -340,7 +340,7 @@ public class EducationFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_lblUpdateMouseClicked
 
-    /**
+     /** 
      * @param args the command line arguments
      */
     public static void main(String args[]) {

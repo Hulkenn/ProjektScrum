@@ -36,7 +36,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         switch (rank) {
             case 5:
-                System.out.println("idiots");
+//                System.out.println("idiots");
                 employees = DBFetcher.fetchAllUsers(db);
                 break;
             case 4:
@@ -829,6 +829,10 @@ public class AdminFrame extends javax.swing.JFrame {
         DBInsert.addUser(db, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
     }//GEN-LAST:event_btnAddUserMouseClicked
 
+    /**
+     * 
+     * @param evt 
+     */
     private void btnEditUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditUserMouseClicked
         // TODO add your handling code here:
         int rank = 0;
@@ -854,6 +858,10 @@ public class AdminFrame extends javax.swing.JFrame {
         diaEditUser.setVisible(false);
     }//GEN-LAST:event_btnEditUserMouseClicked
 
+    /**
+     * 
+     * @param evt 
+     */
     private void cbxEmployeeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEmployeeItemStateChanged
         // TODO add your handling code here:
         HashMap<String, String> user = employees.get(cbxEmployee.getSelectedIndex());
