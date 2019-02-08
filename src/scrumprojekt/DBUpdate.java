@@ -22,6 +22,26 @@ public class DBUpdate {
             
         }
     }
+    /**
+     * 
+     * @param db
+     * @param user_id
+     * @param rank
+     * @param firstname
+     * @param lastname
+     * @param mail
+     * @param number
+     * @param academicstatus
+     * @param password 
+     */
+    public static void updateAsUser(InfDB db,int user_id,String firstname,String lastname,String mail,String number,String academicstatus,String password){
+        try{
+        db.update("UPDATE EMPLOYEE SET FIRSTNAME = '" + firstname + "',LASTNAME ='"+lastname+"', EMAIL = '"+mail+"',PHONENUMBER = '"+number+"',ACADEMICSTATUS = '"+academicstatus+"', PASSWORD = '"+password+"' WHERE IDEMPLOYEE = "+user_id);
+        }
+        catch(InfException e){
+            
+        }
+    }
     
     //Updates a users admin status
     public static void updateAdminStatus(InfDB db, int status, int id){

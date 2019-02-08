@@ -55,18 +55,10 @@ import oru.inf.InfException;
 
  
 public class BoxLayoutDemo {
-    private static InfDB db;
     
     
     
-    public static void addPostsToPane(Container pane) {
-        try {
-            db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
-        }
-        catch(InfException e) {
-            System.out.println("fail to connect db");
-        }
-        
+    public static void addPostsToPane(Container pane, InfDB db) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         
         ArrayList<HashMap<String, String>> posts;
@@ -76,19 +68,12 @@ public class BoxLayoutDemo {
             for (HashMap<String, String> post : posts) 
             {
                 int post_id = Integer.parseInt(post.get("IDPOST"));
-                addPost(post_id, pane);
+                addPost(post_id, pane, db);
             } 
         }
     }
     
-    public static void addCommentsToPane(Container pane, int post_id) {
-        try {
-            db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
-        }
-        catch(InfException e) {
-            System.out.println("fail to connect db");
-        }
-        
+    public static void addCommentsToPane(Container pane, int post_id, InfDB db) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         
         ArrayList<HashMap<String,String>> comments;
@@ -98,12 +83,12 @@ public class BoxLayoutDemo {
         if(comments != null) {
             for (HashMap<String,String> comment : comments) 
             {
-                addComment(comment, pane);
+                addComment(comment, pane, db);
             } 
         }
     }
  
-    private static void addPost(int post_id, Container container) {
+    private static void addPost(int post_id, Container container, InfDB db) {
         postPanel post = new postPanel(db, post_id);
         post.setAlignmentX(Component.CENTER_ALIGNMENT);
         post.addMouseListener(new MouseListener() {
@@ -136,7 +121,7 @@ public class BoxLayoutDemo {
         container.add(post);
     }
     
-    private static void addComment(HashMap<String,String> comment, Container container) {
+    private static void addComment(HashMap<String,String> comment, Container container, InfDB db) {
         commentPanel commentPanel = new commentPanel(db, comment);
         commentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         container.add(commentPanel);

@@ -54,7 +54,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         lblAuthor.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
         lblDate.setText(post.get("POSTDATE"));
         
-        BoxLayoutDemo.addCommentsToPane(jpContainer, post_id);
+        BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
     }
 
     /**
@@ -96,7 +96,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        lblCategory = new javax.swing.JLabel();
         btnAdd = new javax.swing.JLabel();
         jpContainer2 = new javax.swing.JScrollPane();
         jpContainer = new javax.swing.JPanel();
@@ -409,8 +409,8 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         jPanel14.setBackground(new java.awt.Color(247, 247, 247));
 
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel13.setText("Files?");
+        lblCategory.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCategory.setText("CATEGORY");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -418,12 +418,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(lblCategory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
         bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, -1));
@@ -471,7 +471,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Comment added");
             taComment.setText("");
             jpContainer.removeAll();
-            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id);
+            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
         }
     }//GEN-LAST:event_lblPostCommentMouseClicked
 
@@ -553,7 +553,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -571,6 +570,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jpContainer2;
     private javax.swing.JLabel lblAuthor;
     private javax.swing.JLabel lblBack;
+    private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblEducation;
     private javax.swing.JPanel lblPostComment;
