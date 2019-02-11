@@ -5,6 +5,8 @@
  */
 package scrumprojekt;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Joakim
@@ -14,8 +16,10 @@ public class Event extends javax.swing.JPanel {
     /**
      * Creates new form Event
      */
-    public Event() {
+    public Event(HashMap<String,String> event) {
         initComponents();
+        jTextArea1.setText(event.get("DESCRIPTION"));
+        txtCreator.setText(txtCreator.getText() + event.get("FIRSTNAME") + " " + event.get("LASTNAME"));
     }
 
     /**
@@ -30,7 +34,7 @@ public class Event extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        txtHeadline = new javax.swing.JTextField();
+        txtCreator = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -40,13 +44,17 @@ public class Event extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(696, 123));
+
         jPanel1.setBackground(new java.awt.Color(250, 249, 246));
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        txtHeadline.setText("Headline:");
+        txtCreator.setEditable(false);
+        txtCreator.setText("Creator: ");
 
         jLabel2.setText("jLabel2");
 
@@ -107,7 +115,7 @@ public class Event extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
-                    .addComponent(txtHeadline))
+                    .addComponent(txtCreator))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,7 +129,7 @@ public class Event extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCreator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -155,6 +163,6 @@ public class Event extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField txtHeadline;
+    private javax.swing.JTextField txtCreator;
     // End of variables declaration//GEN-END:variables
 }

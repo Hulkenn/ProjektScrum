@@ -47,14 +47,15 @@ public class commentPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         taComment = new javax.swing.JTextArea();
 
-        jPanel2.setBackground(new java.awt.Color(240, 240, 240));
+        jPanel2.setBackground(new java.awt.Color(50, 121, 184));
+        jPanel2.setForeground(new java.awt.Color(50, 121, 184));
 
         lblUser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(0, 0, 0));
+        lblUser.setForeground(new java.awt.Color(250, 249, 246));
         lblUser.setText("Who:");
 
         lblDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblDate.setForeground(new java.awt.Color(0, 0, 0));
+        lblDate.setForeground(new java.awt.Color(250, 249, 246));
         lblDate.setText("When");
 
         taComment.setEditable(false);
