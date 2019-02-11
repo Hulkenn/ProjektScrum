@@ -12,7 +12,7 @@ import oru.inf.InfDB;
  * @author Joakim
  */
 public class EventFrame extends javax.swing.JFrame {
-
+    
     private InfDB db;
     /**
      * Creates new form EventFrame
@@ -22,7 +22,7 @@ public class EventFrame extends javax.swing.JFrame {
         this.db = db;
         this.setLocationRelativeTo(null);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

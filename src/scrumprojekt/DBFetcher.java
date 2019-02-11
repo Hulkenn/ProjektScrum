@@ -211,4 +211,14 @@ public class DBFetcher {
         }
         return result;
     }
+    public static String fetchDateofEvent(InfDB db, int postID){
+        String date ="";
+        try{
+            date = db.fetchSingle("Select EVENTDATE from EVENTS where IDEVENTS = " + postID);
+        }
+        catch(InfException e){
+            System.out.println(e);
+        }
+        return date;
+    }
 }

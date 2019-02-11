@@ -2121,7 +2121,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_lblLogOutMouseExited
 
     private void lblEvent1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent1MouseClicked
-        if (lblEvent1.getText() != null) {
+        if (!lblEvent1.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent1MouseClicked
@@ -2132,7 +2132,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day1MouseClicked
 
     private void lblEvent2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent2MouseClicked
-        if (lblEvent2.getText() != null) {
+        if (!lblEvent2.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent2MouseClicked
@@ -2143,7 +2143,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day2MouseClicked
 
     private void lblEvent3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent3MouseClicked
-        if (lblEvent3.getText() != null) {
+        if (!lblEvent3.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent3MouseClicked
@@ -2154,7 +2154,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day3MouseClicked
 
     private void lblEvent4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent4MouseClicked
-        if (lblEvent4.getText() != null) {
+        if (!lblEvent4.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent4MouseClicked
@@ -2165,7 +2165,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day4MouseClicked
 
     private void lblEvent5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent5MouseClicked
-        if (lblEvent5.getText() != null) {
+        if (!lblEvent5.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent5MouseClicked
@@ -2176,7 +2176,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day5MouseClicked
 
     private void lblEvent6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent6MouseClicked
-        if (lblEvent6.getText() != null) {
+        if (!lblEvent6.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent6MouseClicked
@@ -2187,7 +2187,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day6MouseClicked
 
     private void lblEvent7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent7MouseClicked
-        if (lblEvent7.getText() != null) {
+        if (!lblEvent7.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent7MouseClicked
@@ -2198,7 +2198,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day7MouseClicked
 
     private void lblEvent8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent8MouseClicked
-        if (lblEvent8.getText() != null) {
+        if (!lblEvent8.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent8MouseClicked
@@ -2209,7 +2209,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day8MouseClicked
 
     private void lblEvent9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent9MouseClicked
-        if (lblEvent9.getText() != null) {
+        if (!lblEvent9.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent9MouseClicked
@@ -2220,7 +2220,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day9MouseClicked
 
     private void lblEvent10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent10MouseClicked
-        if (lblEvent10.getText() != null) {
+        if (!lblEvent10.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent10MouseClicked
@@ -2231,7 +2231,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day10MouseClicked
 
     private void lblEvent11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent11MouseClicked
-        if (lblEvent12.getText() != null) {
+        if (!lblEvent12.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent11MouseClicked
@@ -2242,7 +2242,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day11MouseClicked
 
     private void lblEvent12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent12MouseClicked
-        if (lblEvent12.getText() != null) {
+        if (!lblEvent12.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent12MouseClicked
@@ -2253,7 +2253,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day12MouseClicked
 
     private void lblEvent13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent13MouseClicked
-        if (lblEvent13.getText() != null) {
+        if (!lblEvent13.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent13MouseClicked
@@ -2264,7 +2264,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day13MouseClicked
 
     private void lblEvent14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent14MouseClicked
-        if (lblEvent14.getText() != null) {
+        if (!lblEvent14.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent14MouseClicked
@@ -2275,7 +2275,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day14MouseClicked
 
     private void lblEvent15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent15MouseClicked
-        if (lblEvent15.getText() != null) {
+        if (!lblEvent15.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent15MouseClicked
@@ -2286,7 +2286,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day15MouseClicked
 
     private void lblEvent16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent16MouseClicked
-        if (lblEvent16.getText() != null) {
+        if (!lblEvent16.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent16MouseClicked
@@ -2297,7 +2297,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day16MouseClicked
 
     private void lblEvent17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent17MouseClicked
-        if (lblEvent17.getText() != null) {
+        if (!lblEvent17.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent17MouseClicked
@@ -2308,7 +2308,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day17MouseClicked
 
     private void lblEvent18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent18MouseClicked
-        if (lblEvent18.getText() != null) {
+        if (!lblEvent18.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent18MouseClicked
@@ -2319,7 +2319,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day18MouseClicked
 
     private void lblEvent19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent19MouseClicked
-        if (lblEvent19.getText() != null) {
+        if (!lblEvent19.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent19MouseClicked
@@ -2330,7 +2330,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day19MouseClicked
 
     private void lblEvent20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent20MouseClicked
-        if (lblEvent20.getText() != null) {
+        if (!lblEvent20.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent20MouseClicked
@@ -2341,7 +2341,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_dau20MouseClicked
 
     private void lblEvent21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent21MouseClicked
-        if (lblEvent21.getText() != null) {
+        if (!lblEvent21.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent21MouseClicked
@@ -2352,7 +2352,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day21MouseClicked
 
     private void lblEvent22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent22MouseClicked
-        if (lblEvent22.getText() != null) {
+        if (!lblEvent22.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent22MouseClicked
@@ -2363,7 +2363,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day22MouseClicked
 
     private void lblEvent23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent23MouseClicked
-        if (lblEvent23.getText() != null) {
+        if (!lblEvent23.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent23MouseClicked
@@ -2374,7 +2374,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day23MouseClicked
 
     private void lblEvent24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent24MouseClicked
-        if (lblEvent24.getText() != null) {
+        if (!lblEvent24.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent24MouseClicked
@@ -2385,7 +2385,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day24MouseClicked
 
     private void lblEvent25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent25MouseClicked
-        if (lblEvent25.getText() != null) {
+        if (!lblEvent25.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent25MouseClicked
@@ -2396,7 +2396,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day25MouseClicked
 
     private void lblEvent26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent26MouseClicked
-        if (lblEvent26.getText() != null) {
+        if (!lblEvent26.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent26MouseClicked
@@ -2407,7 +2407,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day26MouseClicked
 
     private void lblEvent27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent27MouseClicked
-        if (lblEvent27.getText() != null) {
+        if (!lblEvent27.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent27MouseClicked
@@ -2418,7 +2418,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day27MouseClicked
 
     private void lblEvent28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent28MouseClicked
-        if (lblEvent28.getText() != null) {
+        if (!lblEvent28.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent28MouseClicked
@@ -2429,7 +2429,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day28MouseClicked
 
     private void lblEvent29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent29MouseClicked
-        if (lblEvent29.getText() != null) {
+        if (!lblEvent29.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent29MouseClicked
@@ -2440,7 +2440,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day29MouseClicked
 
     private void lblEvent30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent30MouseClicked
-        if (lblEvent30.getText() != null) {
+        if (!lblEvent30.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent30MouseClicked
@@ -2451,7 +2451,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day30MouseClicked
 
     private void lblEvent31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent31MouseClicked
-        if (lblEvent31.getText() != null) {
+        if (!lblEvent31.getText().isEmpty()) {
             new EventFrame(db).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent31MouseClicked

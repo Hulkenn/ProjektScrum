@@ -428,7 +428,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, -1));
 
-        btnAdd.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnAdd.setText("Headline:ExempelTExt");
         bg.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 810, 40));
 
