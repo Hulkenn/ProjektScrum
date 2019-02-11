@@ -242,4 +242,15 @@ public class DBFetcher {
         }
         return date;
     }
+    
+    public static ArrayList<HashMap<String,String>> fetchAllEvents(InfDB db, String date) {
+        ArrayList<HashMap<String,String>> events = null;
+        try {
+            events = db.fetchRows("SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE EVENTDATE = '" + date + "'");
+        }
+        catch(InfException e) {
+            
+        }
+        return events;
+    }
 }
