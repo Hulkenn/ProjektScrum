@@ -45,7 +45,7 @@ public class EventFrame extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        lblGoBack.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblGoBack.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lblGoBack.setForeground(new java.awt.Color(250, 249, 246));
         lblGoBack.setText("Go Back");
         lblGoBack.addMouseListener(new java.awt.event.MouseAdapter() {

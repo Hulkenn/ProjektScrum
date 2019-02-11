@@ -19,6 +19,7 @@ public class MainWindow extends javax.swing.JFrame {
     private InfDB db;
     private int user_id;
     private ArrayList<HashMap<String, String>> events_month;
+    private HashMap<String, String> user;
 
     /**
      * Creates new form MainWindow
@@ -31,10 +32,15 @@ public class MainWindow extends javax.swing.JFrame {
         setResizable(false);
         lblAdmin.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
-        clock();
+        clock(lblTime, lblDate);
+        highlightTodaysDate();
         diaEditUser.setLocationRelativeTo(null);
         diaEditUser.setResizable(false);
         addDays();
+        selectThisMonth();
+        setDates();
+        user = DBFetcher.fetchUser(db, user_id);
+        jLabel1.setText("Logged in as: " + user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
         if (DBFetcher.fetchRankFromUser(db, user_id) == 5 || DBFetcher.fetchRankFromUser(db, user_id) == 4 || DBFetcher.fetchRankFromUser(db, user_id) == 3) {
             lblAdmin.setVisible(true);
         }
@@ -1906,12 +1912,16 @@ public class MainWindow extends javax.swing.JFrame {
                 cbxYear1ItemStateChanged(evt);
             }
         });
+        cbxYear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxYear1ActionPerformed(evt);
+            }
+        });
         bg1.add(cbxYear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 242, 38));
 
         jLabel1.setBackground(new java.awt.Color(250, 249, 246));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setText("Inloggad som:");
-        bg1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        bg1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 20));
 
         lblTime.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
         lblTime.setText("Time");
@@ -2482,8 +2492,12 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cbxMonth1ItemStateChanged
 
     private void cbxMonth1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMonth1ActionPerformed
-        // TODO add your handling code here:
+        setDates();
     }//GEN-LAST:event_cbxMonth1ActionPerformed
+
+    private void cbxYear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxYear1ActionPerformed
+        setDates();
+    }//GEN-LAST:event_cbxYear1ActionPerformed
 
     /**
      *
@@ -2501,7 +2515,7 @@ public class MainWindow extends javax.swing.JFrame {
     /**
      * Clock
      */
-    public void clock() {
+    public void clock(JLabel time, JLabel date) {
         Thread th = new Thread() {
             public void run() {
                 try {
@@ -2526,8 +2540,8 @@ public class MainWindow extends javax.swing.JFrame {
                         } else {
                             hour = cl.get(Calendar.HOUR);
                         }
-                        lblTime.setText("" + hour + ":" + min + ":" + second + " " + d_n + "");
-                        lblDate.setText("" + day + "/" + month + "/" + year + "");
+                        time.setText("" + hour + ":" + min + ":" + second + " " + d_n + "");
+                        date.setText("" + day + "/" + month + "/" + year + "");
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -2537,6 +2551,322 @@ public class MainWindow extends javax.swing.JFrame {
         th.start();
     }
 
+    /**
+     * Change dates according to month
+     */
+    public void setDates() {
+        String item = cbxMonth1.getSelectedItem().toString();
+        String year = cbxYear1.getSelectedItem().toString();
+
+        switch (item) {
+            case "January":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "February":
+                day29.setVisible(false);
+                day30.setVisible(false);
+                day31.setVisible(false);
+                if (year.equals("2020") || year.equals("2024") || year.equals("2028") || year.equals("2032")) {
+                    day29.setVisible(true);
+                }
+                break;
+            case "March":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "April":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(false);
+                break;
+            case "May":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "June":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(false);
+                break;
+            case "July":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "August":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "September":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(false);
+                break;
+            case "October":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+            case "November":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(false);
+                break;
+            case "December":
+                day29.setVisible(true);
+                day30.setVisible(true);
+                day31.setVisible(true);
+                break;
+        }
+
+    }
+
+    /**
+     *
+     */
+    public void selectThisMonth() {
+        Calendar cl = new GregorianCalendar();
+        int month = cl.get(Calendar.MONTH) + 1;
+
+        switch (month) {
+            case 1:
+                cbxMonth1.setSelectedItem("January");
+                break;
+            case 2:
+                cbxMonth1.setSelectedItem("February");
+                break;
+            case 3:
+                cbxMonth1.setSelectedItem("Mars");
+                break;
+            case 4:
+                cbxMonth1.setSelectedItem("April");
+                break;
+            case 5:
+                cbxMonth1.setSelectedItem("May");
+                break;
+            case 6:
+                cbxMonth1.setSelectedItem("June");
+                break;
+            case 7:
+                cbxMonth1.setSelectedItem("July");
+                break;
+            case 8:
+                cbxMonth1.setSelectedItem("August");
+                break;
+            case 9:
+                cbxMonth1.setSelectedItem("September");
+                break;
+            case 10:
+                cbxMonth1.setSelectedItem("October");
+                break;
+            case 11:
+                cbxMonth1.setSelectedItem("November");
+                break;
+            case 12:
+                cbxMonth1.setSelectedItem("December");
+                break;
+
+        }
+    }
+
+    /**
+     * Method to highlight todays date in the correct month
+     */
+    public void highlightTodaysDate() {
+
+        Thread th = new Thread() {
+            public void run() {
+                try {
+                    for (;;) {
+                        Calendar cl = new GregorianCalendar();
+                        int day = cl.get(Calendar.DAY_OF_MONTH);
+                        int month = cl.get(Calendar.MONTH) + 1;
+                        int year = cl.get(Calendar.YEAR);
+                        String stringMonth = convertMonth(cbxMonth1.getSelectedItem().toString());
+                        int thisMonth = Integer.parseInt(stringMonth);
+                        String stringYear = cbxYear1.getSelectedItem().toString();
+                        int intYear = Integer.parseInt(stringYear);
+
+                        if (year == intYear){
+                        if (month == thisMonth) {
+                            switch (day) {
+                                case 1:
+                                    day1.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 2:
+                                    day2.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 3:
+                                    day3.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 4:
+                                    day4.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 5:
+                                    day5.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 6:
+                                    day6.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 7:
+                                    day7.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 8:
+                                    day8.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 9:
+                                    day9.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 10:
+                                    day10.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 11:
+                                    day11.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 12:
+                                    day12.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 13:
+                                    day13.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 14:
+                                    day14.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 15:
+                                    day15.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 16:
+                                    day16.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 17:
+                                    day17.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 18:
+                                    day18.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 19:
+                                    day19.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 20:
+                                    dau20.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 21:
+                                    day21.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 22:
+                                    day22.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 23:
+                                    day22.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 24:
+                                    day24.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 25:
+                                    day25.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 26:
+                                    day26.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 27:
+                                    day27.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 28:
+                                    day28.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 29:
+                                    day29.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 30:
+                                    day30.setBackground(new Color(50, 121, 184));
+                                    break;
+                                case 31:
+                                    day31.setBackground(new Color(50, 121, 184));
+                                    break;
+                            }
+                        } else {
+                            day1.setBackground(new Color(204, 204, 204));
+                            day2.setBackground(new Color(204, 204, 204));
+                            day3.setBackground(new Color(204, 204, 204));
+                            day4.setBackground(new Color(204, 204, 204));
+                            day5.setBackground(new Color(204, 204, 204));
+                            day6.setBackground(new Color(204, 204, 204));
+                            day7.setBackground(new Color(204, 204, 204));
+                            day8.setBackground(new Color(204, 204, 204));
+                            day9.setBackground(new Color(204, 204, 204));
+                            day10.setBackground(new Color(204, 204, 204));
+                            day11.setBackground(new Color(204, 204, 204));
+                            day12.setBackground(new Color(204, 204, 204));
+                            day13.setBackground(new Color(204, 204, 204));
+                            day14.setBackground(new Color(204, 204, 204));
+                            day15.setBackground(new Color(204, 204, 204));
+                            day16.setBackground(new Color(204, 204, 204));
+                            day17.setBackground(new Color(204, 204, 204));
+                            day18.setBackground(new Color(204, 204, 204));
+                            day19.setBackground(new Color(204, 204, 204));
+                            dau20.setBackground(new Color(204, 204, 204));
+                            day21.setBackground(new Color(204, 204, 204));
+                            day22.setBackground(new Color(204, 204, 204));
+                            day23.setBackground(new Color(204, 204, 204));
+                            day24.setBackground(new Color(204, 204, 204));
+                            day25.setBackground(new Color(204, 204, 204));
+                            day26.setBackground(new Color(204, 204, 204));
+                            day27.setBackground(new Color(204, 204, 204));
+                            day28.setBackground(new Color(204, 204, 204));
+                            day29.setBackground(new Color(204, 204, 204));
+                            day30.setBackground(new Color(204, 204, 204));
+                            day31.setBackground(new Color(204, 204, 204));
+                        }
+                        } else {
+                             day1.setBackground(new Color(204, 204, 204));
+                            day2.setBackground(new Color(204, 204, 204));
+                            day3.setBackground(new Color(204, 204, 204));
+                            day4.setBackground(new Color(204, 204, 204));
+                            day5.setBackground(new Color(204, 204, 204));
+                            day6.setBackground(new Color(204, 204, 204));
+                            day7.setBackground(new Color(204, 204, 204));
+                            day8.setBackground(new Color(204, 204, 204));
+                            day9.setBackground(new Color(204, 204, 204));
+                            day10.setBackground(new Color(204, 204, 204));
+                            day11.setBackground(new Color(204, 204, 204));
+                            day12.setBackground(new Color(204, 204, 204));
+                            day13.setBackground(new Color(204, 204, 204));
+                            day14.setBackground(new Color(204, 204, 204));
+                            day15.setBackground(new Color(204, 204, 204));
+                            day16.setBackground(new Color(204, 204, 204));
+                            day17.setBackground(new Color(204, 204, 204));
+                            day18.setBackground(new Color(204, 204, 204));
+                            day19.setBackground(new Color(204, 204, 204));
+                            dau20.setBackground(new Color(204, 204, 204));
+                            day21.setBackground(new Color(204, 204, 204));
+                            day22.setBackground(new Color(204, 204, 204));
+                            day23.setBackground(new Color(204, 204, 204));
+                            day24.setBackground(new Color(204, 204, 204));
+                            day25.setBackground(new Color(204, 204, 204));
+                            day26.setBackground(new Color(204, 204, 204));
+                            day27.setBackground(new Color(204, 204, 204));
+                            day28.setBackground(new Color(204, 204, 204));
+                            day29.setBackground(new Color(204, 204, 204));
+                            day30.setBackground(new Color(204, 204, 204));
+                            day31.setBackground(new Color(204, 204, 204));
+                        }
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+        th.start();
+    }
+
+    /**
+     *
+     */
     public void resetDays() {
         lblEvent1.setText("");
         lblEvent2.setText("");
@@ -2572,6 +2902,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     }
 
+    /**
+     *
+     */
     public void addDays() {
         events_month = fetchEvents(db, Integer.parseInt(cbxYear1.getSelectedItem().toString()), convertMonth(cbxMonth1.getSelectedItem().toString()));
 
@@ -2585,6 +2918,11 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @param cbx
+     * @return
+     */
     public String convertMonth(String cbx) {
         String cbxMonthString = cbx;
         String monthString = "";
@@ -2629,6 +2967,11 @@ public class MainWindow extends javax.swing.JFrame {
         return monthString;
     }
 
+    /**
+     *
+     * @param day
+     * @return
+     */
     public JLabel convertDay(int day) {
         JLabel lbl = null;
         switch (day) {
@@ -2729,6 +3072,12 @@ public class MainWindow extends javax.swing.JFrame {
         return lbl;
     }
 
+    /**
+     *
+     * @param db
+     * @param date
+     * @param description
+     */
     public void insertEvent(InfDB db, String date, String description) {
         int id = 0;
         try {
@@ -2744,6 +3093,13 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
+    /**
+     *
+     * @param db
+     * @param year
+     * @param month
+     * @return
+     */
     public ArrayList<HashMap<String, String>> fetchEvents(InfDB db, int year, String month) {
         ArrayList<HashMap<String, String>> dates = null;
         HashMap<String, String> dates2 = null;
@@ -2790,14 +3146,11 @@ public class MainWindow extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bg;
     private javax.swing.JPanel bg1;
     private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnEditUser;
     private javax.swing.JLabel cancelEditUser;
-    private javax.swing.JComboBox<String> cbxMonth;
     private javax.swing.JComboBox<String> cbxMonth1;
-    private javax.swing.JComboBox<String> cbxYear;
     private javax.swing.JComboBox<String> cbxYear1;
     private javax.swing.JPanel dau20;
     private javax.swing.JPanel day1;
@@ -2831,7 +3184,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel day8;
     private javax.swing.JPanel day9;
     private javax.swing.JDialog diaEditUser;
-    private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2841,7 +3193,6 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelCurrentUser;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
