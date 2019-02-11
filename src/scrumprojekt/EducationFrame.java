@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
@@ -43,6 +44,7 @@ public class EducationFrame extends javax.swing.JFrame {
     private ArrayList<HashMap<String, String>> posts;
     private ArrayList<postPanel> postPanels;
     private ArrayList<String> tags;
+    private SimpleDateFormat sqlDateFormat;
     
     /**
      * 
@@ -57,6 +59,7 @@ public class EducationFrame extends javax.swing.JFrame {
         this.categoryCheckboxes = new ArrayList<JCheckBox>();
         this.postPanels = new ArrayList<postPanel>();
         this.tags = new ArrayList<String>();
+        this.sqlDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.setLocationRelativeTo(null);
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
@@ -86,7 +89,13 @@ public class EducationFrame extends javax.swing.JFrame {
                         }
                         //Remove and add (update) posts
                         removePostsFromPane(educationforumPosts);
-                        posts = DBFetcher.fetchAllPostsWithCategories(db, tags);
+                        if(pickerFrom.getDate() != null && pickerTo.getDate() != null) {
+                            String startDate = sqlDateFormat.format(pickerFrom.getDate());
+                            String endDate = sqlDateFormat.format(pickerTo.getDate());
+                            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate, endDate);
+                        } else {
+                            posts = DBFetcher.fetchAllPostsWithCategories(db, tags);
+                        }
                         addPostsToPane(educationforumPosts, posts);
                     }
                     
@@ -330,8 +339,18 @@ public class EducationFrame extends javax.swing.JFrame {
         jLabel2.setText("From:");
 
         pickerFrom.setFormats("yyyy-MM-dd");
+        pickerFrom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickerFromActionPerformed(evt);
+            }
+        });
 
         pickerTo.setFormats("yyyy-MM-dd");
+        pickerTo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pickerToActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(250, 249, 246));
@@ -462,6 +481,28 @@ public class EducationFrame extends javax.swing.JFrame {
         new EducationFrame(db, user_id).setVisible(true);
         dispose();
     }//GEN-LAST:event_lblUpdateMouseClicked
+
+    private void pickerFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickerFromActionPerformed
+        // TODO add your handling code here:
+        if(pickerFrom.getDate() != null && pickerTo.getDate() != null) {
+            String startDate = sqlDateFormat.format(pickerFrom.getDate());
+            String endDate = sqlDateFormat.format(pickerTo.getDate());
+            removePostsFromPane(educationforumPosts);
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString());
+            addPostsToPane(educationforumPosts, posts);
+        }
+    }//GEN-LAST:event_pickerFromActionPerformed
+
+    private void pickerToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickerToActionPerformed
+        // TODO add your handling code here:
+        if(pickerFrom.getDate() != null && pickerTo.getDate() != null) {
+            String startDate = sqlDateFormat.format(pickerFrom.getDate());
+            String endDate = sqlDateFormat.format(pickerTo.getDate());
+            removePostsFromPane(educationforumPosts);
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString());
+            addPostsToPane(educationforumPosts, posts);
+        }
+    }//GEN-LAST:event_pickerToActionPerformed
 
      /** 
      * @param args the command line arguments

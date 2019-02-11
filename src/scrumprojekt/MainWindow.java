@@ -2122,7 +2122,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent1MouseClicked
         if (!lblEvent1.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay1.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent1MouseClicked
 
@@ -2133,7 +2135,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent2MouseClicked
         if (!lblEvent2.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay2.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent2MouseClicked
 
@@ -2144,7 +2148,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent3MouseClicked
         if (!lblEvent3.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay3.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent3MouseClicked
 
@@ -2155,7 +2161,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent4MouseClicked
         if (!lblEvent4.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay4.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent4MouseClicked
 
@@ -2166,7 +2174,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent5MouseClicked
         if (!lblEvent5.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay5.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent5MouseClicked
 
@@ -2177,7 +2187,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent6MouseClicked
         if (!lblEvent6.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay6.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent6MouseClicked
 
@@ -2188,7 +2200,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent7MouseClicked
         if (!lblEvent7.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay7.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent7MouseClicked
 
@@ -2199,7 +2213,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent8MouseClicked
         if (!lblEvent8.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay8.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent8MouseClicked
 
@@ -2210,7 +2226,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent9MouseClicked
         if (!lblEvent9.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay9.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent9MouseClicked
 
@@ -2221,7 +2239,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent10MouseClicked
         if (!lblEvent10.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay10.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent10MouseClicked
 
@@ -2232,7 +2252,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent11MouseClicked
         if (!lblEvent12.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay11.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent11MouseClicked
 
@@ -2243,7 +2265,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent12MouseClicked
         if (!lblEvent12.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay12.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent12MouseClicked
 
@@ -2254,7 +2278,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent13MouseClicked
         if (!lblEvent13.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay13.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent13MouseClicked
 
@@ -2265,7 +2291,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent14MouseClicked
         if (!lblEvent14.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay14.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent14MouseClicked
 
@@ -2276,7 +2304,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent15MouseClicked
         if (!lblEvent15.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay15.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent15MouseClicked
 
@@ -2287,7 +2317,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent16MouseClicked
         if (!lblEvent16.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay16.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent16MouseClicked
 
@@ -2298,7 +2330,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent17MouseClicked
         if (!lblEvent17.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay17.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent17MouseClicked
 
@@ -2309,7 +2343,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent18MouseClicked
         if (!lblEvent18.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay18.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent18MouseClicked
 
@@ -2320,7 +2356,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent19MouseClicked
         if (!lblEvent19.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay19.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent19MouseClicked
 
@@ -2331,7 +2369,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent20MouseClicked
         if (!lblEvent20.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay20.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent20MouseClicked
 
@@ -2342,7 +2382,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent21MouseClicked
         if (!lblEvent21.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay21.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent21MouseClicked
 
@@ -2353,7 +2395,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent22MouseClicked
         if (!lblEvent22.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay22.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent22MouseClicked
 
@@ -2364,7 +2408,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent23MouseClicked
         if (!lblEvent23.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay23.getText();
+            new EventFrame(db,date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent23MouseClicked
 
@@ -2375,7 +2421,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent24MouseClicked
         if (!lblEvent24.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay24.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent24MouseClicked
 
@@ -2386,7 +2434,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent25MouseClicked
         if (!lblEvent25.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay25.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent25MouseClicked
 
@@ -2397,7 +2447,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent26MouseClicked
         if (!lblEvent26.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay26.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent26MouseClicked
 
@@ -2408,7 +2460,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent27MouseClicked
         if (!lblEvent27.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay27.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent27MouseClicked
 
@@ -2419,7 +2473,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent28MouseClicked
         if (!lblEvent28.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay28.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent28MouseClicked
 
@@ -2430,7 +2486,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent29MouseClicked
         if (!lblEvent29.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay29.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent29MouseClicked
 
@@ -2441,7 +2499,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent30MouseClicked
         if (!lblEvent30.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay30.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent30MouseClicked
 
@@ -2452,7 +2512,9 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void lblEvent31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent31MouseClicked
         if (!lblEvent31.getText().isEmpty()) {
-            new EventFrame(db).setVisible(true);
+            String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
+            String date = cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay31.getText();
+            new EventFrame(db, date).setVisible(true);
         }
     }//GEN-LAST:event_lblEvent31MouseClicked
 

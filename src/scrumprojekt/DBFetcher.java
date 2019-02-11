@@ -127,6 +127,27 @@ public class DBFetcher {
         return posts;
     }
     
+    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategoriesAndDate(InfDB db, ArrayList<String> tags, String startDate, String endDate) {
+        ArrayList<HashMap<String,String>> posts = null;
+        try {
+            if(tags.size() == 1) {
+                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' ORDER BY IDPOST DESC");
+            }
+            else if(tags.size() > 1) {
+                String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
+                for(int i = 1; i < tags.size(); i++) {
+                    query += " OR TAG = '" + tags.get(i) + "'";
+                }
+                query += ") AND ISDELETED = 0 AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "'ORDER BY IDPOST DESC";
+                posts = db.fetchRows(query);
+            }
+        }
+        catch(InfException e) {
+            
+        }
+        return posts;
+    }
+    
     /**
      * 
      * @param db
