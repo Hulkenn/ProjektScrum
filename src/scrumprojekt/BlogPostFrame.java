@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import oru.inf.InfDB;
@@ -41,6 +42,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         if (DBFetcher.checkIfCreatorOfPost(db, post_id, Integer.toString(user_id)) || DBFetcher.fetchRankFromUser(db,user_id) == 5 || DBFetcher.fetchRankFromUser(db,user_id) == 3) {
             lblRemove.setVisible(true);
         }
+        
+        //Adds image if exists
+        String pathImage = DBFetcher.fetchImagePath(db, post_id);
+        if(pathImage != null)
+            lblImage.setIcon(new ImageIcon(pathImage));
         
         post = DBFetcher.fetchPost(db, post_id);
         int userID= DBFetcher.fetchUserIdFromPost(db, post_id);
@@ -100,6 +106,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         btnAdd = new javax.swing.JLabel();
         jpContainer2 = new javax.swing.JScrollPane();
         jpContainer = new javax.swing.JPanel();
+        lblImage = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -335,7 +342,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         taText.setBorder(null);
         jScrollPane1.setViewportView(taText);
 
-        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 820, 260));
+        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 470, 260));
 
         jPanel10.setBackground(new java.awt.Color(247, 247, 247));
 
@@ -448,6 +455,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jpContainer2.setViewportView(jpContainer);
 
         bg.add(jpContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 880, 190));
+        bg.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 280, 260));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -468,7 +476,6 @@ public class BlogPostFrame extends javax.swing.JFrame {
         //Add post
         if(!Validate.areaWindowIsEmpty(taComment)) {
             DBInsert.insertComment(db, user_id, post_id, taComment.getText());
-            JOptionPane.showMessageDialog(null, "Comment added");
             taComment.setText("");
             jpContainer.removeAll();
             BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
@@ -573,6 +580,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblCategory;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblEducation;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JPanel lblPostComment;
     private javax.swing.JLabel lblRemove;
     private javax.swing.JLabel lblResearch;

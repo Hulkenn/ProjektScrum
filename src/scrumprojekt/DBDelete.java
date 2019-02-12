@@ -27,6 +27,7 @@ public class DBDelete {
             System.out.println(ie);
         }
     }
+    
     //Removes a post from the database
     public static void removePost(InfDB db, int postID){
         try{

@@ -6,11 +6,19 @@
 package scrumprojekt;
 
 import java.awt.Color;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import oru.inf.InfDB;
+import oru.inf.InfException;
 
 /**
  *
@@ -22,6 +30,11 @@ public class CreateNewPost extends javax.swing.JFrame {
     private int user_id;
     private char category;
     private String categoryPost;
+    
+    private final JFileChooser openFileChooser;
+    private BufferedImage originalBI;
+    private BufferedImage newBI;
+    private String imagePath;
 
     /**
      * Creates new form CreateNewPost
@@ -39,6 +52,10 @@ public class CreateNewPost extends javax.swing.JFrame {
         diaChooseCategoryFile.setLocationRelativeTo(null);
         diaChooseCategoryFile.setResizable(false);
         lblExist.setVisible(false);
+        
+        openFileChooser = new JFileChooser();
+        openFileChooser.setCurrentDirectory(new File("C:\temp"));
+        openFileChooser.setFileFilter(new FileNameExtensionFilter("PNG images", "png"));
     }
 
     /**
@@ -377,6 +394,11 @@ public class CreateNewPost extends javax.swing.JFrame {
 
         labelAttatchFile.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         labelAttatchFile.setText("+ Attatch file");
+        labelAttatchFile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelAttatchFileMouseClicked(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jButton1.setText("Chose Category");
@@ -450,6 +472,12 @@ public class CreateNewPost extends javax.swing.JFrame {
             int post_id = DBInsert.insertPost(db, user_id, category, textfieldHeadline.getText(), textareaPost.getText(), categoryPost);
 
             JOptionPane.showMessageDialog(rootPane, "Post submitted");
+            
+            if(openFileChooser.getSelectedFile() != null) {
+                imageToArray();
+                saveImage();
+                DBInsert.insertImage(db, post_id, imagePath);
+            }
 
             new BlogPostFrame(db, user_id, post_id).setVisible(true);
             dispose();
@@ -499,6 +527,58 @@ public class CreateNewPost extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnChooseMouseReleased
 
+    private void labelAttatchFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAttatchFileMouseClicked
+        // TODO add your handling code here:
+        //lägg till kod
+        int returnValue = openFileChooser.showOpenDialog(this);
+
+        if(returnValue == JFileChooser.APPROVE_OPTION) {
+            try{
+            originalBI = ImageIO.read(openFileChooser.getSelectedFile());
+            //lblMessage.setText("Image File Succesfully loaded");
+            }catch(IOException ex){
+                //lblMessage.setText("Failed to load image");
+            }
+        }
+        else{
+            //lblMessage.setText("No file Choosen");
+        }
+    }//GEN-LAST:event_labelAttatchFileMouseClicked
+
+    private void imageToArray(){
+        int width = originalBI.getWidth();
+        int height = originalBI.getHeight();
+
+        newBI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = newBI.createGraphics();
+        g.drawImage(originalBI, 0, 0, width, height, null);
+        g.dispose();
+
+    }
+
+
+    private void saveImage(){
+        String id = "1";
+        try {
+            String inc_id = db.getAutoIncrement("IMAGE", "IDIMAGE");
+            if(inc_id != null)
+                id = inc_id;
+        }
+        catch(InfException e) {
+            
+        }
+        File ops = new File(System.getProperty("user.dir")+"\\Files\\" + id
+                 + ".png");
+        imagePath = "Files\\" + id + ".png";
+        
+        try{
+            ImageIO.write(newBI, "png",ops);
+            //lblMessage.setText("Image File Succesfully saved"); 
+        }catch(IOException ex){
+            //lblMessage.setText("Failed to save image file");
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

@@ -2534,7 +2534,7 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_day31MouseClicked
 
     private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
-        insertEvent(db, tfDate.getText(), tfDecription.getText());
+        DBInsert.insertEvent(db, tfDate.getText(), tfDecription.getText(), user_id);
         String[] days = tfDate.getText().split("-");
         String stringDay = days[2];
         int intDay = Integer.parseInt(stringDay);
@@ -2968,7 +2968,7 @@ public class MainWindow extends javax.swing.JFrame {
      *
      */
     public void addDays() {
-        events_month = fetchEvents(db, Integer.parseInt(cbxYear1.getSelectedItem().toString()), convertMonth(cbxMonth1.getSelectedItem().toString()));
+        events_month = DBFetcher.fetchEvents(db, Integer.parseInt(cbxYear1.getSelectedItem().toString()), convertMonth(cbxMonth1.getSelectedItem().toString()));
 
         if (events_month != null) {
             for (HashMap event : events_month) {
@@ -3134,44 +3134,9 @@ public class MainWindow extends javax.swing.JFrame {
         return lbl;
     }
 
-    /**
-     *
-     * @param db
-     * @param date
-     * @param description
-     */
-    public void insertEvent(InfDB db, String date, String description) {
-        int id = 0;
-        try {
-            id = Integer.parseInt(db.getAutoIncrement("EVENTS", "IDEVENTS"));
-        } catch (InfException ex) {
-            System.out.println("Error");
-        }
+    
 
-        try {
-            db.insert("INSERT INTO EVENTS VALUES(" + id + ",'" + date + "','" + description + "',0,0,1)");
-        } catch (InfException e) {
-            System.out.println("något gick fel");
-        }
-    }
-
-    /**
-     *
-     * @param db
-     * @param year
-     * @param month
-     * @return
-     */
-    public ArrayList<HashMap<String, String>> fetchEvents(InfDB db, int year, String month) {
-        ArrayList<HashMap<String, String>> dates = null;
-        HashMap<String, String> dates2 = null;
-        try {
-            dates = db.fetchRows("SELECT EVENTDATE FROM EVENTS WHERE EVENTDATE LIKE '" + year + "-" + month + "%'");
-        } catch (InfException ex) {
-            System.out.println("Error med sql år och månad");
-        }
-        return dates;
-    }
+    
     /**
      * // * @param args the command line arguments //
      */

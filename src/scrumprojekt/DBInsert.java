@@ -59,6 +59,27 @@ public class DBInsert {
         }
     }
     
+    /**
+     *
+     * @param db
+     * @param date
+     * @param description
+     */
+    public static void insertEvent(InfDB db, String date, String description, int user_id) {
+        int id = 0;
+        try {
+            id = Integer.parseInt(db.getAutoIncrement("EVENTS", "IDEVENTS"));
+        } catch (InfException ex) {
+            System.out.println("Error");
+        }
+
+        try {
+            db.insert("INSERT INTO EVENTS VALUES(" + id + ",'" + date + "','" + description + "',0,0," + user_id + ")");
+        } catch (InfException e) {
+            System.out.println("något gick fel");
+        }
+    }
+    
     public static void addUser(InfDB db, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1)
     {
         
@@ -129,6 +150,19 @@ public class DBInsert {
         }
         catch (InfException e){
             System.out.println(e);
+        }
+    }
+    
+    public static void insertImage(InfDB db, int post_id, String path) {
+        String id = "1";
+        try {
+            String inc_id = db.getAutoIncrement("IMAGE", "IDIMAGE");
+            if(inc_id != null)
+                id = inc_id;
+            db.insert("INSERT INTO IMAGE VALUES (" + id + ", '" + path + "', " + post_id + ")");
+        }
+        catch(InfException e) {
+            
         }
     }
     

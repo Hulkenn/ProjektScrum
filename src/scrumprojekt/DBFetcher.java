@@ -131,7 +131,7 @@ public class DBFetcher {
         ArrayList<HashMap<String,String>> posts = null;
         try {
             if(tags.size() == 1) {
-                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' ORDER BY IDPOST DESC");
+                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' ORDER BY IDPOST DESC");
             }
             else if(tags.size() > 1) {
                 String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
@@ -146,6 +146,23 @@ public class DBFetcher {
             
         }
         return posts;
+    }
+    
+    /**
+     *
+     * @param db
+     * @param year
+     * @param month
+     * @return
+     */
+    public static ArrayList<HashMap<String, String>> fetchEvents(InfDB db, int year, String month) {
+        ArrayList<HashMap<String, String>> dates = null;
+        try {
+            dates = db.fetchRows("SELECT EVENTDATE FROM EVENTS WHERE EVENTDATE LIKE '" + year + "-" + month + "%'");
+        } catch (InfException ex) {
+            System.out.println("Error med sql år och månad");
+        }
+        return dates;
     }
     
     /**
@@ -217,6 +234,17 @@ public class DBFetcher {
             
         }
         return categories;
+    }
+    
+    public static String fetchImagePath(InfDB db, int post_id) {
+        String path = "";
+        try {
+            path = db.fetchSingle("SELECT PATHTOIMAGE FROM IMAGE JOIN POST ON POST_IDPOST = IDPOST WHERE IDPOST = " + post_id);
+        }
+        catch(InfException e) {
+            
+        }
+        return path;
     }
     
     public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
