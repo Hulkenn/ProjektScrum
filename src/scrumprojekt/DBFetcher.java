@@ -89,10 +89,10 @@ public class DBFetcher {
      * @param db
      * @return returns all posts
      */
-    public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db) {
+    public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db, char category) {
         ArrayList<HashMap<String,String>> posts = null;
         try {
-            posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 ORDER BY IDPOST DESC");
+            posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
         }
         catch(InfException e) {
             
@@ -106,18 +106,18 @@ public class DBFetcher {
      * @param tags
      * @return returns list of posts where the post has one of the tags from @param tags
      */
-    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategories(InfDB db, ArrayList<String> tags) {
+    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategories(InfDB db, ArrayList<String> tags, char category) {
         ArrayList<HashMap<String,String>> posts = null;
         try {
             if(tags.size() == 1) {
-                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' ORDER BY IDPOST DESC");
+                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
             }
             else if(tags.size() > 1) {
                 String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
                 for(int i = 1; i < tags.size(); i++) {
                     query += " OR TAG = '" + tags.get(i) + "'";
                 }
-                query += ") AND ISDELETED = 0 ORDER BY IDPOST DESC";
+                query += ") AND ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
                 posts = db.fetchRows(query);
             }
         }
@@ -127,18 +127,18 @@ public class DBFetcher {
         return posts;
     }
     
-    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategoriesAndDate(InfDB db, ArrayList<String> tags, String startDate, String endDate) {
+    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategoriesAndDate(InfDB db, ArrayList<String> tags, String startDate, String endDate, char category) {
         ArrayList<HashMap<String,String>> posts = null;
         try {
             if(tags.size() == 1) {
-                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' ORDER BY IDPOST DESC");
+                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
             }
             else if(tags.size() > 1) {
                 String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
                 for(int i = 1; i < tags.size(); i++) {
                     query += " OR TAG = '" + tags.get(i) + "'";
                 }
-                query += ") AND ISDELETED = 0 AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "'ORDER BY IDPOST DESC";
+                query += ") AND ISDELETED = 0 AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
                 posts = db.fetchRows(query);
             }
         }

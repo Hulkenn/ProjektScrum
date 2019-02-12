@@ -63,7 +63,7 @@ public class BoxLayoutDemo {
         
         ArrayList<HashMap<String, String>> posts;
         
-        posts = DBFetcher.fetchAllPosts(db);
+        posts = DBFetcher.fetchAllPosts(db, 'E');
         if(posts != null) {
             for (HashMap<String, String> post : posts) 
             {

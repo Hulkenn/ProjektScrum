@@ -69,7 +69,7 @@ public class EducationFrame extends javax.swing.JFrame {
         educationforumPosts.setLayout(new BoxLayout(educationforumPosts, BoxLayout.Y_AXIS));
         
         //Add all posts to the educationforumPosts pane
-        posts = DBFetcher.fetchAllPosts(db);
+        posts = DBFetcher.fetchAllPosts(db, 'E');
         addPostsToPane(educationforumPosts, posts);
         
         //Add all the categories
@@ -92,9 +92,9 @@ public class EducationFrame extends javax.swing.JFrame {
                         if(pickerFrom.getDate() != null && pickerTo.getDate() != null) {
                             String startDate = sqlDateFormat.format(pickerFrom.getDate());
                             String endDate = sqlDateFormat.format(pickerTo.getDate());
-                            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate, endDate);
+                            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate, endDate, 'E');
                         } else {
-                            posts = DBFetcher.fetchAllPostsWithCategories(db, tags);
+                            posts = DBFetcher.fetchAllPostsWithCategories(db, tags, 'E');
                         }
                         addPostsToPane(educationforumPosts, posts);
                     }
@@ -488,7 +488,7 @@ public class EducationFrame extends javax.swing.JFrame {
             String startDate = sqlDateFormat.format(pickerFrom.getDate());
             String endDate = sqlDateFormat.format(pickerTo.getDate());
             removePostsFromPane(educationforumPosts);
-            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString());
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString(), 'E');
             addPostsToPane(educationforumPosts, posts);
         }
     }//GEN-LAST:event_pickerFromActionPerformed
@@ -499,7 +499,7 @@ public class EducationFrame extends javax.swing.JFrame {
             String startDate = sqlDateFormat.format(pickerFrom.getDate());
             String endDate = sqlDateFormat.format(pickerTo.getDate());
             removePostsFromPane(educationforumPosts);
-            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString());
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString(), 'E');
             addPostsToPane(educationforumPosts, posts);
         }
     }//GEN-LAST:event_pickerToActionPerformed
