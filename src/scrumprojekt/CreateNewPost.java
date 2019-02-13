@@ -47,8 +47,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setResizable(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
-        diaChooseCategory.setLocationRelativeTo(null);
-        diaChooseCategory.setResizable(false);
         lblExist.setVisible(false);
         
         openFileChooser = new JFileChooser();
@@ -65,18 +63,6 @@ public class CreateNewPost extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        diaChooseCategory = new javax.swing.JDialog();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        cbxCategory = new javax.swing.JComboBox<>();
-        txtNewCategory = new javax.swing.JTextField();
-        btnAddNewCategory = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        btnChoose = new javax.swing.JButton();
-        lblExist = new javax.swing.JLabel();
         headerPanel = new javax.swing.JPanel();
         labelGoBack = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -85,153 +71,11 @@ public class CreateNewPost extends javax.swing.JFrame {
         textfieldHeadline = new javax.swing.JTextField();
         buttonSubmit = new javax.swing.JButton();
         labelAttatchFile = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-
-        diaChooseCategory.setUndecorated(true);
-        diaChooseCategory.setResizable(false);
-        diaChooseCategory.setSize(new java.awt.Dimension(385, 245));
-
-        jPanel1.setBackground(new java.awt.Color(50, 121, 184));
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel4.setText("Category");
-
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel5.setText("Cancel");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(0, 13, Short.MAX_VALUE))
-        );
-
-        jPanel2.setBackground(new java.awt.Color(250, 249, 246));
-        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel2.setFocusTraversalPolicyProvider(true);
-
-        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teaching", "Important", "News", "Math", "Programming" }));
-        cbxCategory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbxCategoryActionPerformed(evt);
-            }
-        });
-
-        txtNewCategory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewCategoryActionPerformed(evt);
-            }
-        });
-
-        btnAddNewCategory.setText("Add");
-        btnAddNewCategory.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnAddNewCategoryMouseReleased(evt);
-            }
-        });
-        btnAddNewCategory.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddNewCategoryActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        jLabel1.setText("Choose Existing:");
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        jLabel3.setText("Add New:");
-
-        btnChoose.setText("Choose");
-        btnChoose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                btnChooseMouseReleased(evt);
-            }
-        });
-        btnChoose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnChooseActionPerformed(evt);
-            }
-        });
-
-        lblExist.setText("The category already exists");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbxCategory, 0, 100, Short.MAX_VALUE)
-                    .addComponent(txtNewCategory))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnChoose, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAddNewCategory, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(118, Short.MAX_VALUE)
-                .addComponent(lblExist)
-                .addGap(103, 103, 103))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnChoose)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(txtNewCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddNewCategory))
-                .addGap(18, 18, 18)
-                .addComponent(lblExist)
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout diaChooseCategoryLayout = new javax.swing.GroupLayout(diaChooseCategory.getContentPane());
-        diaChooseCategory.getContentPane().setLayout(diaChooseCategoryLayout);
-        diaChooseCategoryLayout.setHorizontalGroup(
-            diaChooseCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        diaChooseCategoryLayout.setVerticalGroup(
-            diaChooseCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(diaChooseCategoryLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        cbxCategory = new javax.swing.JComboBox<>();
+        btnAddNewCategory = new javax.swing.JButton();
+        btnChoose = new javax.swing.JButton();
+        txtNewCategory = new javax.swing.JTextField();
+        lblExist = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -299,11 +143,40 @@ public class CreateNewPost extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Chose Category");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teaching", "Important", "News", "Math", "Programming" }));
+        cbxCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cbxCategoryActionPerformed(evt);
+            }
+        });
+
+        btnAddNewCategory.setText("Add");
+        btnAddNewCategory.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnAddNewCategoryMouseReleased(evt);
+            }
+        });
+        btnAddNewCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewCategoryActionPerformed(evt);
+            }
+        });
+
+        btnChoose.setText("Choose");
+        btnChoose.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnChooseMouseReleased(evt);
+            }
+        });
+        btnChoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChooseActionPerformed(evt);
+            }
+        });
+
+        txtNewCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewCategoryActionPerformed(evt);
             }
         });
 
@@ -322,20 +195,35 @@ public class CreateNewPost extends javax.swing.JFrame {
                             .addComponent(buttonSubmit))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                         .addComponent(textfieldHeadline))
-                    .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnChoose)
+                        .addGap(59, 59, 59)
+                        .addComponent(txtNewCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAddNewCategory)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblExist, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(headerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19)
-                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cbxCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAddNewCategory)
+                        .addComponent(btnChoose)
+                        .addComponent(txtNewCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblExist, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textfieldHeadline, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSubmit)
                     .addComponent(labelAttatchFile))
@@ -359,7 +247,7 @@ public class CreateNewPost extends javax.swing.JFrame {
 
             int post_id = DBInsert.insertPost(db, user_id, category, textfieldHeadline.getText(), textareaPost.getText(), categoryPost);
 
-            JOptionPane.showMessageDialog(rootPane, "Post submitted");
+            
             
             if(openFileChooser.getSelectedFile() != null) {
                 imageToArray();
@@ -373,43 +261,6 @@ public class CreateNewPost extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_buttonSubmitMouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        diaChooseCategory.setVisible(false);
-    }//GEN-LAST:event_jLabel5MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        diaChooseCategory.setVisible(true);
-        ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
-        for(HashMap<String, String> category : list){
-            cbxCategory.addItem(category.get("CATEGORY"));
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void btnAddNewCategoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewCategoryMouseReleased
-        if(!Validate.categoryExist(db, txtNewCategory.getText())){
-            DBInsert.addCategory(db, txtNewCategory.getText());
-            lblExist.setText("Category was added");
-            ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
-            for(HashMap<String, String> category : list){
-                cbxCategory.addItem(category.get("CATEGORY"));
-            }
-            cbxCategory.setSelectedItem(txtNewCategory.getText());
-        }
-        else{
-            lblExist.setVisible(true);
-        }
-    }//GEN-LAST:event_btnAddNewCategoryMouseReleased
-
-    private void txtNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewCategoryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewCategoryActionPerformed
-
-    private void btnChooseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChooseMouseReleased
-        categoryPost = cbxCategory.getSelectedItem().toString();
-        diaChooseCategory.setVisible(false);
-        
-    }//GEN-LAST:event_btnChooseMouseReleased
 
     private void labelAttatchFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelAttatchFileMouseClicked
         // TODO add your handling code here:
@@ -433,13 +284,36 @@ public class CreateNewPost extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxCategoryActionPerformed
 
+    private void btnAddNewCategoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewCategoryMouseReleased
+       if(!Validate.categoryExist(db, txtNewCategory.getText())){
+            DBInsert.addCategory(db, txtNewCategory.getText());
+            lblExist.setText("Category was added");
+            ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
+            for(HashMap<String, String> category : list){
+                cbxCategory.addItem(category.get("CATEGORY"));
+            }
+            cbxCategory.setSelectedItem(txtNewCategory.getText());
+        }
+        else{
+            lblExist.setVisible(true);
+        }
+    }//GEN-LAST:event_btnAddNewCategoryMouseReleased
+
     private void btnAddNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewCategoryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAddNewCategoryActionPerformed
 
+    private void btnChooseMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnChooseMouseReleased
+        categoryPost = cbxCategory.getSelectedItem().toString();
+    }//GEN-LAST:event_btnChooseMouseReleased
+
     private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChooseActionPerformed
+
+    private void txtNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewCategoryActionPerformed
 
     private void imageToArray(){
         int width = originalBI.getWidth();
@@ -515,16 +389,8 @@ public class CreateNewPost extends javax.swing.JFrame {
     private javax.swing.JButton btnChoose;
     private javax.swing.JButton buttonSubmit;
     private javax.swing.JComboBox<String> cbxCategory;
-    private javax.swing.JDialog diaChooseCategory;
     private javax.swing.JPanel headerPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelAttatchFile;
     private javax.swing.JLabel labelGoBack;
