@@ -49,8 +49,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
         diaChooseCategory.setLocationRelativeTo(null);
         diaChooseCategory.setResizable(false);
-        diaChooseCategoryFile.setLocationRelativeTo(null);
-        diaChooseCategoryFile.setResizable(false);
         lblExist.setVisible(false);
         
         openFileChooser = new JFileChooser();
@@ -79,17 +77,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnChoose = new javax.swing.JButton();
         lblExist = new javax.swing.JLabel();
-        diaChooseCategoryFile = new javax.swing.JDialog();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        cbxCategoryFile = new javax.swing.JComboBox<>();
-        txtNewCategoryFile = new javax.swing.JTextField();
-        btnAddNewFile = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        btnChooseFile = new javax.swing.JButton();
         headerPanel = new javax.swing.JPanel();
         labelGoBack = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -99,7 +86,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         buttonSubmit = new javax.swing.JButton();
         labelAttatchFile = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         diaChooseCategory.setUndecorated(true);
         diaChooseCategory.setResizable(false);
@@ -146,6 +132,11 @@ public class CreateNewPost extends javax.swing.JFrame {
         jPanel2.setFocusTraversalPolicyProvider(true);
 
         cbxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teaching", "Important", "News", "Math", "Programming" }));
+        cbxCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCategoryActionPerformed(evt);
+            }
+        });
 
         txtNewCategory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +150,11 @@ public class CreateNewPost extends javax.swing.JFrame {
                 btnAddNewCategoryMouseReleased(evt);
             }
         });
+        btnAddNewCategory.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddNewCategoryActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel1.setText("Choose Existing:");
@@ -170,6 +166,11 @@ public class CreateNewPost extends javax.swing.JFrame {
         btnChoose.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 btnChooseMouseReleased(evt);
+            }
+        });
+        btnChoose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChooseActionPerformed(evt);
             }
         });
 
@@ -230,108 +231,6 @@ public class CreateNewPost extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        diaChooseCategoryFile.setUndecorated(true);
-        diaChooseCategoryFile.setResizable(false);
-        diaChooseCategoryFile.setSize(new java.awt.Dimension(385, 245));
-
-        jPanel3.setBackground(new java.awt.Color(50, 121, 184));
-        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel6.setText("Category");
-
-        jLabel7.setFont(new java.awt.Font("Arial", 1, 13)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel7.setText("Cancel");
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(0, 13, Short.MAX_VALUE))
-        );
-
-        jPanel4.setBackground(new java.awt.Color(250, 249, 246));
-        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel4.setFocusTraversalPolicyProvider(true);
-
-        cbxCategoryFile.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        btnAddNewFile.setText("Add");
-
-        jLabel8.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        jLabel8.setText("Choose Existing:");
-
-        jLabel9.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
-        jLabel9.setText("Add New:");
-
-        btnChooseFile.setText("Choose");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(cbxCategoryFile, 0, 100, Short.MAX_VALUE)
-                    .addComponent(txtNewCategoryFile))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnChooseFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAddNewFile, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbxCategoryFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnChooseFile)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(txtNewCategoryFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAddNewFile))
-                .addContainerGap(88, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout diaChooseCategoryFileLayout = new javax.swing.GroupLayout(diaChooseCategoryFile.getContentPane());
-        diaChooseCategoryFile.getContentPane().setLayout(diaChooseCategoryFileLayout);
-        diaChooseCategoryFileLayout.setHorizontalGroup(
-            diaChooseCategoryFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        diaChooseCategoryFileLayout.setVerticalGroup(
-            diaChooseCategoryFileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(diaChooseCategoryFileLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -408,14 +307,6 @@ public class CreateNewPost extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton2.setText("File Category");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -427,8 +318,6 @@ public class CreateNewPost extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(labelAttatchFile)
-                            .addGap(18, 18, 18)
-                            .addComponent(jButton2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonSubmit))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
@@ -449,8 +338,7 @@ public class CreateNewPost extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonSubmit)
-                    .addComponent(labelAttatchFile)
-                    .addComponent(jButton2))
+                    .addComponent(labelAttatchFile))
                 .addGap(0, 26, Short.MAX_VALUE))
         );
 
@@ -498,10 +386,6 @@ public class CreateNewPost extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        diaChooseCategoryFile.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     private void btnAddNewCategoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewCategoryMouseReleased
         if(!Validate.categoryExist(db, txtNewCategory.getText())){
             DBInsert.addCategory(db, txtNewCategory.getText());
@@ -544,6 +428,18 @@ public class CreateNewPost extends javax.swing.JFrame {
             //lblMessage.setText("No file Choosen");
         }
     }//GEN-LAST:event_labelAttatchFileMouseClicked
+
+    private void cbxCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCategoryActionPerformed
+
+    private void btnAddNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddNewCategoryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAddNewCategoryActionPerformed
+
+    private void btnChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChooseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnChooseActionPerformed
 
     private void imageToArray(){
         int width = originalBI.getWidth();
@@ -616,30 +512,19 @@ public class CreateNewPost extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddNewCategory;
-    private javax.swing.JButton btnAddNewFile;
     private javax.swing.JButton btnChoose;
-    private javax.swing.JButton btnChooseFile;
     private javax.swing.JButton buttonSubmit;
     private javax.swing.JComboBox<String> cbxCategory;
-    private javax.swing.JComboBox<String> cbxCategoryFile;
     private javax.swing.JDialog diaChooseCategory;
-    private javax.swing.JDialog diaChooseCategoryFile;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelAttatchFile;
     private javax.swing.JLabel labelGoBack;
@@ -647,6 +532,5 @@ public class CreateNewPost extends javax.swing.JFrame {
     private javax.swing.JTextArea textareaPost;
     private javax.swing.JTextField textfieldHeadline;
     private javax.swing.JTextField txtNewCategory;
-    private javax.swing.JTextField txtNewCategoryFile;
     // End of variables declaration//GEN-END:variables
 }

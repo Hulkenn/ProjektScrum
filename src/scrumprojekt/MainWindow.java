@@ -389,17 +389,25 @@ public class MainWindow extends javax.swing.JFrame {
 
         panelOpenSocial.setBackground(new java.awt.Color(50, 121, 184));
         panelOpenSocial.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelOpenSocialMouseEntered(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelOpenSocialMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelOpenSocialMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelOpenSocialMouseEntered(evt);
             }
         });
 
         labelOpenSocial.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelOpenSocial.setForeground(new java.awt.Color(250, 249, 246));
         labelOpenSocial.setText("Social");
+        labelOpenSocial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelOpenSocialMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelOpenSocialLayout = new javax.swing.GroupLayout(panelOpenSocial);
         panelOpenSocial.setLayout(panelOpenSocialLayout);
@@ -420,17 +428,25 @@ public class MainWindow extends javax.swing.JFrame {
 
         panelOpenResearch.setBackground(new java.awt.Color(50, 121, 184));
         panelOpenResearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                panelOpenResearchMouseEntered(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelOpenResearchMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 panelOpenResearchMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelOpenResearchMouseEntered(evt);
             }
         });
 
         labelOpenResearch.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         labelOpenResearch.setForeground(new java.awt.Color(250, 249, 246));
         labelOpenResearch.setText("Research");
+        labelOpenResearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                labelOpenResearchMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelOpenResearchLayout = new javax.swing.GroupLayout(panelOpenResearch);
         panelOpenResearch.setLayout(panelOpenResearchLayout);
@@ -2994,6 +3010,26 @@ public class MainWindow extends javax.swing.JFrame {
     private void day31MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day31MouseExited
         day31.setBackground(new Color(204, 204, 204));
     }//GEN-LAST:event_day31MouseExited
+
+    private void panelOpenResearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenResearchMouseClicked
+        new ResearchFrame1(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_panelOpenResearchMouseClicked
+
+    private void labelOpenResearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenResearchMouseClicked
+        new ResearchFrame1(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelOpenResearchMouseClicked
+
+    private void panelOpenSocialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenSocialMouseClicked
+        new SocialFrame(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_panelOpenSocialMouseClicked
+
+    private void labelOpenSocialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelOpenSocialMouseClicked
+        new SocialFrame(db, user_id).setVisible(true);
+        dispose();
+    }//GEN-LAST:event_labelOpenSocialMouseClicked
 
                          
 
