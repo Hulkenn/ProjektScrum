@@ -42,7 +42,6 @@ public class postPanel extends javax.swing.JPanel {
             post.next();
             user = DBFetcher.fetchUser(conn, post.getInt("EMPLOYEE_IDEMPLOYEE"));
             user.next();
-            System.out.println(user.getString("FIRSTNAME"));
             
             headlinePostOne.setText(post.getString("HEADLINE"));
             datePostOne.setText(post.getString("POSTDATE"));

@@ -51,7 +51,6 @@ public class LoginFrame extends javax.swing.JFrame {
                 } else {
                     char[] correct_password = user.getString("PASSWORD").toCharArray();
                     char[] input_password = pfPassword.getPassword();
-                    System.out.println(correct_password + " " + input_password);
                     //If the password is correct
                     if(Arrays.equals(input_password, correct_password)) {
                         //Logging in

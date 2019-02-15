@@ -3377,7 +3377,6 @@ public class MainWindow extends javax.swing.JFrame {
                 while(events_month.next()) {
                     Date date = events_month.getDate("EVENTDATE");
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    System.out.println(sdf.format(date).toString());
                     String[] dateString = sdf.format(date).toString().split("-");
                     int currDay = Integer.parseInt(dateString[2]);
                     JLabel lbl = convertDay(currDay);
