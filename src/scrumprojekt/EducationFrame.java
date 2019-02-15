@@ -202,7 +202,6 @@ public class EducationFrame extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         lblGoBack = new javax.swing.JLabel();
         lblUpdate = new javax.swing.JLabel();
-        educationforumPosts = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -212,9 +211,14 @@ public class EducationFrame extends javax.swing.JFrame {
         pickerFrom = new org.jdesktop.swingx.JXDatePicker();
         pickerTo = new org.jdesktop.swingx.JXDatePicker();
         jLabel3 = new javax.swing.JLabel();
+        panelScrollSide = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         pnlCategory = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        panelScroll = new javax.swing.JPanel();
+        educationforumPosts = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -270,7 +274,7 @@ public class EducationFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, educationHeaderLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addComponent(jLabel25)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 566, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCreateNewPost)
                 .addGroup(educationHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(educationHeaderLayout.createSequentialGroup()
@@ -295,20 +299,6 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        educationforumPosts.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        educationforumPosts.setPreferredSize(new java.awt.Dimension(1170, 540));
-
-        javax.swing.GroupLayout educationforumPostsLayout = new javax.swing.GroupLayout(educationforumPosts);
-        educationforumPosts.setLayout(educationforumPostsLayout);
-        educationforumPostsLayout.setHorizontalGroup(
-            educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
-        );
-        educationforumPostsLayout.setVerticalGroup(
-            educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 549, Short.MAX_VALUE)
-        );
-
         jPanel1.setBackground(new java.awt.Color(250, 249, 246));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -325,7 +315,7 @@ public class EducationFrame extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +371,7 @@ public class EducationFrame extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(pickerFrom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -399,6 +389,8 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
+        panelScrollSide.setBackground(new java.awt.Color(250, 249, 246));
+
         pnlCategory.setBackground(new java.awt.Color(50, 121, 184));
         pnlCategory.setPreferredSize(new java.awt.Dimension(300, 262));
 
@@ -413,17 +405,36 @@ public class EducationFrame extends javax.swing.JFrame {
             .addGroup(pnlCategoryLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(214, Short.MAX_VALUE))
         );
         pnlCategoryLayout.setVerticalGroup(
             pnlCategoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlCategoryLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(247, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(pnlCategory);
+
+        jScrollPane3.setViewportView(jScrollPane1);
+
+        javax.swing.GroupLayout panelScrollSideLayout = new javax.swing.GroupLayout(panelScrollSide);
+        panelScrollSide.setLayout(panelScrollSideLayout);
+        panelScrollSideLayout.setHorizontalGroup(
+            panelScrollSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScrollSideLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
+        );
+        panelScrollSideLayout.setVerticalGroup(
+            panelScrollSideLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScrollSideLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -432,9 +443,12 @@ public class EducationFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(panelScrollSide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -443,24 +457,55 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelScrollSide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        educationforumPosts.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        educationforumPosts.setPreferredSize(new java.awt.Dimension(1170, 540));
+
+        javax.swing.GroupLayout educationforumPostsLayout = new javax.swing.GroupLayout(educationforumPosts);
+        educationforumPosts.setLayout(educationforumPostsLayout);
+        educationforumPostsLayout.setHorizontalGroup(
+            educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
+        );
+        educationforumPostsLayout.setVerticalGroup(
+            educationforumPostsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 591, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout panelScrollLayout = new javax.swing.GroupLayout(panelScroll);
+        panelScroll.setLayout(panelScrollLayout);
+        panelScrollLayout.setHorizontalGroup(
+            panelScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScrollLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(educationforumPosts, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelScrollLayout.setVerticalGroup(
+            panelScrollLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScrollLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(educationforumPosts, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jScrollPane2.setViewportView(panelScroll);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(educationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(educationforumPosts, javax.swing.GroupLayout.PREFERRED_SIZE, 824, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 860, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(educationHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 1239, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,8 +513,8 @@ public class EducationFrame extends javax.swing.JFrame {
                 .addComponent(educationHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(educationforumPosts, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 601, Short.MAX_VALUE)))
         );
 
         pack();
@@ -477,7 +522,7 @@ public class EducationFrame extends javax.swing.JFrame {
 
     private void lblCreateNewPostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateNewPostMouseClicked
         // TODO add your handling code here:
-        new CreateNewPost(conn, user_id, 'E').setVisible(true);
+        new CreateNewPost(conn, user_id, "E").setVisible(true);
     }//GEN-LAST:event_lblCreateNewPostMouseClicked
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
@@ -569,10 +614,14 @@ public class EducationFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCreateNewPost;
     private javax.swing.JLabel lblCreateNewPost1;
     private javax.swing.JLabel lblGoBack;
     private javax.swing.JLabel lblUpdate;
+    private javax.swing.JPanel panelScroll;
+    private javax.swing.JPanel panelScrollSide;
     private org.jdesktop.swingx.JXDatePicker pickerFrom;
     private org.jdesktop.swingx.JXDatePicker pickerTo;
     private javax.swing.JPanel pnlCategory;

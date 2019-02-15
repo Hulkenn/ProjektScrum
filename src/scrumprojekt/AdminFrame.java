@@ -834,7 +834,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void btnAddUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserMouseClicked
 
-        //DBInsert.addUser(db, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
+        DBInsert.addUser(conn, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
     }//GEN-LAST:event_btnAddUserMouseClicked
 
     /**
@@ -861,8 +861,12 @@ public class AdminFrame extends javax.swing.JFrame {
                 rank = 1;
                 break;
         }
-
-        //DBUpdate.updateUser(db, Integer.parseInt(employees.get(cbxEmployee.getSelectedIndex()).get("IDEMPLOYEE")), rank, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
+        try {
+            employees.absolute(cbxEmployee.getSelectedIndex() + 1);
+            DBUpdate.updateUser(conn, employees.getInt("IDEMPLOYEE"), rank, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
+        } catch(SQLException e) {
+            
+        }
         diaEditUser.setVisible(false);
     }//GEN-LAST:event_btnEditUserMouseClicked
 
@@ -906,8 +910,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void btnRemoveUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveUserMouseClicked
         try {
             employees.absolute(cbxRemoveUser.getSelectedIndex() + 1);
-            ResultSet selected_user = employees;
-            //DBDelete.removeUser(db, Integer.parseInt(selected_user.get("IDEMPLOYEE")));
+            DBDelete.removeUser(conn, employees.getInt("IDEMPLOYEE"));
             diaRemoveUser.setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);

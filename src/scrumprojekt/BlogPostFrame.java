@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -483,12 +485,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private void lblPostCommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostCommentMouseClicked
         // TODO add your handling code here:
         //Add post
-//        if(!Validate.areaWindowIsEmpty(taComment)) {
-//            DBInsert.insertComment(db, user_id, post_id, taComment.getText());
-//            taComment.setText("");
-//            jpContainer.removeAll();
-//            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
-//        }
+        if(!Validate.areaWindowIsEmpty(taComment)) {
+            DBInsert.insertComment(conn, user_id, post_id, taComment.getText());
+            taComment.setText("");
+            jpContainer.removeAll();
+            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, conn);
+        }
     }//GEN-LAST:event_lblPostCommentMouseClicked
 
     private void lblResearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResearchMouseEntered
@@ -516,8 +518,13 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseExited
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
-    dispose();
-    //new EducationFrame(db, user_id).setVisible(true);
+        
+        try {
+            new EducationFrame(conn, user_id).setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked

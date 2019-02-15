@@ -186,13 +186,9 @@ public class MainWindow extends javax.swing.JFrame {
         day30 = new javax.swing.JPanel();
         lblDay30 = new javax.swing.JLabel();
         lblEvent30 = new javax.swing.JLabel();
-        tfDate = new javax.swing.JTextField();
         day31 = new javax.swing.JPanel();
         lblDay31 = new javax.swing.JLabel();
         lblEvent31 = new javax.swing.JLabel();
-        btnAddEvent = new javax.swing.JButton();
-        tfDecription = new javax.swing.JTextField();
-        tfTag = new javax.swing.JTextField();
         cbxMonth1 = new javax.swing.JComboBox<>();
         cbxYear1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
@@ -200,6 +196,8 @@ public class MainWindow extends javax.swing.JFrame {
         lblDate = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
         diaEditUser.setUndecorated(true);
         diaEditUser.setSize(new java.awt.Dimension(452, 435));
@@ -656,14 +654,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day1.setBackground(new java.awt.Color(204, 204, 204));
         day1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day1MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day1MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day1MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day1MouseEntered(evt);
             }
         });
 
@@ -702,14 +697,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day2.setBackground(new java.awt.Color(204, 204, 204));
         day2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day2MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day2MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day2MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day2MouseEntered(evt);
             }
         });
 
@@ -748,14 +740,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day3.setBackground(new java.awt.Color(204, 204, 204));
         day3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day3MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day3MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day3MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day3MouseEntered(evt);
             }
         });
 
@@ -794,14 +783,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day4.setBackground(new java.awt.Color(204, 204, 204));
         day4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day4MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day4MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day4MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day4MouseEntered(evt);
             }
         });
 
@@ -840,14 +826,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day5.setBackground(new java.awt.Color(204, 204, 204));
         day5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day5MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day5MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day5MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day5MouseEntered(evt);
             }
         });
 
@@ -886,14 +869,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day6.setBackground(new java.awt.Color(204, 204, 204));
         day6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day6MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day6MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day6MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day6MouseEntered(evt);
             }
         });
 
@@ -932,14 +912,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day7.setBackground(new java.awt.Color(204, 204, 204));
         day7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day7MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day7MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day7MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day7MouseEntered(evt);
             }
         });
 
@@ -978,14 +955,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day8.setBackground(new java.awt.Color(204, 204, 204));
         day8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day8MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day8MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day8MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day8MouseEntered(evt);
             }
         });
 
@@ -1024,14 +998,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day9.setBackground(new java.awt.Color(204, 204, 204));
         day9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day9MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day9MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day9MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day9MouseEntered(evt);
             }
         });
 
@@ -1070,14 +1041,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day10.setBackground(new java.awt.Color(204, 204, 204));
         day10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day10MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day10MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day10MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day10MouseEntered(evt);
             }
         });
 
@@ -1116,14 +1084,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day11.setBackground(new java.awt.Color(204, 204, 204));
         day11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day11MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day11MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day11MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day11MouseEntered(evt);
             }
         });
 
@@ -1162,14 +1127,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day12.setBackground(new java.awt.Color(204, 204, 204));
         day12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day12MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day12MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day12MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day12MouseEntered(evt);
             }
         });
 
@@ -1208,14 +1170,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day13.setBackground(new java.awt.Color(204, 204, 204));
         day13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day13MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day13MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day13MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day13MouseEntered(evt);
             }
         });
 
@@ -1254,14 +1213,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day14.setBackground(new java.awt.Color(204, 204, 204));
         day14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day14MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day14MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day14MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day14MouseEntered(evt);
             }
         });
 
@@ -1300,14 +1256,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day15.setBackground(new java.awt.Color(204, 204, 204));
         day15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day15MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day15MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day15MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day15MouseEntered(evt);
             }
         });
 
@@ -1346,14 +1299,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day16.setBackground(new java.awt.Color(204, 204, 204));
         day16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day16MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day16MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day16MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day16MouseEntered(evt);
             }
         });
 
@@ -1392,14 +1342,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day17.setBackground(new java.awt.Color(204, 204, 204));
         day17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day17MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day17MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day17MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day17MouseEntered(evt);
             }
         });
 
@@ -1438,14 +1385,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day18.setBackground(new java.awt.Color(204, 204, 204));
         day18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day18MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day18MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day18MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day18MouseEntered(evt);
             }
         });
 
@@ -1484,14 +1428,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day19.setBackground(new java.awt.Color(204, 204, 204));
         day19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day19MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day19MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day19MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day19MouseEntered(evt);
             }
         });
 
@@ -1530,14 +1471,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         dau20.setBackground(new java.awt.Color(204, 204, 204));
         dau20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dau20MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dau20MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 dau20MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dau20MouseEntered(evt);
             }
         });
 
@@ -1576,14 +1514,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day21.setBackground(new java.awt.Color(204, 204, 204));
         day21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day21MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day21MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day21MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day21MouseEntered(evt);
             }
         });
 
@@ -1622,14 +1557,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day22.setBackground(new java.awt.Color(204, 204, 204));
         day22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day22MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day22MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day22MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day22MouseEntered(evt);
             }
         });
 
@@ -1668,14 +1600,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day23.setBackground(new java.awt.Color(204, 204, 204));
         day23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day23MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day23MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day23MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day23MouseEntered(evt);
             }
         });
 
@@ -1714,14 +1643,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day24.setBackground(new java.awt.Color(204, 204, 204));
         day24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day24MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day24MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day24MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day24MouseEntered(evt);
             }
         });
 
@@ -1760,14 +1686,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day25.setBackground(new java.awt.Color(204, 204, 204));
         day25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day25MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day25MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day25MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day25MouseEntered(evt);
             }
         });
 
@@ -1806,14 +1729,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day26.setBackground(new java.awt.Color(204, 204, 204));
         day26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day26MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day26MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day26MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day26MouseEntered(evt);
             }
         });
 
@@ -1852,14 +1772,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day27.setBackground(new java.awt.Color(204, 204, 204));
         day27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day27MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day27MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day27MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day27MouseEntered(evt);
             }
         });
 
@@ -1898,14 +1815,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day28.setBackground(new java.awt.Color(204, 204, 204));
         day28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day28MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day28MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day28MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day28MouseEntered(evt);
             }
         });
 
@@ -1944,14 +1858,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day29.setBackground(new java.awt.Color(204, 204, 204));
         day29.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day29MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day29MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day29MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day29MouseEntered(evt);
             }
         });
 
@@ -1990,14 +1901,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         day30.setBackground(new java.awt.Color(204, 204, 204));
         day30.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day30MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day30MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day30MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day30MouseEntered(evt);
             }
         });
 
@@ -2034,19 +1942,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         bg1.add(day30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, -1, -1));
 
-        tfDate.setText("Datum");
-        bg1.add(tfDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 680, 150, 40));
-
         day31.setBackground(new java.awt.Color(204, 204, 204));
         day31.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                day31MouseClicked(evt);
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day31MouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day31MouseExited(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day31MouseEntered(evt);
             }
         });
 
@@ -2082,20 +1984,6 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         bg1.add(day31, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
-
-        btnAddEvent.setText("Add");
-        btnAddEvent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddEventActionPerformed(evt);
-            }
-        });
-        bg1.add(btnAddEvent, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 680, -1, 40));
-
-        tfDecription.setText("Event");
-        bg1.add(tfDecription, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 680, 290, 40));
-
-        tfTag.setText("Tagg");
-        bg1.add(tfTag, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 680, 90, 40));
 
         cbxMonth1.setBackground(new java.awt.Color(50, 121, 184));
         cbxMonth1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -2171,6 +2059,37 @@ public class MainWindow extends javax.swing.JFrame {
         );
 
         bg1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 680, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(250, 249, 246));
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel3.setText("Add Event");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel3)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+
+        bg1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 130, 40));
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
@@ -2281,7 +2200,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnEditUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditUserMouseClicked
 
-        //DBUpdate.updateAsUser(conn, user_id, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
+        DBUpdate.updateAsUser(conn, user_id, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
         diaEditUser.setVisible(false);
     }//GEN-LAST:event_btnEditUserMouseClicked
 
@@ -2368,11 +2287,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent1MouseClicked
 
-    private void day1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day1MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay1.getText());
-    }//GEN-LAST:event_day1MouseClicked
-
     private void lblEvent2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent2MouseClicked
         if (!lblEvent2.getText().isEmpty()) {
             try {
@@ -2384,11 +2298,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent2MouseClicked
-
-    private void day2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day2MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay2.getText());
-    }//GEN-LAST:event_day2MouseClicked
 
     private void lblEvent3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent3MouseClicked
         if (!lblEvent3.getText().isEmpty()) {
@@ -2402,11 +2311,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent3MouseClicked
 
-    private void day3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day3MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay3.getText());
-    }//GEN-LAST:event_day3MouseClicked
-
     private void lblEvent4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent4MouseClicked
         if (!lblEvent4.getText().isEmpty()) {
             try {
@@ -2418,11 +2322,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent4MouseClicked
-
-    private void day4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day4MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay4.getText());
-    }//GEN-LAST:event_day4MouseClicked
 
     private void lblEvent5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent5MouseClicked
         if (!lblEvent5.getText().isEmpty()) {
@@ -2436,11 +2335,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent5MouseClicked
 
-    private void day5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day5MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay5.getText());
-    }//GEN-LAST:event_day5MouseClicked
-
     private void lblEvent6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent6MouseClicked
         if (!lblEvent6.getText().isEmpty()) {
             try {
@@ -2452,11 +2346,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent6MouseClicked
-
-    private void day6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day6MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay6.getText());
-    }//GEN-LAST:event_day6MouseClicked
 
     private void lblEvent7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent7MouseClicked
         if (!lblEvent7.getText().isEmpty()) {
@@ -2470,11 +2359,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent7MouseClicked
 
-    private void day7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day7MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay7.getText());
-    }//GEN-LAST:event_day7MouseClicked
-
     private void lblEvent8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent8MouseClicked
         if (!lblEvent8.getText().isEmpty()) {
             try {
@@ -2486,11 +2370,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent8MouseClicked
-
-    private void day8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day8MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay8.getText());
-    }//GEN-LAST:event_day8MouseClicked
 
     private void lblEvent9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent9MouseClicked
         if (!lblEvent9.getText().isEmpty()) {
@@ -2504,11 +2383,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent9MouseClicked
 
-    private void day9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day9MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay9.getText());
-    }//GEN-LAST:event_day9MouseClicked
-
     private void lblEvent10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent10MouseClicked
         if (!lblEvent10.getText().isEmpty()) {
             try {
@@ -2520,11 +2394,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent10MouseClicked
-
-    private void day10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day10MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay10.getText());
-    }//GEN-LAST:event_day10MouseClicked
 
     private void lblEvent11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent11MouseClicked
         if (!lblEvent12.getText().isEmpty()) {
@@ -2538,11 +2407,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent11MouseClicked
 
-    private void day11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day11MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay11.getText());
-    }//GEN-LAST:event_day11MouseClicked
-
     private void lblEvent12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent12MouseClicked
         if (!lblEvent12.getText().isEmpty()) {
             try {
@@ -2554,11 +2418,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent12MouseClicked
-
-    private void day12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day12MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay12.getText());
-    }//GEN-LAST:event_day12MouseClicked
 
     private void lblEvent13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent13MouseClicked
         if (!lblEvent13.getText().isEmpty()) {
@@ -2572,11 +2431,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent13MouseClicked
 
-    private void day13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day13MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay13.getText());
-    }//GEN-LAST:event_day13MouseClicked
-
     private void lblEvent14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent14MouseClicked
         if (!lblEvent14.getText().isEmpty()) {
             try {
@@ -2588,11 +2442,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent14MouseClicked
-
-    private void day14MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day14MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay14.getText());
-    }//GEN-LAST:event_day14MouseClicked
 
     private void lblEvent15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent15MouseClicked
         if (!lblEvent15.getText().isEmpty()) {
@@ -2606,11 +2455,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent15MouseClicked
 
-    private void day15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day15MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay15.getText());
-    }//GEN-LAST:event_day15MouseClicked
-
     private void lblEvent16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent16MouseClicked
         if (!lblEvent16.getText().isEmpty()) {
             try {
@@ -2622,11 +2466,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent16MouseClicked
-
-    private void day16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day16MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay16.getText());
-    }//GEN-LAST:event_day16MouseClicked
 
     private void lblEvent17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent17MouseClicked
         if (!lblEvent17.getText().isEmpty()) {
@@ -2640,11 +2479,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent17MouseClicked
 
-    private void day17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day17MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay17.getText());
-    }//GEN-LAST:event_day17MouseClicked
-
     private void lblEvent18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent18MouseClicked
         if (!lblEvent18.getText().isEmpty()) {
             try {
@@ -2656,11 +2490,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent18MouseClicked
-
-    private void day18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day18MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay18.getText());
-    }//GEN-LAST:event_day18MouseClicked
 
     private void lblEvent19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent19MouseClicked
         if (!lblEvent19.getText().isEmpty()) {
@@ -2674,11 +2503,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent19MouseClicked
 
-    private void day19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day19MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay19.getText());
-    }//GEN-LAST:event_day19MouseClicked
-
     private void lblEvent20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent20MouseClicked
         if (!lblEvent20.getText().isEmpty()) {
             try {
@@ -2690,11 +2514,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent20MouseClicked
-
-    private void dau20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dau20MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay20.getText());
-    }//GEN-LAST:event_dau20MouseClicked
 
     private void lblEvent21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent21MouseClicked
         if (!lblEvent21.getText().isEmpty()) {
@@ -2708,11 +2527,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent21MouseClicked
 
-    private void day21MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day21MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay21.getText());
-    }//GEN-LAST:event_day21MouseClicked
-
     private void lblEvent22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent22MouseClicked
         if (!lblEvent22.getText().isEmpty()) {
             try {
@@ -2724,11 +2538,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent22MouseClicked
-
-    private void day22MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day22MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay22.getText());
-    }//GEN-LAST:event_day22MouseClicked
 
     private void lblEvent23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent23MouseClicked
         if (!lblEvent23.getText().isEmpty()) {
@@ -2742,11 +2551,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent23MouseClicked
 
-    private void day23MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day23MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay23.getText());
-    }//GEN-LAST:event_day23MouseClicked
-
     private void lblEvent24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent24MouseClicked
         if (!lblEvent24.getText().isEmpty()) {
             try {
@@ -2758,11 +2562,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent24MouseClicked
-
-    private void day24MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day24MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay24.getText());
-    }//GEN-LAST:event_day24MouseClicked
 
     private void lblEvent25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent25MouseClicked
         if (!lblEvent25.getText().isEmpty()) {
@@ -2776,11 +2575,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent25MouseClicked
 
-    private void day25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day25MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay25.getText());
-    }//GEN-LAST:event_day25MouseClicked
-
     private void lblEvent26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent26MouseClicked
         if (!lblEvent26.getText().isEmpty()) {
             try {
@@ -2792,11 +2586,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent26MouseClicked
-
-    private void day26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day26MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay26.getText());
-    }//GEN-LAST:event_day26MouseClicked
 
     private void lblEvent27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent27MouseClicked
         if (!lblEvent27.getText().isEmpty()) {
@@ -2810,11 +2599,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent27MouseClicked
 
-    private void day27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day27MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay27.getText());
-    }//GEN-LAST:event_day27MouseClicked
-
     private void lblEvent28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent28MouseClicked
         if (!lblEvent28.getText().isEmpty()) {
             try {
@@ -2826,11 +2610,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent28MouseClicked
-
-    private void day28MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day28MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay28.getText());
-    }//GEN-LAST:event_day28MouseClicked
 
     private void lblEvent29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent29MouseClicked
         if (!lblEvent29.getText().isEmpty()) {
@@ -2844,11 +2623,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent29MouseClicked
 
-    private void day29MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day29MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay29.getText());
-    }//GEN-LAST:event_day29MouseClicked
-
     private void lblEvent30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent30MouseClicked
         if (!lblEvent30.getText().isEmpty()) {
             try {
@@ -2861,11 +2635,6 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblEvent30MouseClicked
 
-    private void day30MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day30MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay30.getText());
-    }//GEN-LAST:event_day30MouseClicked
-
     private void lblEvent31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEvent31MouseClicked
         if (!lblEvent31.getText().isEmpty()) {
             try {
@@ -2877,21 +2646,6 @@ public class MainWindow extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_lblEvent31MouseClicked
-
-    private void day31MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_day31MouseClicked
-        String monthString = convertMonth(cbxMonth1.getSelectedItem().toString());
-        tfDate.setText(cbxYear1.getSelectedItem().toString() + "-" + monthString + "-" + lblDay31.getText());
-    }//GEN-LAST:event_day31MouseClicked
-
-    private void btnAddEventActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEventActionPerformed
-//        DBInsert.insertEvent(conn, tfDate.getText(), tfDecription.getText(), user_id);
-//        String[] days = tfDate.getText().split("-");
-//        String stringDay = days[2];
-//        int intDay = Integer.parseInt(stringDay);
-//        JLabel lbl = convertDay(intDay);
-//        lbl.setText("Events...");
-
-    }//GEN-LAST:event_btnAddEventActionPerformed
 
     private void cbxYear1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxYear1ItemStateChanged
         resetDays();
@@ -3194,6 +2948,11 @@ public class MainWindow extends javax.swing.JFrame {
             Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_labelOpenSocialMouseClicked
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        new InviteFrame(conn, user_id).setVisible(true);
+    }//GEN-LAST:event_jPanel2MouseClicked
 
                          
 
@@ -3825,7 +3584,6 @@ public class MainWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg1;
-    private javax.swing.JButton btnAddEvent;
     private javax.swing.JButton btnEditUser;
     private javax.swing.JLabel cancelEditUser;
     private javax.swing.JComboBox<String> cbxMonth1;
@@ -3870,8 +3628,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel labelOpenEducation;
@@ -3953,13 +3713,10 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel pnlExit;
     private javax.swing.JPanel pnlLogOut;
     private javax.swing.JTextField tfAcademic;
-    private javax.swing.JTextField tfDate;
-    private javax.swing.JTextField tfDecription;
     private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFirstname;
     private javax.swing.JTextField tfLastname;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfPhone;
-    private javax.swing.JTextField tfTag;
     // End of variables declaration//GEN-END:variables
 }

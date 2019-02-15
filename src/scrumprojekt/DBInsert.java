@@ -5,6 +5,10 @@
  */
 package scrumprojekt;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -24,82 +28,83 @@ public class DBInsert {
     
     /**
      * 
-     * @param db
+     * @param con
      * @param user_id
      * @param category
      * @param headline
-     * @param text 
-     * @return returns 0 if fails, otherwise the id of the new post
+     * @param text
+     * @param tag
+     * @return
+     * @throws SQLException 
      */
-    public static int insertPost(InfDB db, int user_id, char category, String headline, String text, String tag) {
+    public static int insertPost(Connection con, int user_id, String category, String headline, String text, String tag)
+    throws SQLException {
+        int post_id = 0;
+        Statement stmt = null;
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.now();
-        String curr_date = dtf.format(localDate);
-        int post_id = 0;
+        String currdate = dtf.format(localDate);
+
         try {
-            post_id = Integer.parseInt(db.getAutoIncrement("POST", "IDPOST"));
-            db.insert("INSERT INTO POST VALUES(" + post_id + ", '" + text + "', '" + curr_date + "', 0, " + user_id + ", '" + headline + "', '" + category + "', '" + tag + "')");
-        }
-        catch(InfException e) {
-            System.out.println("FAILED TO MAKE POST");
+            post_id = 0;
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM POST");
+
+            uprs.moveToInsertRow();
+            uprs.updateString("TEXT", text);
+            uprs.updateString("POSTDATE", currdate);
+            uprs.updateString("ISDELETED", "0");
+            uprs.updateInt("EMPLOYEE_IDEMPLOYEE", user_id);
+            uprs.updateString("HEADLINE", headline);
+            uprs.updateString("CATEGORY", category);
+            uprs.updateString("TAG", tag);
+
+            uprs.insertRow();
+            uprs.beforeFirst();
+        } catch (SQLException e ) {
+            System.out.println(e);
         }
         return post_id;
-    }
+    }    
     
-    public static void insertComment(InfDB db, int user_id, int post_id, String text) {
+    public static void insertComment(Connection con, int user_id, int post_id, String text) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate localDate = LocalDate.now();
         String curr_date = dtf.format(localDate);
+        Statement stmt = null;
         try {
-            int comment_id = Integer.parseInt(db.getAutoIncrement("COMMENTS", "COMMENT_ID"));
-            db.insert("INSERT INTO COMMENTS VALUES(" + comment_id + ", '" + text + "', 0, '" + curr_date + "', " + user_id + ", " + post_id + ");");
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM COMMENTS");
+
+            uprs.moveToInsertRow();
+            uprs.updateString("COMMENT", text);
+            uprs.updateString("COMMENT_DATE", curr_date);
+            uprs.updateInt("EMPLOYEE_IDEMPLOYEE", user_id);
+            uprs.updateInt("POST_IDPOST", post_id);
+            uprs.updateInt("ISDELETED", 0);
+            
+            uprs.insertRow();
+            uprs.beforeFirst();
         }
-        catch(InfException e) {
+        catch(SQLException ex) {
             System.out.println("GÅR INTE ATT LÄGGA TILL KOMMENTAR XD");
         }
     }
     
-    /**
-     *
-     * @param db
-     * @param date
-     * @param description
-     */
-    public static void insertEvent(InfDB db, String date, String description, int user_id) {
-        int id = 0;
-        try {
-            id = Integer.parseInt(db.getAutoIncrement("EVENTS", "IDEVENTS"));
-        } catch (InfException ex) {
-            System.out.println("Error");
-        }
-
-        try {
-            db.insert("INSERT INTO EVENTS VALUES(" + id + ",'" + date + "','" + description + "',0,0," + user_id + ")");
-        } catch (InfException e) {
-            System.out.println("något gick fel");
-        }
-    }
     
-    public static void addUser(InfDB db, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1)
-    {
-        
-        String id="";
+    
+    
+    public static void addUser(Connection con, JTextField first1, JTextField last1, JTextField email1, JComboBox rank2, JTextField phone1, JTextField status1) {
+
+        Statement stmt = null;
         Random r = new Random( System.currentTimeMillis() );
-        int RandomPass = (1 + r.nextInt(2)) * 10000 + r.nextInt(10000);
-        int rank1=0;
-        try {
-            id = db.getAutoIncrement("EMPLOYEE", "IDEMPLOYEE");
-            System.out.println("ID Found");
-        } catch (InfException ex) {
-            Logger.getLogger(DBInsert.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        String first = first1.getText();
-        String last = last1.getText();
-        String email= email1.getText();
+        int randomPass = (1 + r.nextInt(2)) * 10000 + r.nextInt(10000);
         String rank = rank2.getSelectedItem().toString();
-        String phone = phone1.getText();
-        String status = status1.getText();
+        int rank1 = 0;
         
         //Central Administrator, Education Administrator, Reseach Administrator, Research User, Education User
         if (rank.equals("Central Administrator"))
@@ -123,32 +128,81 @@ public class DBInsert {
             rank1=1;
         }
         
-        String sql = "INSERT INTO EMPLOYEE (IDEMPLOYEE, FIRSTNAME, LASTNAME, EMAIL, RANK, PHONENUMBER, ACADEMICSTATUS, PASSWORD) VALUES ("+id+",'"+first+"','"+last+"','"+email+"',"+rank1+",'"+phone+"','"+status+"','"+RandomPass+"')";
         
-        if((!Validate.textWindowIsEmpty(first1))&&(!Validate.textWindowIsEmpty(last1))&&(!Validate.textWindowIsEmpty(email1))&&(!Validate.textWindowIsEmpty(phone1))&&(!Validate.textWindowIsEmpty(status1))&&(Validate.StringisString(first1))&&(Validate.StringisString(last1))&&(Validate.isValidEmailAddress(email1))&&(Validate.phoneNumber(phone1)))
-        {
-           
-            try
-            {
-                db.insert(sql);
-                JOptionPane.showMessageDialog(null, first+" "+last+" has been added!");
-            }
-            catch (InfException ex) {
-                Logger.getLogger(DBInsert.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM EMPLOYEE");
+
+            uprs.moveToInsertRow();
+            uprs.updateString("FIRSTNAME", first1.getText());
+            uprs.updateString("LASTNAME", last1.getText());
+            uprs.updateString("EMAIL", email1.getText());
+            uprs.updateInt("RANK", rank1);
+            uprs.updateString("PHONENUMBER", phone1.getText());
+            uprs.updateString("ACADEMICSTATUS", status1.getText());
+            uprs.updateString("PASSWORD", Integer.toString(randomPass));
+            uprs.updateInt("ISDELETED", 0);
+
+            uprs.insertRow();
+            uprs.beforeFirst();
+            
+            stmt.close();
+        } 
+        catch (SQLException e ) {
+            System.out.println(e);
         }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Could not add user, check your input");
-        }
-       
-          
+        
     }
-    public static void addCategory (InfDB db, String category){
-        try{
-            db.insert("INSERT INTO CATEGORY VALUES('" + category + "')");
+    
+    public static void addCategory(Connection con, String category)
+    throws SQLException {
+
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM CATEGORY");
+
+            uprs.moveToInsertRow();
+            uprs.updateString("CATEGORY", category);
+
+            uprs.insertRow();
+            uprs.beforeFirst();
+        } catch (SQLException e ) {
+            System.out.println(e);
+        } finally {
+            if (stmt != null) { stmt.close(); }
         }
-        catch (InfException e){
+    }
+    
+    /**
+     *
+     * @param db
+     * @param date
+     * @param description
+     */
+    public static void insertEvent(Connection con, String date, String description, int user_id){
+ 
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+ 
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM EVENTS");
+ 
+            uprs.moveToInsertRow();
+            uprs.updateString("EVENTDATE", date);
+            uprs.updateString("DESCRIPTION", description);
+            uprs.updateString("ISDELETED", "0");
+            uprs.updateInt("EMPLOYEE_IDEMPLOYEE", user_id);
+ 
+            uprs.insertRow();
+            uprs.beforeFirst();
+        }
+        catch (SQLException e ) {
             System.out.println(e);
         }
     }
