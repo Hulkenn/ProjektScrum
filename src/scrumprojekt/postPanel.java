@@ -5,7 +5,12 @@
  */
 package scrumprojekt;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oru.inf.InfDB;
 
 /**
@@ -14,16 +19,16 @@ import oru.inf.InfDB;
  */
 public class postPanel extends javax.swing.JPanel {
 
-    private InfDB db;
+    private Connection conn;
     private int post_id;
-    private HashMap<String,String> post;
-    private HashMap<String,String> user;
+    private ResultSet post;
+    private ResultSet user;
     /**
      * Creates new form postPanel
      */
-    public postPanel(InfDB db, int post_id) {
+    public postPanel(Connection conn, int post_id) {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.post_id = post_id;
         updatePanel();
         //jLabel1.setLocation(27, 20);
@@ -32,25 +37,32 @@ public class postPanel extends javax.swing.JPanel {
     }
     
     public void updatePanel() {
-        post = DBFetcher.fetchPost(db, this.post_id);
-        user = DBFetcher.fetchUser(db, Integer.parseInt(post.get("EMPLOYEE_IDEMPLOYEE")));
-        
-        headlinePostOne.setText(post.get("HEADLINE"));
-        datePostOne.setText(post.get("POSTDATE"));
-        authorPostOne.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
-        lblCategory.setText(post.get("TAG"));
-        
-        String postText = post.get("TEXT");
-        int postTextLength = postText.length();
-        if(postTextLength > 70) {
-            lblText.setText(String.copyValueOf(post.get("TEXT").toCharArray(), 0, 70) + "...");
-        } else {
-            lblText.setText(String.copyValueOf(post.get("TEXT").toCharArray(), 0, postTextLength));
+        try {
+            post = DBFetcher.fetchPost(conn, this.post_id);
+            post.next();
+            user = DBFetcher.fetchUser(conn, post.getInt("EMPLOYEE_IDEMPLOYEE"));
+            user.next();
+            System.out.println(user.getString("FIRSTNAME"));
+            
+            headlinePostOne.setText(post.getString("HEADLINE"));
+            datePostOne.setText(post.getString("POSTDATE"));
+            authorPostOne.setText(user.getString("FIRSTNAME") + " " + user.getString("LASTNAME"));
+            lblCategory.setText(post.getString("TAG"));
+            
+            String postText = post.getString("TEXT");
+            int postTextLength = postText.length();
+            if(postTextLength > 70) {
+                lblText.setText(String.copyValueOf(post.getString("TEXT").toCharArray(), 0, 70) + "...");
+            } else {
+                lblText.setText(String.copyValueOf(post.getString("TEXT").toCharArray(), 0, postTextLength));
+            }
+            
+            
+            
+            this.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(postPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
-        this.setVisible(true);
     }
     
     public int getPostId() {

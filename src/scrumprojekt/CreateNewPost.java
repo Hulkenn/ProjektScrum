@@ -10,8 +10,13 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
@@ -26,7 +31,7 @@ import oru.inf.InfException;
  */
 public class CreateNewPost extends javax.swing.JFrame {
 
-    private InfDB db;
+    private Connection conn;
     private int user_id;
     private char category;
     private String categoryPost;
@@ -39,9 +44,9 @@ public class CreateNewPost extends javax.swing.JFrame {
     /**
      * Creates new form CreateNewPost
      */
-    public CreateNewPost(InfDB db, int user_id, char category) {
+    public CreateNewPost(Connection conn, int user_id, char category) {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.user_id = user_id;
         this.category = category;
         this.setLocationRelativeTo(null);
@@ -469,18 +474,18 @@ public class CreateNewPost extends javax.swing.JFrame {
 
         if (!Validate.textWindowIsEmpty(textfieldHeadline) && !Validate.areaWindowIsEmpty(textareaPost)) {
 
-            int post_id = DBInsert.insertPost(db, user_id, category, textfieldHeadline.getText(), textareaPost.getText(), categoryPost);
+            //int post_id = DBInsert.insertPost(conn, user_id, category, textfieldHeadline.getText(), textareaPost.getText(), categoryPost);
 
             JOptionPane.showMessageDialog(rootPane, "Post submitted");
             
             if(openFileChooser.getSelectedFile() != null) {
                 imageToArray();
-                saveImage();
-                DBInsert.insertImage(db, post_id, imagePath);
+                //saveImage();
+                //DBInsert.insertImage(db, post_id, imagePath);
             }
 
-            new BlogPostFrame(db, user_id, post_id).setVisible(true);
-            dispose();
+            //new BlogPostFrame(conn, user_id, post_id).setVisible(true);
+            //dispose();
         }
 
 
@@ -491,10 +496,14 @@ public class CreateNewPost extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        diaChooseCategory.setVisible(true);
-        ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
-        for(HashMap<String, String> category : list){
-            cbxCategory.addItem(category.get("CATEGORY"));
+        try {
+            diaChooseCategory.setVisible(true);
+            ResultSet categories = DBFetcher.fetchAllCategories(conn);
+            while(categories.next()){
+                cbxCategory.addItem(categories.getString("CATEGORY"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CreateNewPost.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -503,18 +512,22 @@ public class CreateNewPost extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAddNewCategoryMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddNewCategoryMouseReleased
-        if(!Validate.categoryExist(db, txtNewCategory.getText())){
-            DBInsert.addCategory(db, txtNewCategory.getText());
-            lblExist.setText("Category was added");
-            ArrayList<HashMap<String, String>> list = DBFetcher.fetchAllCategories(db);
-            for(HashMap<String, String> category : list){
-                cbxCategory.addItem(category.get("CATEGORY"));
-            }
-            cbxCategory.setSelectedItem(txtNewCategory.getText());
-        }
-        else{
-            lblExist.setVisible(true);
-        }
+//        if(!Validate.categoryExist(db, txtNewCategory.getText())){
+//            try {
+//                DBInsert.addCategory(db, txtNewCategory.getText());
+//                lblExist.setText("Category was added");
+//                ResultSet categories = DBFetcher.fetchAllCategories(conn);
+//                while(categories.next()){
+//                    cbxCategory.addItem(categories.getString("CATEGORY"));
+//                }
+//                cbxCategory.setSelectedItem(txtNewCategory.getText());
+//            } catch (SQLException ex) {
+//                Logger.getLogger(CreateNewPost.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+//        }
+//        else{
+//            lblExist.setVisible(true);
+//        }
     }//GEN-LAST:event_btnAddNewCategoryMouseReleased
 
     private void txtNewCategoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewCategoryActionPerformed
@@ -557,27 +570,27 @@ public class CreateNewPost extends javax.swing.JFrame {
     }
 
 
-    private void saveImage(){
-        String id = "1";
-        try {
-            String inc_id = db.getAutoIncrement("IMAGE", "IDIMAGE");
-            if(inc_id != null)
-                id = inc_id;
-        }
-        catch(InfException e) {
-            
-        }
-        File ops = new File(System.getProperty("user.dir")+"\\Files\\" + id
-                 + ".png");
-        imagePath = "Files\\" + id + ".png";
-        
-        try{
-            ImageIO.write(newBI, "png",ops);
-            //lblMessage.setText("Image File Succesfully saved"); 
-        }catch(IOException ex){
-            //lblMessage.setText("Failed to save image file");
-        }
-    }
+//    private void saveImage(){
+//        String id = "1";
+//        try {
+//            String inc_id = db.getAutoIncrement("IMAGE", "IDIMAGE");
+//            if(inc_id != null)
+//                id = inc_id;
+//        }
+//        catch(InfException e) {
+//            
+//        }
+//        File ops = new File(System.getProperty("user.dir")+"\\Files\\" + id
+//                 + ".png");
+//        imagePath = "Files\\" + id + ".png";
+//        
+//        try{
+//            ImageIO.write(newBI, "png",ops);
+//            //lblMessage.setText("Image File Succesfully saved"); 
+//        }catch(IOException ex){
+//            //lblMessage.setText("Failed to save image file");
+//        }
+//    }
     
     /**
      * @param args the command line arguments

@@ -6,6 +6,9 @@
 package scrumprojekt;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.BorderFactory;
@@ -20,18 +23,18 @@ import oru.inf.InfDB;
  */
 public class BlogPostFrame extends javax.swing.JFrame {
     
-    private InfDB db;
+    private Connection conn;
     private int user_id;
     private int post_id;
-    private HashMap<String,String> post;
-    private HashMap<String,String> user;
+    private ResultSet post;
+    private ResultSet user;
     /**
      * Creates new form BlogPostFrame
      */
-    public BlogPostFrame(InfDB db, int user_id, int post_id) {
+    public BlogPostFrame(Connection conn, int user_id, int post_id) {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.db = db;
+        this.conn = conn;
         this.user_id = user_id;
         this.post_id = post_id;
         this.setLocationRelativeTo(null);
@@ -39,28 +42,34 @@ public class BlogPostFrame extends javax.swing.JFrame {
         lblRemove.setVisible(false);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
         
-        if (DBFetcher.checkIfCreatorOfPost(db, post_id, Integer.toString(user_id)) || DBFetcher.fetchRankFromUser(db,user_id) == 5 || DBFetcher.fetchRankFromUser(db,user_id) == 3) {
+        if (DBFetcher.checkIfCreatorOfPost(conn, post_id, user_id) || DBFetcher.fetchRankFromUser(conn,user_id) == 5 || DBFetcher.fetchRankFromUser(conn,user_id) == 3) {
             lblRemove.setVisible(true);
         }
         
         //Adds image if exists
-        String pathImage = DBFetcher.fetchImagePath(db, post_id);
-        if(pathImage != null)
-            lblImage.setIcon(new ImageIcon(pathImage));
-        
-        post = DBFetcher.fetchPost(db, post_id);
-        int userID= DBFetcher.fetchUserIdFromPost(db, post_id);
-        user = DBFetcher.fetchUser(db, userID);
-        
-        //Update the post with info
-        btnAdd.setText(post.get("HEADLINE"));
-        taText.setText(post.get("TEXT"));
-        
-        
-        lblAuthor.setText(user.get("FIRSTNAME") + " " + user.get("LASTNAME"));
-        lblDate.setText(post.get("POSTDATE"));
-        lblCategory.setText(post.get("TAG"));
-        BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
+//        String pathImage = DBFetcher.fetchImagePath(conn, post_id);
+//        if(pathImage != null)
+//            lblImage.setIcon(new ImageIcon(pathImage));
+        try {
+            post = DBFetcher.fetchPost(conn, post_id);
+            int userID = DBFetcher.fetchUserIdFromPost(conn, post_id);
+            user = DBFetcher.fetchUser(conn, userID);
+
+            post.next();
+            user.next();
+
+            //Update the post with info
+            btnAdd.setText(post.getString("HEADLINE"));
+            taText.setText(post.getString("TEXT"));
+
+
+            lblAuthor.setText(user.getString("FIRSTNAME") + " " + user.getString("LASTNAME"));
+            lblDate.setText(post.getString("POSTDATE"));
+            lblCategory.setText(post.getString("TAG"));
+            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, conn);
+        } catch (SQLException ex) {
+            
+        }
     }
 
     /**
@@ -474,12 +483,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private void lblPostCommentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPostCommentMouseClicked
         // TODO add your handling code here:
         //Add post
-        if(!Validate.areaWindowIsEmpty(taComment)) {
-            DBInsert.insertComment(db, user_id, post_id, taComment.getText());
-            taComment.setText("");
-            jpContainer.removeAll();
-            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
-        }
+//        if(!Validate.areaWindowIsEmpty(taComment)) {
+//            DBInsert.insertComment(db, user_id, post_id, taComment.getText());
+//            taComment.setText("");
+//            jpContainer.removeAll();
+//            BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, db);
+//        }
     }//GEN-LAST:event_lblPostCommentMouseClicked
 
     private void lblResearchMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblResearchMouseEntered
@@ -512,9 +521,9 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked
-    DBDelete.removePost(db, this.post_id);
-    DBDelete.setCommentToDeleted(db, post_id);
-    dispose();
+//    DBDelete.removePost(db, this.post_id);
+//    DBDelete.setCommentToDeleted(db, post_id);
+//    dispose();
     //new EducationFrame(db, user_id);
     }//GEN-LAST:event_lblRemoveMouseClicked
 

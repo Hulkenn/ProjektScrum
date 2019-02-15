@@ -5,7 +5,11 @@
  */
 package scrumprojekt;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,10 +20,14 @@ public class Event extends javax.swing.JPanel {
     /**
      * Creates new form Event
      */
-    public Event(HashMap<String,String> event) {
+    public Event(ResultSet event) {
         initComponents();
-        jTextArea1.setText(event.get("DESCRIPTION"));
-        txtCreator.setText(txtCreator.getText() + event.get("FIRSTNAME") + " " + event.get("LASTNAME"));
+        try {
+            jTextArea1.setText(event.getString("DESCRIPTION"));
+            txtCreator.setText(txtCreator.getText() + event.getString("FIRSTNAME") + " " + event.getString("LASTNAME"));
+        } catch (SQLException ex) {
+            Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

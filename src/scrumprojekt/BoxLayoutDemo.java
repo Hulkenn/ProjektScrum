@@ -42,6 +42,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -49,80 +52,34 @@ import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
  
 public class BoxLayoutDemo {
     
     
-    
-    public static void addPostsToPane(Container pane, InfDB db) {
+    public static void addCommentsToPane(Container pane, int post_id, Connection conn) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
         
-        ArrayList<HashMap<String, String>> posts;
-        
-        posts = DBFetcher.fetchAllPosts(db, 'E');
-        if(posts != null) {
-            for (HashMap<String, String> post : posts) 
-            {
-                int post_id = Integer.parseInt(post.get("IDPOST"));
-                addPost(post_id, pane, db);
-            } 
-        }
-    }
-    
-    public static void addCommentsToPane(Container pane, int post_id, InfDB db) {
-        pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-        
-        ArrayList<HashMap<String,String>> comments;
+        ResultSet comments;
         
         
-        comments = DBFetcher.fetchAllCommentsPost(db, post_id);
+        comments = DBFetcher.fetchAllCommentsPost(conn, post_id);
         if(comments != null) {
-            for (HashMap<String,String> comment : comments) 
-            {
-                addComment(comment, pane, db);
-            } 
+            
+            try {
+                while(comments.next())
+                {
+                    System.out.println("ADDED A COMMENT");
+                    addComment(comments, pane, conn); 
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(BoxLayoutDemo.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
- 
-    private static void addPost(int post_id, Container container, InfDB db) {
-        postPanel post = new postPanel(db, post_id);
-        post.setAlignmentX(Component.CENTER_ALIGNMENT);
-        post.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println(post.getPostId());
-                new BlogPostFrame(db, LoginFrame.user_id, post.getPostId()).setVisible(true);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                
-            }
-        });
-        container.add(post);
-    }
     
-    private static void addComment(HashMap<String,String> comment, Container container, InfDB db) {
-        commentPanel commentPanel = new commentPanel(db, comment);
+    private static void addComment(ResultSet comment, Container container, Connection conn) {
+        commentPanel commentPanel = new commentPanel(conn, comment);
         commentPanel.setAlignmentX(Component.CENTER_ALIGNMENT);
         container.add(commentPanel);
     }

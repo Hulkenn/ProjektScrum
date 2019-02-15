@@ -8,6 +8,9 @@ package scrumprojekt;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.Box;
@@ -20,22 +23,22 @@ import oru.inf.InfDB;
  */
 public class EventFrame extends javax.swing.JFrame {
     
-    private InfDB db;
-    private ArrayList<HashMap<String,String>> events;
+    private Connection conn;
+    private ResultSet events;
     private ArrayList<Event> event_components;
     /**
      * Creates new form EventFrame
      */
-    public EventFrame(InfDB db, String date) {
+    public EventFrame(Connection conn, String date) throws SQLException {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.setLocationRelativeTo(null);
-        this.events = DBFetcher.fetchAllEvents(db, date);
+        this.events = DBFetcher.fetchAllEvents(conn, date);
         this.event_components = new ArrayList<Event>();
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
         if(events != null) {
-            for(HashMap<String,String> event : events) {
-                Event new_event = new Event(event);
+            while(events.next()) {
+                Event new_event = new Event(events);
                 event_components.add(new_event);
                 new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
                 //jPanel2.add(new_event);

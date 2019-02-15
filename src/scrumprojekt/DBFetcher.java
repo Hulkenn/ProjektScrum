@@ -5,6 +5,10 @@
  */
 package scrumprojekt;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import oru.inf.InfDB;
@@ -17,225 +21,339 @@ import oru.inf.InfException;
 public class DBFetcher {
     
     /**
-     * 
-     * @param db
+     *
+     * @param con
      * @param email
-     * @return returns all information about a user with a specified email
+     * @return ID for a user on email input
+     *
      */
-    public static HashMap<String,String> fetchUser(InfDB db, String email) {
-        HashMap<String,String> user = null;
+    public static int fetchId(Connection conn, String email) {
+        Statement stmt = null;
+        String query = "SELECT idemployee FROM employee WHERE email= '" + email + "'";
+        ResultSet rs = null;
+        int id = 0;
         try {
-            user = db.fetchRow("SELECT * FROM EMPLOYEE WHERE EMAIL = '" + email + "'");
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            id = rs.getInt("IDEMPLOYEE");
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return id;
+    }
+
+    /**
+     * 
+     * @param conn
+     * @param email
+     * @return password from user
+     */
+    public static char[] fetchPassword(Connection conn, String email) {
+        Statement stmt = null;
+        String query = "SELECT password FROM employee WHERE email= '" + email + "'";
+        ResultSet rs = null;
+        String password = "";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            password = rs.getString("password");
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return password.toCharArray();
+    }
+    
+    public static ResultSet fetchUser(Connection con, String email) {
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE EMAIL = '" + email + "'";
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         } 
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH USER BY EMAIL");
         }
-        return user;
+        return rs;
     }
     
-    /**
-     * 
-     * @param db
-     * @param user_id
-     * @return returns all info about a user
-     */
-    public static HashMap<String,String> fetchUser(InfDB db, int user_id) {
-        HashMap<String,String> user = null;
+    
+    
+    public static ResultSet fetchUser(Connection con, int user_id) {
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id;
+        ResultSet rs = null;
         try {
-            user = db.fetchRow("SELECT * FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         } 
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH USER");
         }
-        return user;
+        return rs;
     }
     
-    /**
-     * 
-     * @param db
-     * @param post_id
-     * @return return all info about a post
-     */
-    public static HashMap<String,String> fetchPost(InfDB db, int post_id) {
-        HashMap<String,String> post = null;
+    public static ResultSet fetchPost(Connection con, int post_id) {
+        //Returnerar bara en rad
+        Statement stmt = null;
+        String query = "SELECT * FROM POST WHERE IDPOST = " + post_id;
+        ResultSet rs = null;
         try {
-            post = db.fetchRow("SELECT * FROM POST WHERE IDPOST = " + post_id);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("EERROR TO FETCH POST");
         }
-        return post;
+        return rs;
     }
     
-    /**
-     * 
-     * @param db
-     * @param post_id
-     * @return author of post 
-     */
-    public static int fetchUserIdFromPost(InfDB db, int post_id){
+    
+    public static int fetchUserIdFromPost(Connection con, int post_id){
         int user_id = 0;
+        Statement stmt = null;
+        String query = "SELECT EMPLOYEE_IDEMPLOYEE FROM POST WHERE IDPOST = "+ post_id;
+        ResultSet rs = null;
         try{
-             String string = db.fetchSingle("SELECT EMPLOYEE_IDEMPLOYEE FROM POST WHERE IDPOST = "+ post_id); 
-             user_id = Integer.parseInt(string);
-           }
-        catch(InfException e){
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            user_id = rs.getInt("EMPLOYEE_IDEMPLOYEE");
+            rs.close();
+        }
+        catch(SQLException e){
             System.out.println(e);
         } 
         return user_id;
     }
-    /**
-     * 
-     * @param db
-     * @return returns all posts
-     */
-    public static ArrayList<HashMap<String,String>> fetchAllPosts(InfDB db, char category) {
-        ArrayList<HashMap<String,String>> posts = null;
+    
+    
+    public static ResultSet fetchAllPosts(Connection con, char category) {
+        Statement stmt = null;
+        String query = "SELECT * FROM POST WHERE ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
+        ResultSet rs = null;
         try {
-            posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH ALL POSTS BY CATEGORY ('E', 'R', 'S')");
         }
-        return posts;
+        return rs;
     }
     
-    /**
-     * 
-     * @param db
-     * @param tags
-     * @return returns list of posts where the post has one of the tags from @param tags
-     */
-    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategories(InfDB db, ArrayList<String> tags, char category) {
-        ArrayList<HashMap<String,String>> posts = null;
+    
+    public static ResultSet fetchAllPostsWithCategories(Connection con, ArrayList<String> tags, char category) {
+        Statement stmt = null;
+        String query = "";
+        ResultSet rs = null;
         try {
             if(tags.size() == 1) {
-                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
+                query = "SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
             }
             else if(tags.size() > 1) {
-                String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
+                query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
                 for(int i = 1; i < tags.size(); i++) {
                     query += " OR TAG = '" + tags.get(i) + "'";
                 }
                 query += ") AND ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
-                posts = db.fetchRows(query);
             }
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH POSTS WITH CATEGORIES");
         }
-        return posts;
+        return rs;
     }
     
-    public static ArrayList<HashMap<String,String>> fetchAllPostsWithCategoriesAndDate(InfDB db, ArrayList<String> tags, String startDate, String endDate, char category) {
-        ArrayList<HashMap<String,String>> posts = null;
+    
+    public static ResultSet fetchAllPostsWithCategoriesAndDate(Connection con, ArrayList<String> tags, String startDate, String endDate, char category) {
+        Statement stmt = null;
+        String query = "";
+        ResultSet rs = null;
         try {
             if(tags.size() == 1) {
-                posts = db.fetchRows("SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC");
+                query = "SELECT * FROM POST WHERE ISDELETED = 0 AND TAG = '" + tags.get(0) + "' AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
             }
             else if(tags.size() > 1) {
-                String query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
+                query = "SELECT * FROM POST WHERE (TAG = '" + tags.get(0) + "'";
                 for(int i = 1; i < tags.size(); i++) {
                     query += " OR TAG = '" + tags.get(i) + "'";
                 }
                 query += ") AND ISDELETED = 0 AND POSTDATE >= '" + startDate + "' AND POSTDATE <= '" + endDate + "' AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
-                posts = db.fetchRows(query);
             }
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH POSTS WITH CATEGORIES AND DATE");
         }
-        return posts;
+        return rs;
     }
     
-    /**
-     *
-     * @param db
-     * @param year
-     * @param month
-     * @return
-     */
-    public static ArrayList<HashMap<String, String>> fetchEvents(InfDB db, int year, String month) {
-        ArrayList<HashMap<String, String>> dates = null;
+    
+    
+    public static ResultSet fetchEvents(Connection con, int year, String month) {
+        Statement stmt = null;
+        String query = "SELECT EVENTDATE FROM EVENTS WHERE EVENTDATE LIKE '" + year + "-" + month + "%'";
+        ResultSet rs = null;
         try {
-            dates = db.fetchRows("SELECT EVENTDATE FROM EVENTS WHERE EVENTDATE LIKE '" + year + "-" + month + "%'");
-        } catch (InfException ex) {
-            System.out.println("Error med sql år och månad");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } catch (SQLException ex) {
+            System.out.println("ERROR WITH SQL YEAR OR/AND MONTHS");
         }
-        return dates;
+        return rs;
     }
     
-    /**
-     * 
-     * @param db
-     * @param post_id
-     * @return returns all comments in a certain post
-     */
-    public static ArrayList<HashMap<String,String>> fetchAllCommentsPost(InfDB db, int post_id) {
-        ArrayList<HashMap<String,String>> comments = null;
+    
+    public static ResultSet fetchAllCommentsPost(Connection con, int post_id) {
+        Statement stmt = null;
+        String query = "SELECT COMMENT, COMMENT_DATE, FIRSTNAME, LASTNAME FROM COMMENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE POST_IDPOST = " + post_id + " ORDER BY COMMENT_ID DESC";
+        ResultSet rs = null;
         try {
-            comments = db.fetchRows("SELECT COMMENT, COMMENT_DATE, FIRSTNAME, LASTNAME FROM COMMENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE POST_IDPOST = " + post_id + "ORDER BY COMMENT_ID DESC;");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
-            
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH COMMENTS ON A POST");
         }
-        return comments;
+        return rs;
     }
     
-    public static int fetchRankFromUser(InfDB db,int employee_ID){
+    
+    public static int fetchRankFromUser(Connection con, int employee_ID){
         int rank = 0;
+        Statement stmt = null;
+        String query = "SELECT RANK FROM EMPLOYEE WHERE IDEMPLOYEE = " + employee_ID;
+        ResultSet rs = null;
         try{
-            String string = db.fetchSingle("SELECT RANK FROM EMPLOYEE WHERE IDEMPLOYEE = " + employee_ID);
-            rank = Integer.parseInt(string);
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            rank = rs.getInt("RANK");
+            rs.close();
         }
-        catch(InfException e){
-            System.out.println("fail att hämta rank");
+        catch(SQLException e){
+            System.out.println("ERROR TO FETCH RANK");
         }
         return rank;
     }
     
-    public static ArrayList<HashMap<String,String>> fetchAllUsers(InfDB db){
-        ArrayList<HashMap<String,String>> users = null;
+    
+    public static ResultSet fetchAllUsers(Connection con){
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE ISDELETED = 0";
+        ResultSet rs = null;
         try{
-        users = db.fetchRows("SELECT * FROM EMPLOYEE WHERE ISDELETED = 0");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e){
-            
+        catch(SQLException e){
+            System.out.println("ERROR TO FETCH ALL EMPLOYEE");
         }
-        return users;
-    }
-    public static ArrayList<HashMap<String,String>> fetchAllUsersEducation(InfDB db){
-        ArrayList<HashMap<String,String>> users = null;
-        try{
-        users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 2 AND ISDELETED = 0");
-        }
-        catch(InfException e){
-            
-        }
-        return users;
-    }
-    public static ArrayList<HashMap<String,String>> fetchAllUsersResearch(InfDB db){
-        ArrayList<HashMap<String,String>> users = null;
-        try{
-            users = db.fetchRows("SELCET * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0");
-        }
-        catch(InfException e){
-            
-        }
-        return users;
+        return rs;
     }
     
-    public static ArrayList<HashMap<String,String>> fetchAllCategories(InfDB db) {
-        ArrayList<HashMap<String,String>> categories = null;
+    public static ResultSet fetchAllUsersEducation(Connection con){
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE RANK = 2 AND ISDELETED 0";
+        ResultSet rs = null;
+        try{
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        }
+        catch(SQLException e){
+            System.out.println("ERROR TO FETCH EDUCATION EMPLOYEE");
+        }
+        return rs;
+    }
+    
+    public static ResultSet fetchAllUsersResearch(Connection con){
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0";
+        ResultSet rs = null;
+        try{
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        }
+        catch(SQLException e){
+            System.out.println("ERROR TO GET RESEARCH EMPLOYEE");
+        }
+        return rs;
+    }
+    
+    public static ResultSet fetchAllCategories(Connection con) {
+        Statement stmt = null;
+        String query = "SELECT * FROM CATEGORY";
+        ResultSet rs = null;
         try {
-            categories = db.fetchRows("SELECT * FROM CATEGORY");
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
         }
-        catch(InfException e) {
+        catch(SQLException e) {
             
         }
-        return categories;
+        return rs;
     }
     
+    public static boolean checkIfCreatorOfPost(Connection con, int post_id, int user_id) {
+        Statement stmt = null;
+        String query = "SELECT EMPLOYEE_IDEMPLOYEE FROM POST WHERE IDPOST = " + post_id;
+        ResultSet rs = null;
+        boolean result = false;
+        try{
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            int id = rs.getInt("EMPLOYEE_IDEMPLOYEE");
+            rs.close();
+            if(id == user_id) {
+                result = true;
+            } 
+        }
+        catch(SQLException e){
+            System.out.println("ERROR TO GET ID OF EMPLOYEE OF THE POST");
+        }
+        return result;
+    }
+    
+    public static String fetchDateofEvent(Connection con, int postID){
+        Statement stmt = null;
+        String query = "SELECT EVENTDATE FROM EVENTS WHERE IDEVENTS = " + postID;
+        ResultSet rs = null;
+        String date = "";
+        try{
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            date = rs.getDate("EVENTDATE").toString();
+            rs.close();
+        } catch(SQLException e){
+            System.out.println("ERROR TO FETCH DATE OF EVENT");
+        }
+        return date;
+    }
+    
+    public static ResultSet fetchAllEvents(Connection con, String date) throws SQLException{
+        Statement stmt = null;
+        String query = "SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE EVENTDATE = '" + date + "'";
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } catch(SQLException e) {
+            System.out.println("ERROR TO FETCH EVENTS");
+        }
+        return rs;
+    }
+    
+    //INTE OMVANDLAD FÖR VETTEFAN VAD VI SKA GÖRA MED DENNA XD
     public static String fetchImagePath(InfDB db, int post_id) {
         String path = "";
         try {
@@ -245,40 +363,5 @@ public class DBFetcher {
             
         }
         return path;
-    }
-    
-    public static boolean checkIfCreatorOfPost(InfDB db, int post_id, String user_id) {
-        boolean result = false;
-        try{
-            String id = db.fetchSingle("SELECT employee_idemployee FROM post WHERE idpost = " + post_id);
-            if ( id.equals(user_id)) {
-                result = true;
-            } 
-        }
-        catch(InfException ie){
-            System.out.println(ie);
-        }
-        return result;
-    }
-    public static String fetchDateofEvent(InfDB db, int postID){
-        String date ="";
-        try{
-            date = db.fetchSingle("Select EVENTDATE from EVENTS where IDEVENTS = " + postID);
-        }
-        catch(InfException e){
-            System.out.println(e);
-        }
-        return date;
-    }
-    
-    public static ArrayList<HashMap<String,String>> fetchAllEvents(InfDB db, String date) {
-        ArrayList<HashMap<String,String>> events = null;
-        try {
-            events = db.fetchRows("SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE EVENTDATE = '" + date + "'");
-        }
-        catch(InfException e) {
-            
-        }
-        return events;
     }
 }

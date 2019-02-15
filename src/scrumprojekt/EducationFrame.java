@@ -14,9 +14,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
@@ -37,11 +42,11 @@ import oru.inf.InfDB;
  */
 public class EducationFrame extends javax.swing.JFrame {
     
-    private InfDB db;
+    private Connection conn;
     private int user_id;
-    private ArrayList<HashMap<String,String>> categories;
+    private ResultSet categories;
     private ArrayList<JCheckBox> categoryCheckboxes;
-    private ArrayList<HashMap<String, String>> posts;
+    private ResultSet posts;
     private ArrayList<postPanel> postPanels;
     private ArrayList<String> tags;
     private SimpleDateFormat sqlDateFormat;
@@ -52,9 +57,9 @@ public class EducationFrame extends javax.swing.JFrame {
      * @param user_id = currently logged in user_id
      * Creates a new form of educationframe.
      */
-    public EducationFrame(InfDB db, int user_id) {
+    public EducationFrame(Connection conn, int user_id) throws SQLException {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.user_id = user_id;
         this.categoryCheckboxes = new ArrayList<JCheckBox>();
         this.postPanels = new ArrayList<postPanel>();
@@ -69,15 +74,15 @@ public class EducationFrame extends javax.swing.JFrame {
         educationforumPosts.setLayout(new BoxLayout(educationforumPosts, BoxLayout.Y_AXIS));
         
         //Add all posts to the educationforumPosts pane
-        posts = DBFetcher.fetchAllPosts(db, 'E');
+        posts = DBFetcher.fetchAllPosts(conn, 'E');
         addPostsToPane(educationforumPosts, posts);
         
         //Add all the categories
-        categories = DBFetcher.fetchAllCategories(db);
+        categories = DBFetcher.fetchAllCategories(conn);
         if(categories != null) {
             //For every category we have, we add a new JCheckBox and add it to the screen and arraylists, etc..
-            for(HashMap<String,String> category : categories) {
-                JCheckBox newCategoryBox = new JCheckBox(category.get("CATEGORY"), true);
+            while(categories.next()) {
+                JCheckBox newCategoryBox = new JCheckBox(categories.getString("CATEGORY"), true);
                 newCategoryBox.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -92,9 +97,9 @@ public class EducationFrame extends javax.swing.JFrame {
                         if(pickerFrom.getDate() != null && pickerTo.getDate() != null) {
                             String startDate = sqlDateFormat.format(pickerFrom.getDate());
                             String endDate = sqlDateFormat.format(pickerTo.getDate());
-                            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate, endDate, 'E');
+                            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(conn, tags, startDate, endDate, 'E');
                         } else {
-                            posts = DBFetcher.fetchAllPostsWithCategories(db, tags, 'E');
+                            posts = DBFetcher.fetchAllPostsWithCategories(conn, tags, 'E');
                         }
                         addPostsToPane(educationforumPosts, posts);
                     }
@@ -113,15 +118,18 @@ public class EducationFrame extends javax.swing.JFrame {
      * @param posts 
      * adds all the posts to the pane
      */
-    public void addPostsToPane(Container pane, ArrayList<HashMap<String,String>> posts) {
+    public void addPostsToPane(Container pane, ResultSet posts) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
-        
         if(posts != null) {
-            for (HashMap<String, String> post : posts) 
-            {
-                int post_id = Integer.parseInt(post.get("IDPOST"));
-                addPost(post_id, pane, db);
-            } 
+            try {
+                while(posts.next())
+                {
+                    int post_id = posts.getInt("IDPOST");
+                    addPost(post_id, pane, conn); 
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(EducationFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         pane.revalidate();
         pane.repaint();
@@ -134,14 +142,14 @@ public class EducationFrame extends javax.swing.JFrame {
      * @param db
      * adds a new post to postPanels arraylist and adds it to the container to show
      */
-    public void addPost(int post_id, Container container, InfDB db) {
-        postPanel post = new postPanel(db, post_id);
+    public void addPost(int post_id, Container container, Connection conn) {
+        postPanel post = new postPanel(conn, post_id);
         postPanels.add(post);
         post.setAlignmentX(Component.CENTER_ALIGNMENT);
         post.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new BlogPostFrame(db, LoginFrame.user_id, post.getPostId()).setVisible(true);
+                new BlogPostFrame(conn, LoginFrame.user_id, post.getPostId()).setVisible(true);
             }
 
             @Override
@@ -469,17 +477,25 @@ public class EducationFrame extends javax.swing.JFrame {
 
     private void lblCreateNewPostMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateNewPostMouseClicked
         // TODO add your handling code here:
-        new CreateNewPost(db, user_id, 'E').setVisible(true);
+        new CreateNewPost(conn, user_id, 'E').setVisible(true);
     }//GEN-LAST:event_lblCreateNewPostMouseClicked
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
-        new MainWindow(db, user_id).setVisible(true);
-        dispose();
+        try {
+            new MainWindow(conn, user_id).setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            
+        }
     }//GEN-LAST:event_lblGoBackMouseClicked
 
     private void lblUpdateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUpdateMouseClicked
-        new EducationFrame(db, user_id).setVisible(true);
-        dispose();
+        try {
+            new EducationFrame(conn, user_id).setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(EducationFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lblUpdateMouseClicked
 
     private void pickerFromActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pickerFromActionPerformed
@@ -488,7 +504,7 @@ public class EducationFrame extends javax.swing.JFrame {
             String startDate = sqlDateFormat.format(pickerFrom.getDate());
             String endDate = sqlDateFormat.format(pickerTo.getDate());
             removePostsFromPane(educationforumPosts);
-            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString(), 'E');
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(conn, tags, startDate.toString(), endDate.toString(), 'E');
             addPostsToPane(educationforumPosts, posts);
         }
     }//GEN-LAST:event_pickerFromActionPerformed
@@ -499,7 +515,7 @@ public class EducationFrame extends javax.swing.JFrame {
             String startDate = sqlDateFormat.format(pickerFrom.getDate());
             String endDate = sqlDateFormat.format(pickerTo.getDate());
             removePostsFromPane(educationforumPosts);
-            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(db, tags, startDate.toString(), endDate.toString(), 'E');
+            posts = DBFetcher.fetchAllPostsWithCategoriesAndDate(conn, tags, startDate.toString(), endDate.toString(), 'E');
             addPostsToPane(educationforumPosts, posts);
         }
     }//GEN-LAST:event_pickerToActionPerformed

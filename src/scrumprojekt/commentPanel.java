@@ -5,7 +5,12 @@
  */
 package scrumprojekt;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import oru.inf.InfDB;
 
 /**
@@ -14,22 +19,26 @@ import oru.inf.InfDB;
  */
 public class commentPanel extends javax.swing.JPanel {
 
-    private InfDB db;
-    HashMap<String,String> comment;
+    private Connection conn;
+    private ResultSet comment;
     /**
      * Creates new form NewJPanel
      */
-    public commentPanel(InfDB db, HashMap<String,String> comment) {
+    public commentPanel(Connection conn, ResultSet comment) {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.comment = comment;
-        updatePanel();
+        try {
+            updatePanel();
+        } catch (SQLException ex) {
+            Logger.getLogger(commentPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
-    private void updatePanel() {
-        lblUser.setText(comment.get("FIRSTNAME") + " " + comment.get("LASTNAME"));
-        lblDate.setText(comment.get("COMMENT_DATE"));
-        taComment.setText(comment.get("COMMENT"));
+    private void updatePanel() throws SQLException {
+        lblUser.setText(comment.getString("FIRSTNAME") + " " + comment.getString("LASTNAME"));
+        lblDate.setText(comment.getString("COMMENT_DATE"));
+        taComment.setText(comment.getString("COMMENT"));
     }
 
     /**

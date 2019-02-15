@@ -7,6 +7,10 @@
 package scrumprojekt;
 
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JComponent;
@@ -22,8 +26,9 @@ import oru.inf.InfException;
  */
 public class LoginFrame extends javax.swing.JFrame {
 
-    public static InfDB db;
+    public static Connection conn;
     public static int user_id;
+    
     /**
      * Creates new form LoginFrame
      */
@@ -35,25 +40,31 @@ public class LoginFrame extends javax.swing.JFrame {
         btnLogin.setVisible(false);
     }
     
-    private void login() {        
+    private void login(){        
         if(!Validate.textWindowIsEmpty(tfEmail) && !Validate.passwordFieldIsEmpty(pfPassword)) {
             System.out.println("Ok");
-            HashMap<String,String> user = DBFetcher.fetchUser(db, tfEmail.getText());
-            if(user == null) {
-                JOptionPane.showMessageDialog(rootPane, "Wrong username or password");
-            } else {
-                char[] correct_password = user.get("PASSWORD").toCharArray();
-                char[] input_password = pfPassword.getPassword();
-                System.out.println(correct_password + " " + input_password);
-                //If the password is correct
-                if(Arrays.equals(input_password, correct_password)) {
-                    //Logging in
-                    user_id = Integer.parseInt(user.get("IDEMPLOYEE"));
-                    new MainWindow(db, user_id).setVisible(true);
-                    dispose();
-                } else {
+            ResultSet user = DBFetcher.fetchUser(conn, tfEmail.getText());
+            try {
+                user.next();
+                if(user == null) {
                     JOptionPane.showMessageDialog(rootPane, "Wrong username or password");
+                } else {
+                    char[] correct_password = user.getString("PASSWORD").toCharArray();
+                    char[] input_password = pfPassword.getPassword();
+                    System.out.println(correct_password + " " + input_password);
+                    //If the password is correct
+                    if(Arrays.equals(input_password, correct_password)) {
+                        //Logging in
+                        user_id = DBFetcher.fetchId(conn, tfEmail.getText());
+                        new MainWindow(conn, user_id).setVisible(true);
+                        dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(rootPane, "Wrong username or password");
+                    }
                 }
+            }
+            catch(SQLException e) {
+                
             }
         }
     }
@@ -304,13 +315,36 @@ public class LoginFrame extends javax.swing.JFrame {
                 new LoginFrame().setVisible(true);
             }
         });
-        //Tries to connect to database
+
+
+        System.out.println("-------- MySQL JDBC Connection Testing ------------");
+
         try {
-            System.out.println(System.getProperty("user.dir") + "/scrumdb.fdb");
-            db = new InfDB(System.getProperty("user.dir") + "/scrumdb.fdb");
+            Class.forName("com.mysql.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            System.out.println("Where is your MySQL JDBC Driver?");
+            e.printStackTrace();
+            return;
         }
-        catch(InfException e) {
-            System.out.println("cant connect to db");
+
+        System.out.println("MySQL JDBC Driver Registered!");
+        conn = null;
+
+        try {
+            conn = DriverManager
+            .getConnection("jdbc:mysql://10.22.26.234:3306/scrumxp","root", "");
+
+        } catch (SQLException e) {
+            System.out.println("Connection Failed! Check output console");
+            e.printStackTrace();
+            return;
+        }
+
+        if (conn != null) {
+            System.out.println("You made it, take control your database now!");
+
+        } else {
+            System.out.println("Failed to make connection!");
         }
     }
 

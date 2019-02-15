@@ -5,8 +5,13 @@
  */
 package scrumprojekt;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
@@ -136,13 +141,18 @@ public class Validate {
         }
     }
     
-    public static boolean categoryExist(InfDB db, String category){
-        ArrayList<HashMap<String,String>> list = DBFetcher.fetchAllCategories(db);
+    public static boolean categoryExist(Connection conn, String category){
         boolean exist = false;
-        for(HashMap<String,String> categories : list){
-            if(category.toLowerCase().equals(categories.get("CATEGORY").toLowerCase())){
-                exist = true;
-            }        
+        try {
+            ResultSet categories = DBFetcher.fetchAllCategories(conn);
+            while(categories.next()){
+                if(category.toLowerCase().equals(categories.getString("CATEGORY").toLowerCase())){
+                    exist = true;        
+                }
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Validate.class.getName()).log(Level.SEVERE, null, ex);
         }
         return exist;
     }

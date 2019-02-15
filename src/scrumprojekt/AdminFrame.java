@@ -6,8 +6,13 @@
 package scrumprojekt;
 
 import java.awt.Color;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import oru.inf.InfDB;
 import oru.inf.InfException;
@@ -18,38 +23,38 @@ import oru.inf.InfException;
  */
 public class AdminFrame extends javax.swing.JFrame {
 
-    private InfDB db;
+    private Connection conn;
     private int user_id;
-    private ArrayList<HashMap<String, String>> employees;
+    private ResultSet employees;
 
     /**
      * Creates new form AdminFrame
      */
-    public AdminFrame(InfDB db, int user_id) {
+    public AdminFrame(Connection conn, int user_id) throws SQLException {
         initComponents();
-        this.db = db;
+        this.conn = conn;
         this.user_id = user_id;
         this.setLocationRelativeTo(null);
         getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.black));
         
-        int rank = DBFetcher.fetchRankFromUser(this.db, this.user_id);
+        int rank = DBFetcher.fetchRankFromUser(conn, user_id);
 
         switch (rank) {
             case 5:
 //                System.out.println("idiots");
-                employees = DBFetcher.fetchAllUsers(db);
+                employees = DBFetcher.fetchAllUsers(conn);
                 break;
             case 4:
-                employees = DBFetcher.fetchAllUsersEducation(db);
+                employees = DBFetcher.fetchAllUsersEducation(conn);
                 break;
             case 3:
-                employees = DBFetcher.fetchAllUsersResearch(db);
+                employees = DBFetcher.fetchAllUsersResearch(conn);
                 break;
         }
         if (employees != null) {
-            for (HashMap<String, String> employee : employees) {
-                cbxEmployee.addItem(employee.get("FIRSTNAME") + " " + employee.get("LASTNAME"));
-                cbxRemoveUser.addItem(employee.get("FIRSTNAME") + " " + employee.get("LASTNAME"));
+            while(employees.next()) {
+                cbxEmployee.addItem(employees.getString("FIRSTNAME") + " " + employees.getString("LASTNAME"));
+                cbxRemoveUser.addItem(employees.getString("FIRSTNAME") + " " + employees.getString("LASTNAME"));
             }
         }
     }
@@ -816,8 +821,12 @@ public class AdminFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_pnlEditUserMouseClicked
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
-        new MainWindow(db, user_id).setVisible(true);
-        dispose();
+        try {
+            new MainWindow(conn, user_id).setVisible(true);
+            dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_lblGoBackMouseClicked
 
     private void btnAddUserMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserMouseEntered
@@ -826,7 +835,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void btnAddUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserMouseClicked
 
-        DBInsert.addUser(db, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
+        //DBInsert.addUser(db, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
     }//GEN-LAST:event_btnAddUserMouseClicked
 
     /**
@@ -854,7 +863,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 break;
         }
 
-        DBUpdate.updateUser(db, Integer.parseInt(employees.get(cbxEmployee.getSelectedIndex()).get("IDEMPLOYEE")), rank, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
+        //DBUpdate.updateUser(db, Integer.parseInt(employees.get(cbxEmployee.getSelectedIndex()).get("IDEMPLOYEE")), rank, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
         diaEditUser.setVisible(false);
     }//GEN-LAST:event_btnEditUserMouseClicked
 
@@ -863,37 +872,47 @@ public class AdminFrame extends javax.swing.JFrame {
      * @param evt 
      */
     private void cbxEmployeeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxEmployeeItemStateChanged
-        // TODO add your handling code here:
-        HashMap<String, String> user = employees.get(cbxEmployee.getSelectedIndex());
-        tfFirstname.setText(user.get("FIRSTNAME"));
-        tfLastname.setText(user.get("LASTNAME"));
-        tfEmail.setText(user.get("EMAIL"));
-        tfPhone.setText(user.get("PHONENUMBER"));
-        tfPassword.setText(user.get("PASSWORD"));
-        tfAcademic.setText(user.get("ACADEMICSTATUS"));
-        switch (Integer.parseInt(user.get("RANK"))) {
-            case 5:
-                cbxRank.setSelectedItem("Central Administrator");
-                break;
-            case 4:
-                cbxRank.setSelectedItem("Education Administrator");
-                break;
-            case 3:
-                cbxRank.setSelectedItem("Research Administrator");
-                break;
-            case 2:
-                cbxRank.setSelectedItem("Education User");
-                break;
-            case 1:
-                cbxRank.setSelectedItem("Research User");
-                break;
+        try {
+            // TODO add your handling code here:
+            employees.absolute(cbxEmployee.getSelectedIndex() + 1);
+            ResultSet user = employees;
+            tfFirstname.setText(user.getString("FIRSTNAME"));
+            tfLastname.setText(user.getString("LASTNAME"));
+            tfEmail.setText(user.getString("EMAIL"));
+            tfPhone.setText(user.getString("PHONENUMBER"));
+            tfPassword.setText(user.getString("PASSWORD"));
+            tfAcademic.setText(user.getString("ACADEMICSTATUS"));
+            switch (user.getInt("RANK")) {
+                case 5:
+                    cbxRank.setSelectedItem("Central Administrator");
+                    break;
+                case 4:
+                    cbxRank.setSelectedItem("Education Administrator");
+                    break;
+                case 3:
+                    cbxRank.setSelectedItem("Research Administrator");
+                    break;
+                case 2:
+                    cbxRank.setSelectedItem("Education User");
+                    break;
+                case 1:
+                    cbxRank.setSelectedItem("Research User");
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_cbxEmployeeItemStateChanged
 
     private void btnRemoveUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRemoveUserMouseClicked
-        HashMap<String,String> selected_user = employees.get(cbxRemoveUser.getSelectedIndex());
-        DBDelete.removeUser(db, Integer.parseInt(selected_user.get("IDEMPLOYEE")));
-        diaRemoveUser.setVisible(false);
+        try {
+            employees.absolute(cbxRemoveUser.getSelectedIndex() + 1);
+            ResultSet selected_user = employees;
+            //DBDelete.removeUser(db, Integer.parseInt(selected_user.get("IDEMPLOYEE")));
+            diaRemoveUser.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btnRemoveUserMouseClicked
 
     private void cancelAddUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelAddUserMouseClicked
