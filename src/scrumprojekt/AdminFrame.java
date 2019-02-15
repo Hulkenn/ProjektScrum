@@ -371,7 +371,6 @@ public class AdminFrame extends javax.swing.JFrame {
         );
 
         diaEditUser.setUndecorated(true);
-        diaEditUser.setPreferredSize(new java.awt.Dimension(452, 435));
         diaEditUser.setSize(new java.awt.Dimension(452, 435));
 
         jPanel4.setBackground(new java.awt.Color(50, 121, 184));
