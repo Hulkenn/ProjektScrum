@@ -63,6 +63,7 @@ public class DBInsert {
 
             uprs.insertRow();
             uprs.beforeFirst();
+            EmailD.notice(con, user_id);
         } catch (SQLException e ) {
             System.out.println(e);
         }
@@ -89,6 +90,7 @@ public class DBInsert {
             
             uprs.insertRow();
             uprs.beforeFirst();
+            EmailD.noticeK(con,user_id, post_id);
         }
         catch(SQLException ex) {
             System.out.println("GÅR INTE ATT LÄGGA TILL KOMMENTAR XD");
