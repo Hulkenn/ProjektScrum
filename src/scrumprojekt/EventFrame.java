@@ -44,7 +44,6 @@ public class EventFrame extends javax.swing.JFrame {
                 //jPanel2.add(new_event);
                 jPanel2.add(new_event);
                 jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
-                System.out.println("added");
             }
             jPanel2.revalidate();
             jPanel2.repaint();
