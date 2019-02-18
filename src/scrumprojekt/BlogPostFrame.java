@@ -65,9 +65,9 @@ public class BlogPostFrame extends javax.swing.JFrame {
             taText.setText(post.getString("TEXT"));
 
 
-            lblAuthor.setText(user.getString("FIRSTNAME") + " " + user.getString("LASTNAME"));
-            lblDate.setText(post.getString("POSTDATE"));
-            lblCategory.setText(post.getString("TAG"));
+            lblAuthor.setText("Author: " + user.getString("FIRSTNAME") + " " + user.getString("LASTNAME"));
+            lblDate.setText("Date: " + post.getString("POSTDATE"));
+            lblCategory.setText("Category: " + post.getString("TAG"));
             BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, conn);
         } catch (SQLException ex) {
             
@@ -102,7 +102,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         lblDate = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
+        lblCategory = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taText = new javax.swing.JTextArea();
         jPanel10 = new javax.swing.JPanel();
@@ -113,11 +113,11 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jPanel14 = new javax.swing.JPanel();
-        lblCategory = new javax.swing.JLabel();
         btnAdd = new javax.swing.JLabel();
         jpContainer2 = new javax.swing.JScrollPane();
         jpContainer = new javax.swing.JPanel();
         lblImage = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,13 +219,13 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         lblResearch.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lblResearch.setForeground(new java.awt.Color(255, 255, 255));
-        lblResearch.setText("Reaserch");
+        lblResearch.setText("Research");
         lblResearch.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblResearchMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblResearchMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblResearchMouseEntered(evt);
             }
         });
 
@@ -255,33 +255,33 @@ public class BlogPostFrame extends javax.swing.JFrame {
         });
         jPanel2.add(lblRemove, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 20, -1, -1));
 
-        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1130, 60));
+        bg.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1240, 60));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
         jLabel1.setText("Blog Post");
-        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
+        bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(50, 121, 184));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Posten:");
+        jLabel8.setText("Post Information");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+                .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -297,16 +297,18 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(lblAuthor)
-                .addContainerGap(132, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblAuthor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 280, -1));
+        bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, -1));
+
+        jPanel7.setBackground(new java.awt.Color(230, 230, 230));
 
         lblDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDate.setText("DATE:ExempelTExt");
@@ -318,17 +320,19 @@ public class BlogPostFrame extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 280, -1));
+        bg.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 280, -1));
 
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel12.setText("Image LINK");
+        jPanel9.setBackground(new java.awt.Color(230, 230, 230));
+
+        lblCategory.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        lblCategory.setText("CATEGORY");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -336,15 +340,15 @@ public class BlogPostFrame extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addComponent(lblCategory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 280, -1));
+        bg.add(jPanel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 280, -1));
 
         taText.setEditable(false);
         taText.setColumns(20);
@@ -353,12 +357,14 @@ public class BlogPostFrame extends javax.swing.JFrame {
         taText.setBorder(null);
         jScrollPane1.setViewportView(taText);
 
-        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, 470, 260));
+        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 720, 260));
 
-        jPanel10.setBackground(new java.awt.Color(247, 247, 247));
+        jPanel10.setBackground(new java.awt.Color(250, 249, 246));
 
         jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Comment:");
+
+        jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
         taComment.setColumns(20);
         taComment.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -372,16 +378,16 @@ public class BlogPostFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel10.setText("post");
+        jLabel10.setText("Post");
 
         javax.swing.GroupLayout lblPostCommentLayout = new javax.swing.GroupLayout(lblPostComment);
         lblPostComment.setLayout(lblPostCommentLayout);
         lblPostCommentLayout.setHorizontalGroup(
             lblPostCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblPostCommentLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblPostCommentLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(jLabel10)
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         lblPostCommentLayout.setVerticalGroup(
             lblPostCommentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,59 +402,53 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(84, 84, 84)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 681, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblPostComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPostComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 717, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(lblPostComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPostComment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        bg.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 530, 890, 70));
+        bg.add(jPanel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 490, 940, 120));
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Latest Comments:");
-        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 610, -1, -1));
+        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 610, -1, -1));
 
         jPanel14.setBackground(new java.awt.Color(247, 247, 247));
-
-        lblCategory.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        lblCategory.setText("CATEGORY");
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel14Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCategory, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+            .addGap(0, 280, Short.MAX_VALUE)
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblCategory, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+            .addGap(0, 40, Short.MAX_VALUE)
         );
 
-        bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 280, -1));
+        bg.add(jPanel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 380, 280, -1));
 
         btnAdd.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btnAdd.setText("Headline:ExempelTExt");
         bg.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 810, 40));
+
+        jpContainer2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jpContainer.setBackground(new java.awt.Color(247, 247, 247));
 
@@ -465,8 +465,14 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         jpContainer2.setViewportView(jpContainer);
 
-        bg.add(jpContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 880, 190));
-        bg.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 280, 260));
+        bg.add(jpContainer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 640, 710, 130));
+
+        lblImage.setText("BILD?");
+        bg.add(lblImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 60, 30));
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel12.setText("image link..");
+        bg.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, 148, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,7 +482,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();

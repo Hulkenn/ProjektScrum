@@ -67,6 +67,8 @@ public class commentPanel extends javax.swing.JPanel {
         lblDate.setForeground(new java.awt.Color(250, 249, 246));
         lblDate.setText("When");
 
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
         taComment.setEditable(false);
         taComment.setBackground(new java.awt.Color(255, 255, 255));
         taComment.setColumns(20);

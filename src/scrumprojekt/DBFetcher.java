@@ -80,6 +80,22 @@ public class DBFetcher {
         }
         return rs;
     }
+    public static String fetchEmail(Connection con, int user_id){
+        Statement stmt = null;
+        String query = "SELECT EMAIL FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id;
+        ResultSet rs = null;
+        String email = "";
+        try{
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+            rs.next();
+            email = rs.getString("EMAIL");
+            rs.close();
+        } catch(SQLException e){
+            System.out.println("ERROR TO FETCH DATE OF EVENT");
+        }
+        return email;
+    }
     
     
     
