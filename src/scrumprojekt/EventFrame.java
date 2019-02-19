@@ -8,6 +8,8 @@ package scrumprojekt;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +28,7 @@ public class EventFrame extends javax.swing.JFrame {
     private Connection conn;
     private ResultSet events;
     private ArrayList<Event> event_components;
+    private int user_id;
     /**
      * Creates new form EventFrame
      */
@@ -44,12 +47,70 @@ public class EventFrame extends javax.swing.JFrame {
                 //jPanel2.add(new_event);
                 jPanel2.add(new_event);
                 jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
-                System.out.println("added");
             }
             jPanel2.revalidate();
             jPanel2.repaint();
         }
         lblDate.setText(date);
+    }
+    
+    public EventFrame(Connection conn, int user_id) throws SQLException {
+        initComponents();
+        this.conn = conn;
+        this.setLocationRelativeTo(null);
+        this.user_id = user_id;
+        this.events = DBFetcher.fetchAllPersonalEvents(conn, user_id);
+        this.event_components = new ArrayList<Event>();
+        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        if(events != null) {
+            while(events.next()) {
+                Event new_event = new Event(events, conn);
+                event_components.add(new_event);
+                new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
+                //jPanel2.add(new_event);
+                jPanel2.add(new_event);
+                jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
+            }
+            jPanel2.revalidate();
+            jPanel2.repaint();
+        }
+        lblDate.setText("");
+        lblDateForEvents.setText("");
+    }
+    
+    public EventFrame(Connection conn, int user_id, String remove) throws SQLException {
+        initComponents();
+        this.conn = conn;
+        this.setLocationRelativeTo(null);
+        this.user_id = user_id;
+        this.events = DBFetcher.fetchEventsOnCreator(conn, user_id);
+        this.event_components = new ArrayList<Event>();
+        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        if(events != null) {
+            while(events.next()) {
+                int eventId = events.getInt("IDEVENTS");
+                Event new_event = new Event(conn, events);
+                new_event.getButton().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        DBDelete.removeEventHard(conn, eventId);
+                        event_components.remove(new_event);
+                        jPanel2.remove(new_event);
+                        jPanel2.revalidate();
+                        jPanel2.repaint();
+                    }
+                });
+                event_components.add(new_event);
+                new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
+                //jPanel2.add(new_event);
+                jPanel2.add(new_event);
+                jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
+            }
+            jPanel2.revalidate();
+            jPanel2.repaint();
+        }
+        lblDate.setText("");
+        lblDateForEvents.setText("");
     }
     
     /**

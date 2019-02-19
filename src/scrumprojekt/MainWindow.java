@@ -198,6 +198,10 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
 
         diaEditUser.setUndecorated(true);
         diaEditUser.setSize(new java.awt.Dimension(452, 435));
@@ -2091,6 +2095,68 @@ public class MainWindow extends javax.swing.JFrame {
 
         bg1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 130, 40));
 
+        jPanel3.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel3MouseClicked(evt);
+            }
+        });
+
+        jLabel4.setBackground(new java.awt.Color(250, 249, 246));
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel4.setText("My Events");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel4)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addContainerGap())
+        );
+
+        bg1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 700, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel5MouseClicked(evt);
+            }
+        });
+
+        jLabel5.setBackground(new java.awt.Color(250, 249, 246));
+        jLabel5.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel5.setText("Remove Events");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jLabel5)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addContainerGap())
+        );
+
+        bg1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, -1, -1));
+
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
         panelHomeLayout.setHorizontalGroup(
@@ -2954,6 +3020,24 @@ public class MainWindow extends javax.swing.JFrame {
         new InviteFrame(conn, user_id).setVisible(true);
     }//GEN-LAST:event_jPanel2MouseClicked
 
+    private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        try {
+            // TODO add your handling code here:
+            new EventFrame(conn, user_id).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel3MouseClicked
+
+    private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        try {
+            // TODO add your handling code here:
+            new EventFrame(conn, user_id, "removeframe").setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel5MouseClicked
+
                          
 
     
@@ -3377,7 +3461,6 @@ public class MainWindow extends javax.swing.JFrame {
                 while(events_month.next()) {
                     Date date = events_month.getDate("EVENTDATE");
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                    System.out.println(sdf.format(date).toString());
                     String[] dateString = sdf.format(date).toString().split("-");
                     int currDay = Integer.parseInt(dateString[2]);
                     JLabel lbl = convertDay(currDay);
@@ -3629,10 +3712,14 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel labelOpenEducation;
     private javax.swing.JLabel labelOpenResearch;

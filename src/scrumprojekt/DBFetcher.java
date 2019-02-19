@@ -353,6 +353,32 @@ public class DBFetcher {
         return rs;
     }
     
+    public static ResultSet fetchAllPersonalEvents(Connection con, int user_id) throws SQLException{
+        Statement stmt = null;
+        String query = "SELECT IDEVENTS, INVITED_TO_EVENT.EMPLOYEE_IDEMPLOYEE AS IDEMPLOYEE, TITLE, TIME, PLACE, DESCRIPTION, ATTENDING, E2.FIRSTNAME AS FIRSTNAME, E2.LASTNAME AS LASTNAME FROM EVENTS JOIN INVITED_TO_EVENT ON IDEVENTS = invited_to_event.EVENTS_IDEVENTS JOIN EMPLOYEE AS E1 ON invited_to_event.EMPLOYEE_IDEMPLOYEE = E1.IDEMPLOYEE join EMPLOYEE AS E2 ON EVENTS.EMPLOYEE_IDEMPLOYEE = E2.IDEMPLOYEE WHERE E1.IDEMPLOYEE = " + user_id;
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } catch(SQLException e) {
+            System.out.println("ERROR TO FETCH EVENTS");
+        }
+        return rs;
+    }
+    
+    public static ResultSet fetchEventsOnCreator(Connection con, int user_ID) throws SQLException{
+        Statement stmt = null;
+        String query = "SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE IDEMPLOYEE = " + user_ID;
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } catch(SQLException e) {
+            System.out.println("ERROR TO FETCH EVENTS");
+        }
+        return rs;
+    }
+    
     //INTE OMVANDLAD FÖR VETTEFAN VAD VI SKA GÖRA MED DENNA XD
     public static String fetchImagePath(InfDB db, int post_id) {
         String path = "";

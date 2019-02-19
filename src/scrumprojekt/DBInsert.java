@@ -184,26 +184,60 @@ public class DBInsert {
      * @param date
      * @param description
      */
-    public static void insertEvent(Connection con, String date, String description, int user_id){
- 
+    public static int insertEvent(Connection con, int user_id, String date, String description, String title, String time, String place){
+        int eventId = 0;
         Statement stmt = null;
         try {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
  
             ResultSet uprs = stmt.executeQuery(
                 "SELECT * FROM EVENTS");
+            
  
             uprs.moveToInsertRow();
             uprs.updateString("EVENTDATE", date);
             uprs.updateString("DESCRIPTION", description);
-            uprs.updateString("ISDELETED", "0");
+            uprs.updateInt("ISDELETED", 0);
+            uprs.updateInt("ISPRIVATE", 0);
+            uprs.updateString("TITLE", title);
+            uprs.updateString("TIME", time);
+            uprs.updateString("PLACE", place);
             uprs.updateInt("EMPLOYEE_IDEMPLOYEE", user_id);
  
             uprs.insertRow();
             uprs.beforeFirst();
+            
+            uprs.last();
+            
+            eventId = uprs.getInt("IDEVENTS");
         }
         catch (SQLException e ) {
             System.out.println(e);
+        }
+        return eventId;
+    }
+    
+    public static void insertInvitedToEvent(Connection con, int user_id, int event_id) {
+        //DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        //LocalDate localDate = LocalDate.now();
+        //String curr_date = dtf.format(localDate);
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet uprs = stmt.executeQuery(
+                "SELECT * FROM INVITED_TO_EVENT");
+
+            uprs.moveToInsertRow();
+            uprs.updateInt("EMPLOYEE_IDEMPLOYEE", user_id);
+            uprs.updateInt("EVENTS_IDEVENTS", event_id);
+            uprs.updateInt("ATTENDING", 0);
+
+            uprs.insertRow();
+            uprs.beforeFirst();
+        }
+        catch(SQLException ex) {
+            System.out.println(ex);
         }
     }
     

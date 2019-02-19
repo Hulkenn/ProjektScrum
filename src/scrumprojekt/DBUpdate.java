@@ -26,22 +26,39 @@ public class DBUpdate {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                     ResultSet.CONCUR_UPDATABLE);
             ResultSet uprs = stmt.executeQuery("SELECT * FROM employee WHERE idemployee=" + user_id);
-            while(uprs.next()) {
-                uprs.updateInt("RANK", rank);
-                uprs.updateString("FIRSTNAME", firstname);
-                uprs.updateString("LASTNAME", lastname);
-                uprs.updateString("EMAIL", mail);
-                uprs.updateString("PHONENUMBER", number);
-                uprs.updateString("ACADEMICSTATUS", academicstatus);
-                uprs.updateString("PASSWORD", password);
-                uprs.updateRow();
-            }
+            uprs.next();
+            uprs.updateInt("RANK", rank);
+            uprs.updateString("FIRSTNAME", firstname);
+            uprs.updateString("LASTNAME", lastname);
+            uprs.updateString("EMAIL", mail);
+            uprs.updateString("PHONENUMBER", number);
+            uprs.updateString("ACADEMICSTATUS", academicstatus);
+            uprs.updateString("PASSWORD", password);
+            uprs.updateRow();
             
             if (stmt != null) {
                 stmt.close();
             }
         } catch (SQLException e) {
             System.out.println(e);
+        }
+    }
+    
+    public static void updateAttending(Connection con, int event_id, int user_id, int attending) {
+        Statement stmt = null;
+        try {
+            stmt = con.createStatement();
+            stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            ResultSet uprs = stmt.executeQuery("SELECT * FROM INVITED_TO_EVENT WHERE EMPLOYEE_IDEMPLOYEE = " + user_id + " AND EVENTS_IDEVENTS = " + event_id);
+            while(uprs.next()) {
+                uprs.updateInt("ATTENDING", attending);
+                uprs.updateRow();
+            }
+            
+            if(stmt != null)
+                stmt.close();
+        } catch(SQLException ex) {
+            System.out.println(ex);
         }
     }
  

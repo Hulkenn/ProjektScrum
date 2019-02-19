@@ -64,7 +64,6 @@ public class DBDelete {
             stmt.executeUpdate(queryEvent);
             stmt.executeUpdate(queryInvited);
             stmt.executeUpdate(queryEmployee);
-            System.out.println("Hard delete complete");
             
             if (stmt != null) {
                 stmt.close();
@@ -75,7 +74,7 @@ public class DBDelete {
     }
     
     //Removes a post from the database
-    public static void removePost(Connection con, int postID) {
+    /*public static void removePost(Connection con, int postID) {
  
         Statement stmt = null;
         try {
@@ -97,9 +96,10 @@ public class DBDelete {
         catch (SQLException e) {
             System.out.println(e);
         }
-    }
+    }*/
+    
     //Removes a comment from the database
-    public static void removeComment(Connection con, int commentID) {
+    public static void removePost(Connection con, int postID) {
  
         Statement stmt = null;
         try {
@@ -107,10 +107,17 @@ public class DBDelete {
             stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,
                    ResultSet.CONCUR_UPDATABLE);
             ResultSet uprs = stmt.executeQuery(
-                "SELECT * FROM COMMENTS where COMMENT_ID = " + commentID);
+                "SELECT * FROM COMMENTS WHERE POST_IDPOST = " + postID);
  
             while (uprs.next()) {
-                uprs.updateString("ISDELETED", "1");
+                uprs.updateInt("ISDELETED", 1);
+                uprs.updateRow();
+            }
+            
+            uprs = stmt.executeQuery("SELECT * FROM POST WHERE IDPOST = " + postID);
+            
+            while (uprs.next()) {
+                uprs.updateInt("ISDELETED", 1);
                 uprs.updateRow();
             }
  
@@ -147,7 +154,25 @@ public class DBDelete {
         catch (SQLException e ) {
             System.out.println(e);
         }
-    }  
-  
+    }
+    
+    public static void removeEventHard(Connection con, int event_ID) {
+        Statement stmt = null;
+        String queryInvited = "DELETE from INVITED_TO_EVENT where EVENTS_IDEVENTS= " + event_ID;
+        String queryEvent = "DELETE from EVENTS where IDEVENTS= " + event_ID;
+
+        try {
+            stmt = con.createStatement();
+            stmt.executeUpdate(queryInvited);
+            stmt.executeUpdate(queryEvent);
+
+            if (stmt != null) {
+                stmt.close();
+            }
+        } catch (SQLException e) {
+            System.out.println("Hard delete failed" + e);
+        }
+    }
+
     
 }
