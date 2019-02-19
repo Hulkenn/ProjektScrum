@@ -41,7 +41,7 @@ public class EventFrame extends javax.swing.JFrame {
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
         if(events != null) {
             while(events.next()) {
-                Event new_event = new Event(events);
+                Event new_event = new Event(events, conn);
                 event_components.add(new_event);
                 new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
                 //jPanel2.add(new_event);
@@ -64,7 +64,7 @@ public class EventFrame extends javax.swing.JFrame {
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
         if(events != null) {
             while(events.next()) {
-                Event new_event = new Event(events, conn);
+                Event new_event = new Event(events, conn, "attend");
                 event_components.add(new_event);
                 new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
                 //jPanel2.add(new_event);

@@ -317,7 +317,9 @@ public class InviteFrame extends javax.swing.JFrame {
             if(cbxInvited.getItemCount() > 0) {
                 for(Integer invited_user_id : invited_user_ids) {
                     DBInsert.insertInvitedToEvent(conn, invited_user_id, eventId);
+                    
                 }
+                EmailD.noticeEvent(conn, user_id, invited_user_ids);
             }
             dispose();
         }

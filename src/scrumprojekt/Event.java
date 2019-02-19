@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 
 /**
  *
@@ -30,20 +31,34 @@ public class Event extends javax.swing.JPanel {
     /**
      * Creates new form Event
      */
-    public Event(ResultSet event) {
+    public Event(ResultSet event, Connection conn) {
         initComponents();
+        this.conn = conn;
         try {
             jTextArea1.setText(event.getString("DESCRIPTION"));
             txtCreator.setText(txtCreator.getText() + event.getString("FIRSTNAME") + " " + event.getString("LASTNAME"));
             lblTitle.setText(event.getString("TITLE"));
             lblPlace.setText(event.getString("PLACE"));
             lblTime.setText(event.getString("TIME"));
+            ResultSet attended = DBFetcher.fetchUsersAttended(this.conn, event.getInt("IDEVENTS"));
+            boolean attended_empty = true;
+            JComboBox attended_users = new JComboBox();
+            while(attended.next()) {
+                if(attended_empty) {
+                    attended_empty = false;
+                    attendingPanel.setLayout(new BoxLayout(attendingPanel, BoxLayout.Y_AXIS));
+                    attendingPanel.add(attended_users);
+                    attendingPanel.revalidate();
+                    attendingPanel.repaint();
+                }
+                attended_users.addItem(attended.getString("FIRSTNAME") + " " + attended.getString("LASTNAME"));
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Event.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public Event(ResultSet event, Connection conn) {
+    public Event(ResultSet event, Connection conn, String attending) {
         initComponents();
         
         try {

@@ -113,6 +113,19 @@ public class DBFetcher {
         return rs;
     }
     
+    public static ResultSet fetchUsersAttended(Connection con, int event_id) {
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE JOIN INVITED_TO_EVENT ON IDEMPLOYEE = INVITED_TO_EVENT.EMPLOYEE_IDEMPLOYEE JOIN EVENTS ON EVENTS_IDEVENTS = IDEVENTS WHERE IDEVENTS = " + event_id + " AND ATTENDING = 1";
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } catch(SQLException e) {
+            
+        }
+        return rs;
+    }
+    
     public static ResultSet fetchPost(Connection con, int post_id) {
         //Returnerar bara en rad
         Statement stmt = null;

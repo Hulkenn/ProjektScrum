@@ -15,6 +15,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.Socket;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.Hashtable;
 import java.util.StringTokenizer;
 import java.util.logging.Level;
