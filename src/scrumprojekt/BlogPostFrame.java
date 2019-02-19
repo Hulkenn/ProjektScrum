@@ -536,23 +536,12 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseExited
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
-        
-        try {
-            new EducationFrame(conn, user_id).setVisible(true);
-            dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dispose();
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked
         DBDelete.removePost(conn, this.post_id);
         dispose();
-        try {
-            new EducationFrame(conn, user_id);
-        } catch (SQLException ex) {
-            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_lblRemoveMouseClicked
 
     private void lblAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAuthorMouseClicked

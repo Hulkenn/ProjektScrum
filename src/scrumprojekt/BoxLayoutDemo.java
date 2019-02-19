@@ -69,7 +69,6 @@ public class BoxLayoutDemo {
             try {
                 while(comments.next())
                 {
-                    System.out.println("ADDED A COMMENT");
                     addComment(comments, pane, conn); 
                 }
             } catch (SQLException ex) {
