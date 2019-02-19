@@ -27,6 +27,7 @@ public class InviteFrame extends javax.swing.JFrame {
      */
     public InviteFrame(Connection conn, int user_id) {
         initComponents();
+        setLocationRelativeTo(null);
         this.conn = conn;
         this.user_id = user_id;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
