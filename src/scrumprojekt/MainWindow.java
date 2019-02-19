@@ -1,5 +1,6 @@
 package scrumprojekt;
 
+import controller.ClientFrame;
 import java.awt.Color;
 import java.sql.Connection;
 import java.sql.Date;
@@ -14,8 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
@@ -27,6 +26,8 @@ public class MainWindow extends javax.swing.JFrame {
     private int user_id;
     private ResultSet events_month;
     private ResultSet user;
+    
+    
 
     /**
      * Creates new form MainWindow
@@ -94,6 +95,8 @@ public class MainWindow extends javax.swing.JFrame {
         lblExit = new javax.swing.JLabel();
         pnlAdmin = new javax.swing.JPanel();
         lblAdmin = new javax.swing.JLabel();
+        panelOpenChat = new javax.swing.JPanel();
+        lblOpenChat = new javax.swing.JLabel();
         panelHome = new javax.swing.JPanel();
         bg1 = new javax.swing.JPanel();
         day1 = new javax.swing.JPanel();
@@ -202,6 +205,10 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
 
         diaEditUser.setUndecorated(true);
         diaEditUser.setSize(new java.awt.Dimension(452, 435));
@@ -392,7 +399,7 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenEducationLayout.setVerticalGroup(
             panelOpenEducationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpenEducationLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelOpenEducation)
                 .addContainerGap())
         );
@@ -402,11 +409,11 @@ public class MainWindow extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelOpenSocialMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelOpenSocialMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelOpenSocialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelOpenSocialMouseExited(evt);
             }
         });
 
@@ -431,7 +438,7 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenSocialLayout.setVerticalGroup(
             panelOpenSocialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpenSocialLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelOpenSocial)
                 .addContainerGap())
         );
@@ -441,11 +448,11 @@ public class MainWindow extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 panelOpenResearchMouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                panelOpenResearchMouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 panelOpenResearchMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelOpenResearchMouseExited(evt);
             }
         });
 
@@ -470,7 +477,7 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenResearchLayout.setVerticalGroup(
             panelOpenResearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpenResearchLayout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelOpenResearch)
                 .addContainerGap())
         );
@@ -480,11 +487,11 @@ public class MainWindow extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlLogOutMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlLogOutMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pnlLogOutMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlLogOutMouseEntered(evt);
             }
         });
 
@@ -496,11 +503,11 @@ public class MainWindow extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogOutMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                lblLogOutMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblLogOutMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblLogOutMouseEntered(evt);
             }
         });
 
@@ -508,10 +515,9 @@ public class MainWindow extends javax.swing.JFrame {
         pnlLogOut.setLayout(pnlLogOutLayout);
         pnlLogOutLayout.setHorizontalGroup(
             pnlLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLogOutLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(pnlLogOutLayout.createSequentialGroup()
                 .addComponent(lblLogOut)
-                .addContainerGap())
+                .addGap(0, 12, Short.MAX_VALUE))
         );
         pnlLogOutLayout.setVerticalGroup(
             pnlLogOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -525,11 +531,11 @@ public class MainWindow extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pnlExitMouseClicked(evt);
             }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pnlExitMouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 pnlExitMouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pnlExitMouseEntered(evt);
             }
         });
 
@@ -553,9 +559,8 @@ public class MainWindow extends javax.swing.JFrame {
         pnlExitLayout.setHorizontalGroup(
             pnlExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlExitLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addComponent(lblExit)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(0, 47, Short.MAX_VALUE))
         );
         pnlExitLayout.setVerticalGroup(
             pnlExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -608,6 +613,51 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(lblAdmin))
         );
 
+        panelOpenChat.setBackground(new java.awt.Color(50, 121, 184));
+        panelOpenChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                panelOpenChatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                panelOpenChatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                panelOpenChatMouseExited(evt);
+            }
+        });
+
+        lblOpenChat.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lblOpenChat.setForeground(new java.awt.Color(250, 249, 246));
+        lblOpenChat.setText("Chat");
+        lblOpenChat.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblOpenChatMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblOpenChatMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblOpenChatMouseExited(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelOpenChatLayout = new javax.swing.GroupLayout(panelOpenChat);
+        panelOpenChat.setLayout(panelOpenChatLayout);
+        panelOpenChatLayout.setHorizontalGroup(
+            panelOpenChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpenChatLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblOpenChat, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
+        );
+        panelOpenChatLayout.setVerticalGroup(
+            panelOpenChatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpenChatLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblOpenChat)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
@@ -615,35 +665,34 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addComponent(panelOpenEducation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addGap(18, 18, 18)
                 .addComponent(panelOpenResearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(78, 78, 78)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelOpenSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelOpenChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(pnlLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pnlExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pnlLogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
-                .addGap(0, 15, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
+                    .addComponent(panelOpenEducation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelOpenResearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelOpenSocial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
                         .addComponent(pnlExit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(8, 8, 8)
                         .addComponent(pnlLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(panelOpenEducation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelOpenResearch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(panelOpenSocial, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(panelOpenChat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(pnlAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -654,15 +703,14 @@ public class MainWindow extends javax.swing.JFrame {
         panelHome.setPreferredSize(new java.awt.Dimension(1170, 650));
 
         bg1.setBackground(new java.awt.Color(250, 249, 246));
-        bg1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         day1.setBackground(new java.awt.Color(204, 204, 204));
         day1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day1MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day1MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day1MouseEntered(evt);
             }
         });
 
@@ -685,7 +733,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(lblDay1)
                 .addGap(18, 18, 18)
                 .addComponent(lblEvent1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         day1Layout.setVerticalGroup(
             day1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -694,18 +742,16 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(day1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblEvent1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDay1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
-
-        bg1.add(day1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 140, 100));
 
         day2.setBackground(new java.awt.Color(204, 204, 204));
         day2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day2MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day2MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day2MouseEntered(evt);
             }
         });
 
@@ -740,15 +786,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
-
         day3.setBackground(new java.awt.Color(204, 204, 204));
         day3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day3MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day3MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day3MouseEntered(evt);
             }
         });
 
@@ -783,15 +827,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
-
         day4.setBackground(new java.awt.Color(204, 204, 204));
         day4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day4MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day4MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day4MouseEntered(evt);
             }
         });
 
@@ -826,15 +868,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, -1, -1));
-
         day5.setBackground(new java.awt.Color(204, 204, 204));
         day5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day5MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day5MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day5MouseEntered(evt);
             }
         });
 
@@ -869,15 +909,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, -1, -1));
-
         day6.setBackground(new java.awt.Color(204, 204, 204));
         day6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day6MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day6MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day6MouseEntered(evt);
             }
         });
 
@@ -912,15 +950,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 120, -1, -1));
-
         day7.setBackground(new java.awt.Color(204, 204, 204));
         day7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day7MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day7MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day7MouseEntered(evt);
             }
         });
 
@@ -955,15 +991,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day7, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 120, -1, -1));
-
         day8.setBackground(new java.awt.Color(204, 204, 204));
         day8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day8MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day8MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day8MouseEntered(evt);
             }
         });
 
@@ -998,15 +1032,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
         day9.setBackground(new java.awt.Color(204, 204, 204));
         day9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day9MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day9MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day9MouseEntered(evt);
             }
         });
 
@@ -1041,15 +1073,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
-
         day10.setBackground(new java.awt.Color(204, 204, 204));
         day10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day10MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day10MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day10MouseEntered(evt);
             }
         });
 
@@ -1072,7 +1102,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(lblDay10)
                 .addGap(18, 18, 18)
                 .addComponent(lblEvent10, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         day10Layout.setVerticalGroup(
             day10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1084,15 +1114,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day10, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 140, -1));
-
         day11.setBackground(new java.awt.Color(204, 204, 204));
         day11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day11MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day11MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day11MouseEntered(evt);
             }
         });
 
@@ -1127,15 +1155,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
-
         day12.setBackground(new java.awt.Color(204, 204, 204));
         day12.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day12MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day12MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day12MouseEntered(evt);
             }
         });
 
@@ -1170,15 +1196,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day12, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 230, -1, -1));
-
         day13.setBackground(new java.awt.Color(204, 204, 204));
         day13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day13MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day13MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day13MouseEntered(evt);
             }
         });
 
@@ -1213,15 +1237,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, -1, -1));
-
         day14.setBackground(new java.awt.Color(204, 204, 204));
         day14.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day14MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day14MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day14MouseEntered(evt);
             }
         });
 
@@ -1256,15 +1278,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day14, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 230, -1, -1));
-
         day15.setBackground(new java.awt.Color(204, 204, 204));
         day15.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day15MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day15MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day15MouseEntered(evt);
             }
         });
 
@@ -1299,15 +1319,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
-
         day16.setBackground(new java.awt.Color(204, 204, 204));
         day16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day16MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day16MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day16MouseEntered(evt);
             }
         });
 
@@ -1342,15 +1360,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day16, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
-
         day17.setBackground(new java.awt.Color(204, 204, 204));
         day17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day17MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day17MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day17MouseEntered(evt);
             }
         });
 
@@ -1385,15 +1401,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day17, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, -1, -1));
-
         day18.setBackground(new java.awt.Color(204, 204, 204));
         day18.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day18MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day18MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day18MouseEntered(evt);
             }
         });
 
@@ -1428,15 +1442,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day18, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
-
         day19.setBackground(new java.awt.Color(204, 204, 204));
         day19.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day19MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day19MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day19MouseEntered(evt);
             }
         });
 
@@ -1471,15 +1483,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day19, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, -1, -1));
-
         dau20.setBackground(new java.awt.Color(204, 204, 204));
         dau20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                dau20MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 dau20MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                dau20MouseEntered(evt);
             }
         });
 
@@ -1514,15 +1524,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(dau20, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 340, -1, -1));
-
         day21.setBackground(new java.awt.Color(204, 204, 204));
         day21.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day21MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day21MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day21MouseEntered(evt);
             }
         });
 
@@ -1557,15 +1565,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day21, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 340, -1, -1));
-
         day22.setBackground(new java.awt.Color(204, 204, 204));
         day22.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day22MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day22MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day22MouseEntered(evt);
             }
         });
 
@@ -1600,15 +1606,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day22, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
-
         day23.setBackground(new java.awt.Color(204, 204, 204));
         day23.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day23MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day23MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day23MouseEntered(evt);
             }
         });
 
@@ -1643,15 +1647,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day23, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 450, -1, -1));
-
         day24.setBackground(new java.awt.Color(204, 204, 204));
         day24.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day24MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day24MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day24MouseEntered(evt);
             }
         });
 
@@ -1686,15 +1688,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day24, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 450, -1, -1));
-
         day25.setBackground(new java.awt.Color(204, 204, 204));
         day25.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day25MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day25MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day25MouseEntered(evt);
             }
         });
 
@@ -1717,7 +1717,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(lblDay25)
                 .addGap(18, 18, 18)
                 .addComponent(lblEvent25, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         day25Layout.setVerticalGroup(
             day25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1729,15 +1729,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day25, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 450, 140, -1));
-
         day26.setBackground(new java.awt.Color(204, 204, 204));
         day26.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day26MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day26MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day26MouseEntered(evt);
             }
         });
 
@@ -1772,15 +1770,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day26, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, -1, -1));
-
         day27.setBackground(new java.awt.Color(204, 204, 204));
         day27.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day27MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day27MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day27MouseEntered(evt);
             }
         });
 
@@ -1815,15 +1811,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day27, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, -1, -1));
-
         day28.setBackground(new java.awt.Color(204, 204, 204));
         day28.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day28MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day28MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day28MouseEntered(evt);
             }
         });
 
@@ -1858,15 +1852,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day28, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 450, -1, -1));
-
         day29.setBackground(new java.awt.Color(204, 204, 204));
         day29.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day29MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day29MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day29MouseEntered(evt);
             }
         });
 
@@ -1889,7 +1881,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(lblDay29)
                 .addGap(18, 18, 18)
                 .addComponent(lblEvent29, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         day29Layout.setVerticalGroup(
             day29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1901,15 +1893,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day29, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 560, 140, -1));
-
         day30.setBackground(new java.awt.Color(204, 204, 204));
         day30.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day30MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day30MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day30MouseEntered(evt);
             }
         });
 
@@ -1944,15 +1934,13 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day30, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 560, -1, -1));
-
         day31.setBackground(new java.awt.Color(204, 204, 204));
         day31.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                day31MouseEntered(evt);
-            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 day31MouseExited(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                day31MouseEntered(evt);
             }
         });
 
@@ -1987,8 +1975,6 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        bg1.add(day31, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
-
         cbxMonth1.setBackground(new java.awt.Color(50, 121, 184));
         cbxMonth1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         cbxMonth1.setForeground(new java.awt.Color(255, 255, 255));
@@ -2003,7 +1989,6 @@ public class MainWindow extends javax.swing.JFrame {
                 cbxMonth1ActionPerformed(evt);
             }
         });
-        bg1.add(cbxMonth1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 242, 38));
 
         cbxYear1.setBackground(new java.awt.Color(50, 121, 184));
         cbxYear1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
@@ -2019,19 +2004,15 @@ public class MainWindow extends javax.swing.JFrame {
                 cbxYear1ActionPerformed(evt);
             }
         });
-        bg1.add(cbxYear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 242, 38));
 
         jLabel1.setBackground(new java.awt.Color(250, 249, 246));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        bg1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 250, 20));
 
         lblTime.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
         lblTime.setText("Time");
-        bg1.add(lblTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 0, -1, 52));
 
         lblDate.setFont(new java.awt.Font("Georgia", 0, 24)); // NOI18N
         lblDate.setText("Date");
-        bg1.add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 50, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(50, 121, 184));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -2043,16 +2024,16 @@ public class MainWindow extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(250, 249, 246));
-        jLabel2.setText("Change Info");
+        jLabel2.setText("Change User Info");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2062,9 +2043,8 @@ public class MainWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        bg1.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 680, -1, -1));
-
         jPanel2.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel2MouseClicked(evt);
@@ -2080,20 +2060,18 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(jLabel3)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(28, 28, 28))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel3)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        bg1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 700, 130, 40));
 
         jPanel3.setBackground(new java.awt.Color(50, 124, 181));
         jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2114,17 +2092,15 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel4)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addContainerGap())
         );
-
-        bg1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 700, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(50, 124, 181));
         jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -2145,17 +2121,238 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel5)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addContainerGap())
         );
 
-        bg1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 700, -1, -1));
+        jPanel9.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel9MouseClicked(evt);
+            }
+        });
+
+        jLabel9.setBackground(new java.awt.Color(250, 249, 246));
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel9.setText("My Events");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addGap(28, 28, 28))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBackground(new java.awt.Color(50, 124, 181));
+        jPanel10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel10MouseClicked(evt);
+            }
+        });
+
+        jLabel10.setBackground(new java.awt.Color(250, 249, 246));
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(250, 249, 246));
+        jLabel10.setText("Remove Events");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout bg1Layout = new javax.swing.GroupLayout(bg1);
+        bg1.setLayout(bg1Layout);
+        bg1Layout.setHorizontalGroup(
+            bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bg1Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(bg1Layout.createSequentialGroup()
+                        .addComponent(day8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bg1Layout.createSequentialGroup()
+                        .addComponent(day15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(dau20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bg1Layout.createSequentialGroup()
+                        .addComponent(day22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bg1Layout.createSequentialGroup()
+                        .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(bg1Layout.createSequentialGroup()
+                                .addComponent(day1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(day2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(day3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(day4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(day5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10)
+                                .addComponent(day6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))
+                            .addGroup(bg1Layout.createSequentialGroup()
+                                .addComponent(cbxYear1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbxMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTime)
+                                .addGap(139, 139, 139)))
+                        .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDate)
+                            .addComponent(day7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bg1Layout.createSequentialGroup()
+                        .addComponent(day29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(day31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(bg1Layout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(bg1Layout.createSequentialGroup()
+                                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10)))
+                .addContainerGap(93, Short.MAX_VALUE))
+        );
+        bg1Layout.setVerticalGroup(
+            bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bg1Layout.createSequentialGroup()
+                .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblDate))
+                        .addGroup(bg1Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbxYear1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cbxMonth1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(day1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(10, 10, 10)
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(day8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(10, 10, 10)
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(day15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dau20, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(10, 10, 10)
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(day22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(day28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(bg1Layout.createSequentialGroup()
+                                    .addGap(10, 10, 10)
+                                    .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(day29, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(day30, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(day31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(bg1Layout.createSequentialGroup()
+                                    .addGap(77, 77, 77)
+                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(bg1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(70, 70, 70))
+        );
 
         javax.swing.GroupLayout panelHomeLayout = new javax.swing.GroupLayout(panelHome);
         panelHome.setLayout(panelHomeLayout);
@@ -2164,13 +2361,13 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(bg1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(68, 68, 68))
+                .addContainerGap())
         );
         panelHomeLayout.setVerticalGroup(
             panelHomeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHomeLayout.createSequentialGroup()
-                .addComponent(bg1, javax.swing.GroupLayout.PREFERRED_SIZE, 750, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+            .addGroup(panelHomeLayout.createSequentialGroup()
+                .addComponent(bg1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -2178,14 +2375,14 @@ public class MainWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
+            .addComponent(panelHome, javax.swing.GroupLayout.PREFERRED_SIZE, 1155, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(panelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE))
+                .addComponent(panelHome, javax.swing.GroupLayout.DEFAULT_SIZE, 744, Short.MAX_VALUE))
         );
 
         pack();
@@ -3040,9 +3237,53 @@ public class MainWindow extends javax.swing.JFrame {
 
                          
 
-    
-    
-    
+    private void lblOpenChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOpenChatMouseClicked
+        ClientFrame clientFrame = new ClientFrame("Hulken",user_id,conn);
+        clientFrame.setVisible(true);
+       
+    }//GEN-LAST:event_lblOpenChatMouseClicked
+
+    private void panelOpenChatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenChatMouseEntered
+        panelOpenChat.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_panelOpenChatMouseEntered
+
+    private void panelOpenChatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenChatMouseExited
+        panelOpenChat.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_panelOpenChatMouseExited
+
+    private void lblOpenChatMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOpenChatMouseEntered
+        panelOpenChat.setBackground(new Color(77, 146, 208));
+    }//GEN-LAST:event_lblOpenChatMouseEntered
+
+    private void lblOpenChatMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOpenChatMouseExited
+        panelOpenChat.setBackground(new Color(50, 121, 184));
+    }//GEN-LAST:event_lblOpenChatMouseExited
+
+    private void panelOpenChatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_panelOpenChatMouseClicked
+        // TODO add your handling code here:
+        ClientFrame clientFrame = new ClientFrame("Hulken",user_id,conn);
+        clientFrame.setVisible(true);
+    }//GEN-LAST:event_panelOpenChatMouseClicked
+
+    private void jPanel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel9MouseClicked
+        try {
+            // TODO add your handling code here:
+            new EventFrame(conn, user_id).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel9MouseClicked
+
+    private void jPanel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel10MouseClicked
+        try {
+            // TODO add your handling code here:
+            new EventFrame(conn, user_id, "removeevents").setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jPanel10MouseClicked
+
+   
     /**
      *
      */
@@ -3704,6 +3945,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel day9;
     private javax.swing.JDialog diaEditUser;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -3715,12 +3957,15 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel labelOpenEducation;
     private javax.swing.JLabel labelOpenResearch;
     private javax.swing.JLabel labelOpenSocial;
@@ -3790,9 +4035,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JLabel lblEvent9;
     private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblLogOut;
+    private javax.swing.JLabel lblOpenChat;
     private javax.swing.JLabel lblTime;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelHome;
+    private javax.swing.JPanel panelOpenChat;
     private javax.swing.JPanel panelOpenEducation;
     private javax.swing.JPanel panelOpenResearch;
     private javax.swing.JPanel panelOpenSocial;

@@ -85,6 +85,7 @@ public class EducationFrame extends javax.swing.JFrame {
             //For every category we have, we add a new JCheckBox and add it to the screen and arraylists, etc..
             while(categories.next()) {
                 JCheckBox newCategoryBox = new JCheckBox(categories.getString("CATEGORY"), true);
+                newCategoryBox.setForeground(new Color(255,255,255));
                 newCategoryBox.addActionListener(new ActionListener(){
                     @Override
                     public void actionPerformed(ActionEvent e) {

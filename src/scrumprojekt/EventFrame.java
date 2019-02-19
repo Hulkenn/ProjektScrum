@@ -244,7 +244,7 @@ public class EventFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
-    dispose();
+        dispose();
     }//GEN-LAST:event_lblGoBackMouseClicked
 
     /**

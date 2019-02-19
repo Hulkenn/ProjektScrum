@@ -10,109 +10,42 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
-import oru.inf.InfDB;
-import oru.inf.InfException;
 
 /**
  *
- * @author admin
+ * @author Lucas
  */
-public class DBFetcher {
-    
-    /**
-     *
-     * @param con
-     * @param email
-     * @return ID for a user on email input
-     *
-     */
-    public static int fetchId(Connection conn, String email) {
+public class ConnFetcher {
+ public static ResultSet fetchUser(Connection con, String email) {
         Statement stmt = null;
-        String query = "SELECT idemployee FROM employee WHERE email= '" + email + "'";
-        ResultSet rs = null;
-        int id = 0;
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            rs.next();
-            id = rs.getInt("IDEMPLOYEE");
-            rs.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return id;
-    }
-
-    /**
-     * 
-     * @param conn
-     * @param email
-     * @return password from user
-     */
-    public static char[] fetchPassword(Connection conn, String email) {
-        Statement stmt = null;
-        String query = "SELECT password FROM employee WHERE email= '" + email + "'";
-        ResultSet rs = null;
-        String password = "";
-        try {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-            rs.next();
-            password = rs.getString("password");
-            rs.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return password.toCharArray();
-    }
-    
-    public static ResultSet fetchUser(Connection con, String email) {
-        Statement stmt = null;
-        String query = "SELECT * FROM EMPLOYEE WHERE EMAIL = '" + email + "'";
+        String query = "SELECT * FROM EMPLOYEES WHERE EMAIL = '" + email + "'";
         ResultSet rs = null;
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
-        } 
+        }
         catch(SQLException e) {
             System.out.println("ERROR TO FETCH USER BY EMAIL");
         }
         return rs;
     }
-    public static String fetchEmail(Connection con, int user_id){
-        Statement stmt = null;
-        String query = "SELECT EMAIL FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id;
-        ResultSet rs = null;
-        String email = "";
-        try{
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(query);
-            rs.next();
-            email = rs.getString("EMAIL");
-            rs.close();
-        } catch(SQLException e){
-            System.out.println("ERROR TO FETCH DATE OF EVENT");
-        }
-        return email;
-    }
-    
-    
-    
+   
+   
+   
     public static ResultSet fetchUser(Connection con, int user_id) {
         Statement stmt = null;
-        String query = "SELECT * FROM EMPLOYEE WHERE IDEMPLOYEE = " + user_id;
+        String query = "SELECT * FROM EMPLOYEES WHERE IDEMPLOYEE = " + user_id;
         ResultSet rs = null;
         try {
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
-        } 
+        }
         catch(SQLException e) {
             System.out.println("ERROR TO FETCH USER");
         }
         return rs;
     }
-    
+   
     public static ResultSet fetchPost(Connection con, int post_id) {
         //Returnerar bara en rad
         Statement stmt = null;
@@ -127,8 +60,8 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
+   
+   
     public static int fetchUserIdFromPost(Connection con, int post_id){
         int user_id = 0;
         Statement stmt = null;
@@ -143,11 +76,11 @@ public class DBFetcher {
         }
         catch(SQLException e){
             System.out.println(e);
-        } 
+        }
         return user_id;
     }
-    
-    
+   
+   
     public static ResultSet fetchAllPosts(Connection con, char category) {
         Statement stmt = null;
         String query = "SELECT * FROM POST WHERE ISDELETED = 0 AND CATEGORY = '" + category + "' ORDER BY IDPOST DESC";
@@ -161,8 +94,8 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
+   
+   
     public static ResultSet fetchAllPostsWithCategories(Connection con, ArrayList<String> tags, char category) {
         Statement stmt = null;
         String query = "";
@@ -186,8 +119,8 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
+   
+   
     public static ResultSet fetchAllPostsWithCategoriesAndDate(Connection con, ArrayList<String> tags, String startDate, String endDate, char category) {
         Statement stmt = null;
         String query = "";
@@ -211,9 +144,9 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
-    
+   
+   
+   
     public static ResultSet fetchEvents(Connection con, int year, String month) {
         Statement stmt = null;
         String query = "SELECT EVENTDATE FROM EVENTS WHERE EVENTDATE LIKE '" + year + "-" + month + "%'";
@@ -226,11 +159,11 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
+   
+   
     public static ResultSet fetchAllCommentsPost(Connection con, int post_id) {
         Statement stmt = null;
-        String query = "SELECT COMMENT, COMMENT_DATE, FIRSTNAME, LASTNAME FROM COMMENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE POST_IDPOST = " + post_id + " ORDER BY COMMENT_ID DESC";
+        String query = "SELECT COMMENT, COMMENT_DATE, FIRSTNAME, LASTNAME FROM COMMENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE POST_IDPOST = " + post_id + "ORDER BY COMMENT_ID DESC";
         ResultSet rs = null;
         try {
             stmt = con.createStatement();
@@ -241,12 +174,12 @@ public class DBFetcher {
         }
         return rs;
     }
-    
-    
+   
+   
     public static int fetchRankFromUser(Connection con, int employee_ID){
         int rank = 0;
         Statement stmt = null;
-        String query = "SELECT RANK FROM EMPLOYEE WHERE IDEMPLOYEE = " + employee_ID;
+        String query = "SELECT RANK FROM EMPLOYEES WHERE IDEMPLOYEE = " + employee_ID;
         ResultSet rs = null;
         try{
             stmt = con.createStatement();
@@ -260,50 +193,50 @@ public class DBFetcher {
         }
         return rank;
     }
-    
-    
+   
+   
     public static ResultSet fetchAllUsers(Connection con){
         Statement stmt = null;
-        String query = "SELECT * FROM EMPLOYEE WHERE ISDELETED = 0";
+        String query = "SELECT * FROM EMPLOYEES WHERE ISDELETED = 0";
         ResultSet rs = null;
         try{
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
         }
         catch(SQLException e){
-            System.out.println("ERROR TO FETCH ALL EMPLOYEE");
+            System.out.println("ERROR TO FETCH ALL EMPLOYEES");
         }
         return rs;
     }
-    
+   
     public static ResultSet fetchAllUsersEducation(Connection con){
         Statement stmt = null;
-        String query = "SELECT * FROM EMPLOYEE WHERE RANK = 2 AND ISDELETED 0";
+        String query = "SELECT * FROM EMPLOYEES WHERE RANK = 2 AND ISDELETED 0";
         ResultSet rs = null;
         try{
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
         }
         catch(SQLException e){
-            System.out.println("ERROR TO FETCH EDUCATION EMPLOYEE");
+            System.out.println("ERROR TO FETCH EDUCATION EMPLOYEES");
         }
         return rs;
     }
-    
+   
     public static ResultSet fetchAllUsersResearch(Connection con){
         Statement stmt = null;
-        String query = "SELECT * FROM EMPLOYEE WHERE RANK = 1 AND ISDELETED = 0";
+        String query = "SELECT * FROM EMPLOYEES WHERE RANK = 1 AND ISDELETED = 0";
         ResultSet rs = null;
         try{
             stmt = con.createStatement();
             rs = stmt.executeQuery(query);
         }
         catch(SQLException e){
-            System.out.println("ERROR TO GET RESEARCH EMPLOYEE");
+            System.out.println("ERROR TO GET RESEARCH EMPLOYEES");
         }
         return rs;
     }
-    
+   
     public static ResultSet fetchAllCategories(Connection con) {
         Statement stmt = null;
         String query = "SELECT * FROM CATEGORY";
@@ -313,11 +246,11 @@ public class DBFetcher {
             rs = stmt.executeQuery(query);
         }
         catch(SQLException e) {
-            
+           
         }
         return rs;
     }
-    
+   
     public static boolean checkIfCreatorOfPost(Connection con, int post_id, int user_id) {
         Statement stmt = null;
         String query = "SELECT EMPLOYEE_IDEMPLOYEE FROM POST WHERE IDPOST = " + post_id;
@@ -331,14 +264,14 @@ public class DBFetcher {
             rs.close();
             if(id == user_id) {
                 result = true;
-            } 
+            }
         }
         catch(SQLException e){
             System.out.println("ERROR TO GET ID OF EMPLOYEE OF THE POST");
         }
         return result;
     }
-    
+   
     public static String fetchDateofEvent(Connection con, int postID){
         Statement stmt = null;
         String query = "SELECT EVENTDATE FROM EVENTS WHERE IDEVENTS = " + postID;
@@ -355,10 +288,10 @@ public class DBFetcher {
         }
         return date;
     }
-    
+   
     public static ResultSet fetchAllEvents(Connection con, String date) throws SQLException{
         Statement stmt = null;
-        String query = "SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE EVENTDATE = '" + date + "'";
+        String query = "SELECT * FROM EVENTS JOIN EMPLOYEES ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE EVENTDATE = '" + date + "'";
         ResultSet rs = null;
         try {
             stmt = con.createStatement();
@@ -369,58 +302,4 @@ public class DBFetcher {
         return rs;
     }
     
-    public static ResultSet fetchAllPersonalEvents(Connection con, int user_id) throws SQLException{
-        Statement stmt = null;
-        String query = "SELECT IDEVENTS, INVITED_TO_EVENT.EMPLOYEE_IDEMPLOYEE AS IDEMPLOYEE, TITLE, TIME, PLACE, DESCRIPTION, ATTENDING, E2.FIRSTNAME AS FIRSTNAME, E2.LASTNAME AS LASTNAME FROM EVENTS JOIN INVITED_TO_EVENT ON IDEVENTS = invited_to_event.EVENTS_IDEVENTS JOIN EMPLOYEE AS E1 ON invited_to_event.EMPLOYEE_IDEMPLOYEE = E1.IDEMPLOYEE join EMPLOYEE AS E2 ON EVENTS.EMPLOYEE_IDEMPLOYEE = E2.IDEMPLOYEE WHERE E1.IDEMPLOYEE = " + user_id;
-        ResultSet rs = null;
-        try {
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(query);
-        } catch(SQLException e) {
-            System.out.println("ERROR TO FETCH EVENTS");
-        }
-        return rs;
-    }
-    
-    public static ResultSet fetchEventsOnCreator(Connection con, int user_ID) throws SQLException{
-        Statement stmt = null;
-        String query = "SELECT * FROM EVENTS JOIN EMPLOYEE ON EMPLOYEE_IDEMPLOYEE = IDEMPLOYEE WHERE IDEMPLOYEE = " + user_ID;
-        ResultSet rs = null;
-        try {
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(query);
-        } catch(SQLException e) {
-            System.out.println("ERROR TO FETCH EVENTS");
-        }
-        return rs;
-    }
-    
-    //INTE OMVANDLAD FÖR VETTEFAN VAD VI SKA GÖRA MED DENNA XD
-    public static String fetchImagePath(InfDB db, int post_id) {
-        String path = "";
-        try {
-            path = db.fetchSingle("SELECT PATHTOIMAGE FROM IMAGE JOIN POST ON POST_IDPOST = IDPOST WHERE IDPOST = " + post_id);
-        }
-        catch(InfException e) {
-            
-        }
-        return path;
-    }
-    
-    public static ResultSet fetchAllCommentorsOnPost(Connection conn, int post_id)
-    {
-        Statement stmt = null;
-        String query = "SELECT EMAIL FROM employee JOIN comments ON COMMENTS.employee_IDEMPLOYEE = employee.IDEMPLOYEE JOIN POST ON comments.POST_IDPOST = post.IDPOST WHERE IDPOST ="+ post_id;
-        ResultSet rs = null;
-        try
-        {
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(query);
-        }
-        catch(SQLException e) {
-            System.out.println("ERROR TO FETCH EMAILS");
-        }
-        return  rs;
-        
-    }
 }
