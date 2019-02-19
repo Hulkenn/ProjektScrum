@@ -99,6 +99,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         lblAuthor = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         lblDate = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
@@ -291,6 +292,13 @@ public class BlogPostFrame extends javax.swing.JFrame {
 
         lblAuthor.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblAuthor.setText("Author:ExempelText");
+        lblAuthor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAuthorMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setText(".....");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -299,11 +307,15 @@ public class BlogPostFrame extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblAuthor)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(jLabel2)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblAuthor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(lblAuthor, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
         bg.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, -1));
@@ -482,7 +494,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 794, Short.MAX_VALUE)
         );
 
         pack();
@@ -525,21 +537,21 @@ public class BlogPostFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lblBackMouseExited
 
     private void lblBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMouseClicked
-        
-        try {
-            new EducationFrame(conn, user_id).setVisible(true);
-            dispose();
-        } catch (SQLException ex) {
-            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dispose();
     }//GEN-LAST:event_lblBackMouseClicked
 
     private void lblRemoveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRemoveMouseClicked
-//    DBDelete.removePost(db, this.post_id);
-//    DBDelete.setCommentToDeleted(db, post_id);
-//    dispose();
-    //new EducationFrame(db, user_id);
+        DBDelete.removePost(conn, this.post_id);
+        dispose();
     }//GEN-LAST:event_lblRemoveMouseClicked
+
+    private void lblAuthorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAuthorMouseClicked
+        try {
+            new ProfilePage(conn, user.getInt("IDEMPLOYEE")).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_lblAuthorMouseClicked
 
 //    /**
 //     * @param args the command line arguments
@@ -583,6 +595,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

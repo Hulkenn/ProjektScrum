@@ -8,6 +8,8 @@ package scrumprojekt;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +28,7 @@ public class EventFrame extends javax.swing.JFrame {
     private Connection conn;
     private ResultSet events;
     private ArrayList<Event> event_components;
+    private int user_id;
     /**
      * Creates new form EventFrame
      */
@@ -33,12 +36,13 @@ public class EventFrame extends javax.swing.JFrame {
         initComponents();
         this.conn = conn;
         this.setLocationRelativeTo(null);
+        setResizable(false);
         this.events = DBFetcher.fetchAllEvents(conn, date);
         this.event_components = new ArrayList<Event>();
         jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
         if(events != null) {
             while(events.next()) {
-                Event new_event = new Event(events);
+                Event new_event = new Event(events, conn);
                 event_components.add(new_event);
                 new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
                 //jPanel2.add(new_event);
@@ -49,6 +53,65 @@ public class EventFrame extends javax.swing.JFrame {
             jPanel2.repaint();
         }
         lblDate.setText(date);
+    }
+    
+    public EventFrame(Connection conn, int user_id) throws SQLException {
+        initComponents();
+        this.conn = conn;
+        this.setLocationRelativeTo(null);
+        this.user_id = user_id;
+        this.events = DBFetcher.fetchAllPersonalEvents(conn, user_id);
+        this.event_components = new ArrayList<Event>();
+        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        if(events != null) {
+            while(events.next()) {
+                Event new_event = new Event(events, conn, "attend");
+                event_components.add(new_event);
+                new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
+                //jPanel2.add(new_event);
+                jPanel2.add(new_event);
+                jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
+            }
+            jPanel2.revalidate();
+            jPanel2.repaint();
+        }
+        lblDate.setText("");
+        lblDateForEvents.setText("");
+    }
+    
+    public EventFrame(Connection conn, int user_id, String remove) throws SQLException {
+        initComponents();
+        this.conn = conn;
+        this.setLocationRelativeTo(null);
+        this.user_id = user_id;
+        this.events = DBFetcher.fetchEventsOnCreator(conn, user_id);
+        this.event_components = new ArrayList<Event>();
+        jPanel2.setLayout(new BoxLayout(jPanel2, BoxLayout.Y_AXIS));
+        if(events != null) {
+            while(events.next()) {
+                int eventId = events.getInt("IDEVENTS");
+                Event new_event = new Event(conn, events);
+                new_event.getButton().addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        DBDelete.removeEventHard(conn, eventId);
+                        event_components.remove(new_event);
+                        jPanel2.remove(new_event);
+                        jPanel2.revalidate();
+                        jPanel2.repaint();
+                    }
+                });
+                event_components.add(new_event);
+                new_event.setAlignmentX(Component.CENTER_ALIGNMENT);
+                //jPanel2.add(new_event);
+                jPanel2.add(new_event);
+                jPanel2.add(Box.createRigidArea(new Dimension(0, 5)));
+            }
+            jPanel2.revalidate();
+            jPanel2.repaint();
+        }
+        lblDate.setText("");
+        lblDateForEvents.setText("");
     }
     
     /**
@@ -127,7 +190,7 @@ public class EventFrame extends javax.swing.JFrame {
                 .addComponent(lblDateForEvents)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblDate)
-                .addContainerGap(600, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,7 +208,7 @@ public class EventFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 693, Short.MAX_VALUE)
+            .addGap(0, 703, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,11 +223,11 @@ public class EventFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 724, Short.MAX_VALUE))
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -182,7 +245,7 @@ public class EventFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblGoBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGoBackMouseClicked
-    dispose();
+        dispose();
     }//GEN-LAST:event_lblGoBackMouseClicked
 
     /**
