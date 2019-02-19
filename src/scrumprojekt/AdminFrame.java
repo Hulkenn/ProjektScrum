@@ -835,6 +835,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void btnAddUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAddUserMouseClicked
 
         DBInsert.addUser(conn, txtFirstName, txtLastName, txtEmail, comboRank, txtPhone, txtTitel);
+       
     }//GEN-LAST:event_btnAddUserMouseClicked
 
     /**

@@ -246,6 +246,7 @@ public class CreateNewPost extends javax.swing.JFrame {
 
             try {
                 DBInsert.insertPost(conn, user_id, category, textfieldHeadline.getText(), textareaPost.getText(), categoryPost);
+                EmailD.notice(conn, user_id);
                 
                 dispose();
                 

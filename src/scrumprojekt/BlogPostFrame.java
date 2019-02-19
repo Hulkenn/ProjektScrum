@@ -493,6 +493,7 @@ public class BlogPostFrame extends javax.swing.JFrame {
         //Add post
         if(!Validate.areaWindowIsEmpty(taComment)) {
             DBInsert.insertComment(conn, user_id, post_id, taComment.getText());
+            EmailD.noticeK(conn, user_id, post_id);
             taComment.setText("");
             jpContainer.removeAll();
             BoxLayoutDemo.addCommentsToPane(jpContainer, post_id, conn);

@@ -57,7 +57,7 @@ public class DBUpdate {
      * @param academicstatus
      * @param password
      */
-    public static void updateAsUser(Connection con, int user_id, String firstname, String lastname, String mail, String number, String academicstatus, String password) {
+    public static void updateAsUser(Connection con, int user_id, String firstname, String lastname, String mail, String number, String academicstatus, String password,int notis) {
         Statement stmt = null;
         try {
             stmt = con.createStatement();
@@ -71,6 +71,7 @@ public class DBUpdate {
                 uprs.updateString("PHONENUMBER", number);
                 uprs.updateString("ACADEMICSTATUS", academicstatus);
                 uprs.updateString("PASSWORD", password);
+                uprs.updateInt("NOTISERPOST", notis);
                 uprs.updateRow();
             }
             

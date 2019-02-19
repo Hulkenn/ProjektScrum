@@ -384,7 +384,7 @@ public class DBFetcher {
     public static ResultSet fetchAllCommentorsOnPost(Connection conn, int post_id)
     {
         Statement stmt = null;
-        String query = "SELECT EMAIL FROM employee JOIN comments ON COMMENTS.employee_IDEMPLOYEE = employee.IDEMPLOYEE JOIN POST ON comments.POST_IDPOST = post.IDPOST WHERE IDPOST ="+ post_id;
+        String query = "SELECT EMAIL FROM employee JOIN comments ON COMMENTS.employee_IDEMPLOYEE = employee.IDEMPLOYEE JOIN POST ON comments.POST_IDPOST = post.IDPOST WHERE IDPOST ="+ post_id+" AND NOTISERPOST = 1";
         ResultSet rs = null;
         try
         {
@@ -396,5 +396,18 @@ public class DBFetcher {
         }
         return  rs;
         
+    }
+    public static ResultSet fetchUserNotiser(Connection con, int user_id) {
+        Statement stmt = null;
+        String query = "SELECT * FROM EMPLOYEE WHERE IDEMPLOYEE = "+ user_id+" AND NOTISERPOST = 1";
+        ResultSet rs = null;
+        try {
+            stmt = con.createStatement();
+            rs = stmt.executeQuery(query);
+        } 
+        catch(SQLException e) {
+            System.out.println("ERROR TO FETCH USER");
+        }
+        return rs;
     }
 }

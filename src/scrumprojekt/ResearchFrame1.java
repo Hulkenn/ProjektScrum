@@ -173,6 +173,7 @@ public class ResearchFrame1 extends javax.swing.JFrame {
             }
         });
         container.add(post);
+        
     }
     
     /**

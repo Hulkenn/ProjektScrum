@@ -82,6 +82,7 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        CheckBoxNotis = new javax.swing.JCheckBox();
         panelHeader = new javax.swing.JPanel();
         panelOpenEducation = new javax.swing.JPanel();
         labelOpenEducation = new javax.swing.JLabel();
@@ -239,7 +240,7 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
                     .addComponent(cancelEditUser))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         jPanel7.setBackground(new java.awt.Color(250, 249, 246));
@@ -271,6 +272,13 @@ public class MainWindow extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Arial", 0, 13)); // NOI18N
         jLabel18.setText("New Phone Number:");
 
+        CheckBoxNotis.setText("Kryssa för att ta emot email notiser");
+        CheckBoxNotis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckBoxNotisActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -286,6 +294,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(jLabel18))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckBoxNotis)
                     .addComponent(btnEditUser)
                     .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -293,7 +302,7 @@ public class MainWindow extends javax.swing.JFrame {
                     .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfLastname, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfFirstname, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -322,9 +331,11 @@ public class MainWindow extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CheckBoxNotis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditUser)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout diaEditUserLayout = new javax.swing.GroupLayout(diaEditUser.getContentPane());
@@ -337,7 +348,7 @@ public class MainWindow extends javax.swing.JFrame {
         diaEditUserLayout.setVerticalGroup(
             diaEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(diaEditUserLayout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -665,13 +676,10 @@ public class MainWindow extends javax.swing.JFrame {
                 .addComponent(panelOpenSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(panelOpenChat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlLogOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pnlExit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(pnlLogOut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlExit, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         panelHeaderLayout.setVerticalGroup(
@@ -2330,8 +2338,18 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelEditUserMouseClicked
 
     private void btnEditUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditUserMouseClicked
-
-        DBUpdate.updateAsUser(conn, user_id, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText());
+        int notis =1;
+        if(CheckBoxNotis.isSelected())
+        {
+            notis = 1;
+        }
+        else
+        {
+            notis = 0;
+        }
+        
+        
+        DBUpdate.updateAsUser(conn, user_id, tfFirstname.getText(), tfLastname.getText(), tfEmail.getText(), tfPhone.getText(), tfAcademic.getText(), tfPassword.getText(), notis);
         diaEditUser.setVisible(false);
     }//GEN-LAST:event_btnEditUserMouseClicked
 
@@ -3112,6 +3130,10 @@ public class MainWindow extends javax.swing.JFrame {
         panelOpenChat.setBackground(new Color(50, 121, 184));
     }//GEN-LAST:event_lblOpenChatMouseExited
 
+    private void CheckBoxNotisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxNotisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CheckBoxNotisActionPerformed
+
    
     /**
      *
@@ -3736,6 +3758,7 @@ public class MainWindow extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckBoxNotis;
     private javax.swing.JPanel bg1;
     private javax.swing.JButton btnEditUser;
     private javax.swing.JLabel cancelEditUser;

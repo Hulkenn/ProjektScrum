@@ -21,7 +21,7 @@ public class EmailD {
       
     public static void notice(Connection conn, int id) {
         
-        ResultSet rs = DBFetcher.fetchUser(conn,id);
+        ResultSet rs = DBFetcher.fetchUserNotiser(conn,id);
         String email="";
         
         try {
@@ -52,7 +52,7 @@ public class EmailD {
     
       public static void noticeK(Connection conn,int id, int post) {
         
-        ResultSet rsPoster = DBFetcher.fetchUser(conn, id);
+        ResultSet rsPoster = DBFetcher.fetchUserNotiser(conn, id);
         String email="";
         String email2="";
         String email3="";
