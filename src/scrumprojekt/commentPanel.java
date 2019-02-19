@@ -62,6 +62,11 @@ public class commentPanel extends javax.swing.JPanel {
         lblUser.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblUser.setForeground(new java.awt.Color(250, 249, 246));
         lblUser.setText("Who:");
+        lblUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUserMouseClicked(evt);
+            }
+        });
 
         lblDate.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lblDate.setForeground(new java.awt.Color(250, 249, 246));
@@ -114,6 +119,10 @@ public class commentPanel extends javax.swing.JPanel {
             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblUserMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

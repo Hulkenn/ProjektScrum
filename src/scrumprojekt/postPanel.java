@@ -96,6 +96,11 @@ public class postPanel extends javax.swing.JPanel {
 
         authorPostOne.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         authorPostOne.setText("Author");
+        authorPostOne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                authorPostOneMouseClicked(evt);
+            }
+        });
 
         datePostOne.setText("Date and time");
 
@@ -179,6 +184,14 @@ public class postPanel extends javax.swing.JPanel {
             .addComponent(postOne, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void authorPostOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_authorPostOneMouseClicked
+        try {
+            new ProfilePage(conn, user.getInt("IDEMPLOYEE")).setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(BlogPostFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_authorPostOneMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
